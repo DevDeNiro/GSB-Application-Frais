@@ -21,10 +21,8 @@ class test extends AbstractController
     */
 
     public function Ajouter_Bdd(Request $request) : Response // Fonction qui permet d'ajouter un nouveau matériel dans la base de données via un formulaire
-    {
-        
-        return $this->render('test.html.twig',[ // Création du formulaire par symfony
-          
+    {       
+        return $this->render('test.html.twig',[ // Création du formulaire par symfony   
         
         ]);
     }
