@@ -13,4 +13,15 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 class login extends AbstractController
 {
+       /**
+     * @Route("/login", name = "formulaire")
+     * @Method({"GET"})
+    */
+
+    public function test(Request $request) : Response // Fonction qui permet d'ajouter un nouveau matériel dans la base de données via un formulaire
+    {       
+        return $this->render('login/login.html.twig',[ // Création du formulaire par symfony   
+        
+        ]);
+    }
 }
