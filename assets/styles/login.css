@@ -8,9 +8,9 @@ body * {
 }
 
 .container {
-    width: 100%;
+
     padding-top: 60px;
-    padding-bottom: 100px
+
 }
 
 .frame {
@@ -66,7 +66,7 @@ li {
     padding-bottom: 10px;
     color: #ffffff;
     text-decoration: none;
-    border-bottom: solid 2px #1059FF;
+    border-bottom: solid 2px #b1c5f5;
     transition: all .25s ease;
     cursor: pointer
 }
@@ -206,6 +206,8 @@ label {
     outline: none
 }
 
+
+
 .form-signin input:focus,
 textarea:focus,
 .form-signup input:focus,
@@ -230,6 +232,7 @@ textarea:focus {
     cursor: pointer;
     margin-top: 8px
 }
+
 
 [type="checkbox"]:not(:checked)+label:before,
 [type="checkbox"]:checked+label:before,
