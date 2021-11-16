@@ -14,32 +14,34 @@
 {% block body %}
 
 <div class="container">
-<div class="row">
-<div class="col">
-    <div class="frame">
-        <div class="nav">
-            <ul class="links">
-                <li class="signin-active"><a class="btn">Comptables</a></li>
-                <li class="signup-inactive"><a class="btn">Utilisateurs</a></li>
-            </ul>
+    <div class="row">
+        <div class="col taille">
+            <div class="frame mx-auto">
+                <div class="nav">
+                    <ul class="links">
+                        <li class="signin-active"><a class="btn">Comptables</a></li>
+                        <li class="signup-inactive"><a class="btn">Utilisateurs</a></li>
+                    </ul>
 
-        </div>
-        <div ng-app ng-init="checked = false">
-        
-            <form class="form-signin" action="" method="post" name="form"> <label for="fullname">Nom d'utilisateur</label> <input class="form-styling" type="text" name="username" placeholder="" /> 
-                <label for="password">Mot de passe</label> <input class="form-styling" type="text" name="password" placeholder="" /> <input type="checkbox" id="checkbox" /> <label for="checkbox"><span class="ui"></span>Rester connecté</label>
-                <div class="btn-animate"> <a class="btn-signin">Connexion</a> </div>
-            </form>
+                </div>
+                <div ng-app ng-init="checked = false">
+                
+                    <form class="form-signin" action="" method="post" name="form"> <label for="fullname">Nom d'utilisateur</label> <input class="form-styling" type="text" name="username" placeholder="" /> 
+                        <label for="password">Mot de passe</label> <input class="form-styling" type="text" name="password" placeholder="" /> <input type="checkbox" id="checkbox" /> <label for="checkbox"><span class="ui"></span>Rester connecté</label>
+                        <div class="btn-animate"> <a class="btn-signin">Connexion</a> </div>
+                    </form>
 
-            <form class="form-signup" action="" method="post" name="form"> <label for="fullname">Nom d'utilisateur</label>  <input class="form-styling" type="text" name="dlno" placeholder="" /> 
-                <label for="password">Mot de passe</label> <input class="form-styling" type="text" name="password" placeholder="" /> <input type="checkbox" id="checkbox" /> <label for="checkbox"><span class="ui"></span>Rester connecté</label> 
-                <div class="btn-animate"> <a class="btn-signin">Connexion</a> </div>
-            </form>
+                    <form class="form-signup" action="" method="post" name="form"> <label for="fullname">Nom d'utilisateur</label>  <input class="form-styling" type="text" name="dlno" placeholder="" /> 
+                        <label for="password">Mot de passe</label> <input class="form-styling" type="text" name="password" placeholder="" /> <input type="checkbox" id="checkbox" /> <label for="checkbox"><span class="ui"></span>Rester connecté</label> 
+                        <div class="btn-animate"> <a class="btn-signin">Connexion</a> </div>
+                    </form>
 
+                </div>
             </div>
-            </div>
-        
+                
         </div>
+    </div>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 
