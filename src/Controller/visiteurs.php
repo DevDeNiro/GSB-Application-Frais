@@ -37,4 +37,16 @@ class visiteurs extends AbstractController
 
         ]); 
     }
+
+     /**
+     * @Route("/suivi", name = "suivi")
+     * @Method({"GET", "POST"})
+    */
+    
+    public function suivi() : Response // Fonction qui permet d'afficher tous le matériel sur la page d'accueil
+    {
+        return $this->render('visiteurs/remboursement_visiteur.html.twig', [
+
+        ]); 
+    }
 }
