@@ -4,8 +4,8 @@
 {% block stylesheets %} {# Importation de la feuille de style, et de bootstrap #}
             {{ encore_entry_link_tags('app') }}
             
-           <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-            <link rel="stylesheet" href="../../asset/styles/back.css">
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+            {# <link href="{{ asset('build/labo.jpg') }}" type="image" rel="stylesheet" /> #}
         {% endblock %}
              
 
@@ -13,7 +13,10 @@
 
 {% block body %}
 
+
 <div class="container">
+<img src="{{ asset('build/labo.jpg') }}" class="body_main">
+
 <div class="row">
 <div class="col">
     <div class="frame">
