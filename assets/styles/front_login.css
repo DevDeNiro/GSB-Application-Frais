@@ -8,7 +8,7 @@ body {
 
 /* Toggle Styles */
 
-#viewport {
+.viewport {
     padding-left: 250px;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
@@ -24,7 +24,7 @@ body {
 
 /* Sidebar Styles */
 
-#sidebar {
+.sidebar {
     z-index: 1000;
     position: fixed;
     left: 250px;
