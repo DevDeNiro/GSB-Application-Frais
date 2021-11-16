@@ -1,4 +1,3 @@
-
 /* Login form */
 
 
@@ -9,7 +8,12 @@ body * {
 }
 
 body {
-    background: url(../images/labo.jpg)  no-repeat center center fixed;
+    background: url(../images/labo.jpg) no-repeat center center fixed;
+    background-size: cover
+}
+
+body {
+    background: url(../images/labo.jpg) no-repeat center center fixed;
     background-size: cover
 }
 
@@ -22,7 +26,7 @@ body {
 .frame {
     height: 600px;
     width: 420px;
-    
+
     background: linear-gradient(70deg, blue, pink);
 
     background-size: cover;
@@ -474,5 +478,3 @@ a.btn-goback:hover {
     fill: #1059FF;
     transform: rotate(180deg)
 }
-
-
