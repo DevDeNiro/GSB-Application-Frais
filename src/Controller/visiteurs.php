@@ -27,7 +27,7 @@ class visiteurs extends AbstractController
     }
 
     /**
-     * @Route("/fiche", name = "accueil")
+     * @Route("/fiche", name = "fiche")
      * @Method({"GET", "POST"})
     */
     
