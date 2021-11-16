@@ -24,7 +24,17 @@ class visiteurs extends AbstractController
         return $this->render('visiteurs/accueil_visiteur.html.twig', [
 
         ]); 
-    
+    }
 
-}
+    /**
+     * @Route("/fiche", name = "accueil")
+     * @Method({"GET", "POST"})
+    */
+    
+    public function fiche() : Response // Fonction qui permet d'afficher tous le matériel sur la page d'accueil
+    {
+        return $this->render('visiteurs/fiche_visiteur.html.twig', [
+
+        ]); 
+    }
 }
