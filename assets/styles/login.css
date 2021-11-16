@@ -368,7 +368,7 @@ textarea:focus {
 a.btn-signup:hover,
 a.btn-signin:hover {
     cursor: pointer;
-    background-color: #0F4FE6;
+    background-color: #b0c2ec;
     transition: background-color .5s
 }
 
