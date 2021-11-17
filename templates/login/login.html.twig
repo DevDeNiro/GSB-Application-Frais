@@ -13,35 +13,38 @@
 {% block body %}
 
 
-<div class="container">
-    <div class="row">
-        <div class="col taille">
-            <div class="frame mx-auto">
-                <div class="nav">
-                    <ul class="links">
-                        <li class="signin-active"><a class="btn">Comptables</a></li>
-                        <li class="signup-inactive"><a class="btn">Utilisateurs</a></li>
-                    </ul>
-
-                </div>
-                <div ng-app ng-init="checked = false">
-                
-                    <form class="form-signin" action="" method="post" name="form"> <label for="fullname">Nom d'utilisateur</label> <input class="form-styling" type="text" name="username" placeholder="" /> 
-                        <label for="password">Mot de passe</label> <input class="form-styling" type="text" name="password" placeholder="" /> <input type="checkbox" id="checkbox" /> <label for="checkbox"><span class="ui"></span>Rester connecté</label>
-                        <div class="btn-animate"> <a class="btn-signin">Connexion</a> </div>
-                    </form>
-
-                    <form class="form-signup" action="" method="post" name="form"> <label for="fullname">Nom d'utilisateur</label>  <input class="form-styling" type="text" name="dlno" placeholder="" /> 
-                        <label for="password">Mot de passe</label> <input class="form-styling" type="text" name="password" placeholder="" /> <input type="checkbox" id="checkbox" /> <label for="checkbox"><span class="ui"></span>Rester connecté</label> 
-                        <div class="btn-animate"> <a class="btn-signin">Connexion</a> </div>
-                    </form>
-
+	<div class="container bloc_login h-100">
+		<div class="row">
+            <div class"col">
+                <div class="user_card">
+                    <div class="bloc_logo">
+                        <div class="brand_logo_container">
+                            <img src="https://cdn.freebiesupply.com/logos/large/2x/pinterest-circle-logo-png-transparent.png" class="brand_logo" alt="Logo">
+                        </div>
+                    </div>
+                    <div class="mx-4 justify-content-center form_container">
+                        <form>
+                            <div class="input-group mb-3">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                </div>
+                                <input type="text" name="" class="form-control input_user" value="" placeholder="username">
+                            </div>
+                            <div class="input-group mb-2">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                </div>
+                                <input type="password" name="" class="form-control input_pass" value="" placeholder="password">
+                            </div>
+                                <div class="mt-3 login_container">
+                        <button type="button" name="button" class="btn login_btn">Login</button>
+                    </div>
+                        </form>
+                    </div>
                 </div>
             </div>
-                
-        </div>
-    </div>
-</div>
+		</div>
+	</div>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 
