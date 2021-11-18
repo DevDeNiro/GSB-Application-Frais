@@ -8,13 +8,13 @@ body {
 
 /* Toggle Styles */
 
-.viewport {
+/* .viewport {
     padding-left: 250px;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
-}
+} */
 
 .content {
     width: 100%;
@@ -25,13 +25,13 @@ body {
 /* Sidebar Styles */
 
 .sidebar {
-    z-index: 1000;
+    /* z-index: 1000; */
     position: fixed;
-    left: 250px;
-    width: 250px;
-    height: 100%;
-    margin-left: -250px;
-    overflow-y: auto;
+    /* left: 250px; */
+    width: 100%;
+    height: auto;
+    /* margin-left: -250px; */
+    /* overflow-y: auto; */
     background: #37474F;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
@@ -71,4 +71,15 @@ body {
 
 .sidebar .nav a i {
     margin-right: 16px;
+}
+
+.liste {
+    padding-left: 10px;
+    font-size: 18px;
+    display: inline;
+    text-align: left;
+    text-transform: uppercase;
+    padding-right: 10px;
+    color: #ffffff;
+    overflow-x: hidden;
 }
