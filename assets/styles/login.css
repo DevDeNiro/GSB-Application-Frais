@@ -2,8 +2,7 @@
 
 html {
     /* box-sizing: border-box; */
-    background-color: rgb(35, 111, 134);
-    /* background-image: url('{{ asset("build/img_accueil.png") }}'); */
+    background-color: rgb(212, 171, 35);
 
 }
 
@@ -41,3 +40,34 @@ html {
     margin-top: 100px;
     background-color: #12f3e0;
 }
+
+
+/* 
+
+@media all and (max-width: 1024px) {
+    .block_image {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 960px) {
+    .block_form {
+        display: flex;
+        flex-direction: column;
+        width: auto;
+        flex: 1;
+
+
+    }
+}
+
+@media screen and (min-width: 960px) {
+    .bloc_login {
+        display: flex;
+        flex-direction: column; */
+/* width: auto;
+        flex: 1;
+
+
+    }
+} */
