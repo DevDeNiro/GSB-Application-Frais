@@ -3,6 +3,7 @@
 html {
     /* box-sizing: border-box; */
     background-color: rgb(35, 111, 134);
+    /* background-image: url('{{ asset("build/img_accueil.png") }}'); */
 
 }
 
@@ -22,20 +23,6 @@ html {
     height: 75%;
     background-color: rgb(164, 227, 247);
     border-radius: 30px;
-}
-
-.brand_logo_container {
-    position: absolute;
-    display: flex;
-    left: 90px;
-    height: 170px;
-    width: 170px;
-    top: -75px;
-    border-radius: 50%;
-    background: rgb(37, 96, 173);
-    padding: 10px;
-    text-align: center;
-    margin: 0em auto 0em auto;
 }
 
 .couleur {
