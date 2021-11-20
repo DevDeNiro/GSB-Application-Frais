@@ -49,4 +49,16 @@ class visiteurs extends AbstractController
 
         ]); 
     }
+
+    /**
+     * @Route("/vehicule", name = "vehicule")
+     * @Method({"GET", "POST"})
+    */
+    
+    public function vehicule() : Response // Fonction qui permet d'afficher tous le matériel sur la page d'accueil
+    {
+        return $this->render('visiteurs/vehicul_visiteur.html.twig', [
+
+        ]); 
+    }
 }
