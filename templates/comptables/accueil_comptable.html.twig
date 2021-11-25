@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cours Complet Bootstrap 4</title>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% block stylesheets %} {# Importation de la feuille de style, et de bootstrap #}
+            {{ encore_entry_link_tags('app') }}
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+            {# <link href="/your-path-to-fontawesome/css/all.css" rel="stylesheet"> #}
+    {% endblock %}
+  </head>
+
+  <body>
+    <div class="container-fluid px-0">
+      <div class="row">
+        <div class="col">
+          <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+            <div class="container-fluid px-0">
+              <a class="navbar-brand" href="#">GSB | Galaxy Swiss Bourdin</a>
+              <div class="navbar-brand" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Déconnexion <i class="fas fa-sign-in-alt"></i></a>   
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav> 
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-2 sidebar p-0">
+              <header>
+                
+                <a href="#"> <i class="fas fa-user-circle"></i> John Doe <span class="id_user">#0000 </a></a>
+                
+              </header>
+              <div class="ml-3 nav w-auto pl-3">
+                <div class="p-0 pb-2 col-12 liste">
+                  <a href="/accueil_visiteur" class="p-0" >
+                    <i class="fas fa-home"></i>Accueil
+                  </a>
+                </div>
+
+                <div class="p-0 pb-2 col-12 liste">
+                  <a href="/fiche" class="p-0" >
+                    <i class="fas fa-edit"></i>Saisir une fiche
+                  </a>
+                </div>
+
+                <div class="p-0 pb-2 col-12 liste">
+                  <a href="/suivi" class="p-0 " >
+                    <i class="fas fa-file-alt"></i> Suivre ses remboursements
+                  </a>
+                </div>
+
+                <div class="p-0 pb-2 col-12 liste">
+                  <a href="/vehicule" class="p-0  " >
+                    <i class="fas fa-car"></i> Saisir un nouveau véhicule
+                  </a>
+                </div>
+    
+        </div>
+        </div>
+      
+      </div>
+    </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+  </body>
+</html>
