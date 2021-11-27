@@ -1,1 +1,14 @@
 @import '~font-awesome';
+
+.title {
+    font-weight: bold;
+}
+
+.titre_bandeau {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.liste2 {
+    margin-bottom: 0.25em;
+}

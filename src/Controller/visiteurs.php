@@ -27,13 +27,37 @@ class visiteurs extends AbstractController
     }
 
     /**
-     * @Route("/fiche", name = "accueil")
+     * @Route("/fiche", name = "fiche")
      * @Method({"GET", "POST"})
     */
     
     public function fiche() : Response // Fonction qui permet d'afficher tous le matériel sur la page d'accueil
     {
         return $this->render('visiteurs/fiche_visiteur.html.twig', [
+
+        ]); 
+    }
+
+     /**
+     * @Route("/suivi", name = "suivi")
+     * @Method({"GET", "POST"})
+    */
+    
+    public function suivi() : Response // Fonction qui permet d'afficher tous le matériel sur la page d'accueil
+    {
+        return $this->render('visiteurs/remboursement_visiteur.html.twig', [
+
+        ]); 
+    }
+
+    /**
+     * @Route("/vehicule", name = "vehicule")
+     * @Method({"GET", "POST"})
+    */
+    
+    public function vehicule() : Response // Fonction qui permet d'afficher tous le matériel sur la page d'accueil
+    {
+        return $this->render('visiteurs/vehicul_visiteur.html.twig', [
 
         ]); 
     }

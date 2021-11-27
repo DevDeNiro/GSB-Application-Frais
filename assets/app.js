@@ -10,6 +10,8 @@ import './styles/app.css';
 import './styles/front_visiteur.css';
 import './styles/login.css';
 import './styles/login.js';
+import './styles/front_login.js';
+import './styles/front_login.css';
 
 
 // start the Stimulus application
