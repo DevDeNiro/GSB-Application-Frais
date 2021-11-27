@@ -13,4 +13,37 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 class comptables extends AbstractController
 {
+
+     /**
+     * @Route("/accueil_comptables", name = "accueil_comptables")
+     * @Method({"GET", "POST"})
+    */
+    
+    public function afficherBdd() : Response // Fonction qui permet d'afficher tous le matériel sur la page d'accueil
+    {
+        return $this->render('comptables/accueil_comptable.html.twig', [
+        ]); 
+    }
+
+    /**
+     * @Route("/fiche_comptable", name = "liste_visiteur")
+     * @Method({"GET", "POST"})
+    */
+    
+    public function fiche() : Response // Fonction qui permet d'afficher tous le matériel sur la page d'accueil
+    {
+        return $this->render('comptables/liste_visiteur.html.twig', [
+        ]); 
+    }
+
+     /**
+     * @Route("/fiche_frais", name = "suivi_frais")
+     * @Method({"GET", "POST"})
+    */
+    
+    public function suivi() : Response // Fonction qui permet d'afficher tous le matériel sur la page d'accueil
+    {
+        return $this->render('comptables/fiche_frais.html.twig', [
+        ]); 
+    }
 }
