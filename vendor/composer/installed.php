@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '25b629d6b77e88c724e729b5738ea12d38faff9d',
+        'reference' => '8e83f40893a41a2dd55131c9fcf2bf2c7a958a21',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '25b629d6b77e88c724e729b5738ea12d38faff9d',
+            'reference' => '8e83f40893a41a2dd55131c9fcf2bf2c7a958a21',
             'dev_requirement' => false,
         ),
         'composer/package-versions-deprecated' => array(
@@ -888,12 +888,12 @@
             'dev_requirement' => false,
         ),
         'symfony/maker-bundle' => array(
-            'pretty_version' => 'v1.34.1',
-            'version' => '1.34.1.0',
+            'pretty_version' => 'v1.36.3',
+            'version' => '1.36.3.0',
             'type' => 'symfony-bundle',
             'install_path' => __DIR__ . '/../symfony/maker-bundle',
             'aliases' => array(),
-            'reference' => 'c9ae401f3fa2b42881120d33ad79416630d1f2be',
+            'reference' => '0f40c826c0725208c254ddcd3481690e6c7e5047',
             'dev_requirement' => true,
         ),
         'symfony/mime' => array(
