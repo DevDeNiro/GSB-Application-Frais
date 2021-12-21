@@ -19,7 +19,7 @@ class visiteurs extends AbstractController
      * @Method({"GET", "POST"})
     */
     
-    public function afficherBdd() : Response // Fonction qui permet d'afficher tous le matériel sur la page d'accueil
+    public function afficherBdd() : Response 
     {
         return $this->render('visiteurs/accueil_visiteur.html.twig', [
 
@@ -31,7 +31,7 @@ class visiteurs extends AbstractController
      * @Method({"GET", "POST"})
     */
     
-    public function fiche() : Response // Fonction qui permet d'afficher tous le matériel sur la page d'accueil
+    public function fiche() : Response
     {
         return $this->render('visiteurs/fiche_visiteur.html.twig', [
 
@@ -43,7 +43,7 @@ class visiteurs extends AbstractController
      * @Method({"GET", "POST"})
     */
     
-    public function suivi() : Response // Fonction qui permet d'afficher tous le matériel sur la page d'accueil
+    public function suivi() : Response 
     {
         return $this->render('visiteurs/remboursement_visiteur.html.twig', [
 
@@ -55,7 +55,7 @@ class visiteurs extends AbstractController
      * @Method({"GET", "POST"})
     */
     
-    public function vehicule() : Response // Fonction qui permet d'afficher tous le matériel sur la page d'accueil
+    public function vehicule() : Response 
     {
         return $this->render('visiteurs/vehicul_visiteur.html.twig', [
 
