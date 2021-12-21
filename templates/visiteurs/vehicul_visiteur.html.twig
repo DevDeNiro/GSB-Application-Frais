@@ -29,14 +29,18 @@
           </nav> 
         </div>
       </div>
+      
+      
+
       <div class="row">
         <div class="col-2 sidebar p-0">
-              <header>
-                
-                <a href="#"> <i class="fas fa-user-circle"></i> John Doe <span class="id_user">#0000 </a></a>
-                
+
+              <header>              
+                <a href="#"> <i class="fas fa-user-circle"></i> John Doe <span class="id_user">#0000 </a></a>      
               </header>
+
               <div class="ml-3 nav w-auto pl-3 mt-4">
+
                 <div class="p-0 pb-2 col-12 liste  ">
                   <a href="/accueil_visiteur" class="p-0" >
                     <i class="fas fa-home"></i>Accueil
@@ -73,20 +77,26 @@
           </div>
             <div class="row mx-auto w-75 p-0 mt-5">
                 <div class="col">
+
+                {{ form_start(form) }}
+                
                     <div class="card">
                         <div class="card-header bg-info title">
                             Information sur le véhicule
                         </div>
                         <div class="card-body">
+
+                        <form action={{ path('vehicules') }} method="POST">
                           <div class="row">
                             <div class="col m-1">
-                                <label for="cheese">Immatriculation</label>
-                                <p class="card-text"><input type="text" placeholder="AA-000-AA"/></p>
+
+                                <label for="cheese"> {{ form_row (form.immatriculation)}} </label>
+                                {# <p class="card-text"><input type="text" placeholder="AA-000-AA"/></p> #}
                             </div>
                             <div class="col m-1">
-                                <label for="marque" class="liste2">Marque</label>
-                                <select class="form-control " type="button">
-                                    <option value="">--Marque--</option>
+                                <label for="marque" class="liste2"> {{ form_row (form.marque)}} </label>
+                                {# <select class="form-control " type="button"> #}
+                                    {# <option value="">--Marque--</option>
                                     <option value="tesla">Tesla</option>
                                     <option value="renauld">Renauld</option>
                                     <option value="peugeot">Peugeot</option>
@@ -97,30 +107,51 @@
                                     <option value="mercedes">Mercedes</option>
                                     <option value="volkswagen">Volkswagen</option>
                                     <option value="audi">Audi</option>
-                                    <option value="autre">Autre</option>
-                                </select>
+                                    <option value="autre">Autre</option> #}
+                                {# </select> #}
+                            </div>
+                
+                            <div class="col m-1">
+                                <label for="cheese" > {{ form_row (form.modele)}} </label>
+                                {# <p class="card-text"><input type="text" placeholder="Modèle S"/></p> #}
                             </div>
                             <div class="col m-1">
-                                <label for="cheese">Modèle</label>
-                                <p class="card-text"><input type="text" placeholder="Modèle S"/></p>
-                            </div>
-                            <div class="col m-1">
-                                <label for="cheese">Année</label>
-                                <p class="card-text"><input type="text" placeholder="2007"/></p>
+                                <label for="cheese"> {{ form_row (form.annee)}} </label>
+                                {# <p class="card-text"><input type="text" placeholder="2007"/></p> #}
                             </div>
                             
                             <div class="col-lg-12 m-1">
-                                <label for="cheese">Nombre de chevaux fiscaux</label>
-                                <p class="card-text"><input type="text" placeholder="78"/></p>
+                                <label for="cheese"> {{ form_row (form.chevaux_fiscaux)}} </label>
+                                {# <p class="card-text"><input type="text" placeholder="78"/></p> #}
                             </div>
-                          </div> 
-                            <div class="row">
-                            <div class="col-8 col-sm-5 col-md-4 col-lg-3 col-xl-2">
-                              <button type="button" class="btn btn-outline-success mt-3">Ajouter</button>
+
+
+                              <div class="col-lg-12 m-1">
+                                <label for="cheese"> {{ form_row (form.carburant)}} </label>
+                                {# <label for="carburant" class="liste3">  </label>
+                                <select class="form-control " type="button">
+                                    <option value="">--Type de carburant--</option>
+                                    <option value="Diesel">Diesel</option>
+                                    <option value="Essence">Essence</option>
+                                    <option value="GNV">GNV</option>
+                                    <option value="GPL">GPL</option>
+                                </select> #}
+
                             </div>
-                            <div class="col">
-                            </div>
-                          </div>
+      
+                          
+                                <button type="button" class="btn btn-outline-success mt-3">Ajouter</button>
+                            
+
+                               {{ form_end(form) }}
+
+
+                                 
+
+{# {{ form_rest(form)}}   #}
+      
+
+                        </div>
                     </div>
                 </div>
             </div>

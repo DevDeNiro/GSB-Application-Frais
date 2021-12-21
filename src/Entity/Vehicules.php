@@ -14,6 +14,7 @@ class Vehicules
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @ORM\ManyToOne(targetEntity="post")
      */
     private $id;
 
@@ -41,6 +42,11 @@ class Vehicules
      * @ORM\Column(type="integer")
      */
     private $chevaux_fiscaux;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $annee;
 
     public function getId(): ?int
     {
@@ -106,4 +112,17 @@ class Vehicules
 
         return $this;
     }
+
+    public function getAnnee(): ?string
+    {
+        return $this->annee;
+    }
+
+    public function setAnnee(string $annee): self
+    {
+        $this->annee = $annee;
+
+        return $this;
+    }
+    
 }
