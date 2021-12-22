@@ -66,33 +66,15 @@
 
         <div class="col-10 p-0 py-5 bg-light">
           <div class="container">
-            <div class="page-header text-center">
-            <h1> Bienvenue sur votre espace utilisateur</h1>
-          </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="jumbotron">
-                    <p>
-                        Accéder au suivit de vos remboursements
-                    </p>
+            <div class="page-header text-center"> <h1> Bienvenue sur votre espace visiteur</h1> </div>
+              <div class="row mt-5">
 
-                    <p>
-                        <a class="btn btn-primary btn-lg" href="{{ path('visiteur_frais') }}">
-                            <i class="fas fa-file-alt" aria-hidden="true"></i> Suivre ses remboursements
-                        </a>
-                    </p>
-
-                  </div>
-                </div>
-                </div>
+                
 
              {# <div class="mx-auto w-75 p-0 mt-5 card"> #}
-             <div class="row">
-                <div class="col-md-12 ">
+                <div class="col-6 col-md-4">
                   <div class="jumbotron">
-                    <p>
-                        Saisir une fiche de frais
-                    </p>
+                    <p> Saisir une fiche de frais </p>
 
                     <p>
                         <a class="btn btn-primary btn-lg" href="{{ path('fiche_frais') }}">
@@ -102,22 +84,31 @@
 
                   </div>
                 </div>
+
+                <div class="col-6 col-md-4" >
+                  <div class="jumbotron">
+                    <p> Suivit de vos remboursements </p>
+                    <p>
+                        <a class="btn btn-primary btn-lg" href="{{ path('visiteur_frais') }}">
+                            <i class="fas fa-file-alt" aria-hidden="true"></i> Suivre ses remboursements
+                        </a>
+                    </p>
+                  </div>
                 </div>
 
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="jumbotron mb-4 card">
-                    <p>
-                        Saisir un nouveau véhicule
-                    </p>
+                <div class="col-6 col-md-4 ">
+                  <div class="jumbotron">
+                    <p> Saisir un nouveau véhicule </p>
 
                     <p>
                         <a class="btn btn-primary btn-lg" href="{{ path('vehicules') }}">
                             <i class="fas fa-car" aria-hidden="true"></i> Saisir un nouveau véhicule
                         </a>
                     </p>
+
                 </div>
               </div>
+
             </div>
           </div>
         </div>
