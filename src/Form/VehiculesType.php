@@ -72,15 +72,7 @@ class VehiculesType extends AbstractType
                 'attr' => array ( 
                     'placeholder' => 'Chevaux fiscaux' )
             ])
-
-            ->add('annee', NumberType::class ,[
-               
-                'required' => true, 
-                'attr' => array ( 
-                    'placeholder' => 'Année du véhicule' )           
-            ])
-
-            
+  
             ->getForm()
         ;
     }

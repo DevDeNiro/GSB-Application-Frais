@@ -83,7 +83,7 @@ class visiteurs extends AbstractController
              
         }
 
-        return $this->render('visiteurs\vehicul_visiteur.html.twig',[ // Création du formulaire par symfony
+        return $this->render('visiteurs\vehicule_visiteur.html.twig',[ // Création du formulaire par symfony
             'form' => $form->createView()
         ]); 
     }
