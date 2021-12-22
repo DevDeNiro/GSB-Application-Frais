@@ -89,55 +89,33 @@
                         <form action={{ path('vehicules') }} method="POST">
                           <div class="row">
                             <div class="col m-1">
-                                <label for="cheese"> {{ form_row (form.immatriculation)}} </label>
+                                 {{ form_label (form.immatriculation)}} {{ form_widget (form.immatriculation)}}  
                             </div>
                             <div class="col m-1">
-                                <label for="marque" class="liste2"> {{ form_row (form.marque)}} </label>
-                                {# <select class="form-control " type="button"> #}
-                                    {# <option value="">--Marque--</option>
-                                    <option value="tesla">Tesla</option>
-                                    <option value="renauld">Renauld</option>
-                                    <option value="peugeot">Peugeot</option>
-                                    <option value="toyota">Toyota</option>
-                                    <option value="mitsubishi">Mitsubishi</option>
-                                    <option value="honda">Honda</option>
-                                    <option value="bmw">BMW</option>
-                                    <option value="mercedes">Mercedes</option>
-                                    <option value="volkswagen">Volkswagen</option>
-                                    <option value="audi">Audi</option>
-                                    <option value="autre">Autre</option> #}
-                                {# </select> #}
+                              {{ form_label (form.marque)}} {{ form_widget (form.marque)}} 
                             </div>
                 
-                           
-                            
                             <div class="col m-1">
-                                <label for="cheese"> {{ form_row (form.chevaux_fiscaux)}} </label>
+                              {{ form_label (form.chevaux_fiscaux)}}  {{ form_widget (form.chevaux_fiscaux)}} 
                             </div>
-
 
                               <div class="col m-1">
-                                <label for="cheese"> {{ form_row (form.carburant)}} </label>
-                                {# <label for="carburant" class="liste3">  </label>
-                                <select class="form-control " type="button">
-                                    <option value="">--Type de carburant--</option>
-                                    <option value="Diesel">Diesel</option>
-                                    <option value="Essence">Essence</option>
-                                    <option value="GNV">GNV</option>
-                                    <option value="GPL">GPL</option>
-                                </select> #}
-                            </div>
+                                {{ form_label (form.carburant)}}  {{ form_widget(form.carburant)}}
 
                              <div class="col m-1">
-                                <label for="cheese" > {{ form_row (form.modele)}} </label>
+                              {{ form_label (form.modele)}}  {{ form_widget (form.modele)}} 
                             </div>
 
                             <div class="col m-1">
-                                <label for="cheese"> {{ form_row (form.annee)}} </label>
+                               {{ form_label (form.annee)}} {{ form_widget (form.annee)}}
                             </div>
                           </div>
 
-                          <button class="btn btn-outline-success mt-3" type="submit">Ajouter</button>
+                        <div class="row">
+                            <div class="col-8 col-sm-5 col-md-4 col-lg-3 col-xl-2">
+                              <button class="btn btn-outline-success mt-3" type="submit">Ajouter</button>
+                            </div>
+                        </div>
 
                                  {{ form_end(form) }}
 
