@@ -79,7 +79,7 @@ class visiteurs extends AbstractController
             $entityManager->flush();
 
             $this->addFlash('success', 'Véhicule ajouté'); // Affiche un message de confirmation sur la page d'accueil   
-            // return $this->redirectToRoute('accueil');  // Rediriger vers la page d'accueil
+            return $this->redirectToRoute('accueil_visiteurs');  // Rediriger vers la page d'accueil
              
         }
 
