@@ -10,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Vehicules
 {
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue

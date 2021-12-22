@@ -19,6 +19,8 @@ class VehiculesType extends AbstractType
             ->add('marque', TextType::class ,[
                 'label' => 'Marque',
                 'required' => true,
+                'attr' => array ( 
+                    'placeholder' => 'Marque' )
             ],
 
             ChoiceType::class, [
@@ -26,44 +28,52 @@ class VehiculesType extends AbstractType
                 'choices'  => [
                     'Maybe' => 'Maybe',
                     'Yes' => 'Yes',
-                    'No' => 'Yes',
+                    'No' => 'Qsd',
                 ],
             ])
             
             ->add('modele', TextType::class ,[
                 'label' => 'Modèle',
                 'required' => true,
+                'attr' => array ( 
+                    'placeholder' => 'Modèle du véhicule' )
             ])
 
             ->add('immatriculation', TextType::class ,[
                 'label' => 'Immatriculation',
                 'required' => true,
+                'attr' => array ( 
+                    'placeholder' => 'AA-123-AA' )
             ])
 
             ->add('carburant', TextType::class ,[
                 'label' => 'Carburant',
                 'required' => true,
+                'attr' => array ( 
+                    'placeholder' => 'Type de carburant' )
             ])
 
             ->add('chevaux_fiscaux', NumberType::class ,[
                 'label' => ' Chevaux fiscaux',
                 'required' => true,
+                'attr' => array ( 
+                    'placeholder' => 'Chevaux fiscaux' )
             ])
 
             ->add('annee', NumberType::class ,[
                 'label' => 'Année',
-                'required' => true,            
+                'required' => true, 
+                'attr' => array ( 
+                    'placeholder' => 'Année du véhicule' )           
             ])
 
-            ->add('submit', SubmitType::class, [ 
+            // ->add('submit', SubmitType::class, [ 
                 
-                'label' => 'Envoyer',
-                'row_attr' => [ 'class' => 'btn btn-outline-success mt-3',
-                
-            ]])
+            //     'label' => 'Envoyer',
+            //     // 'row_attr' => [ 'class' => 'btn btn-outline-success mt-3 ', 
+            // ])
              
-           
-            // ->getForm()
+            ->getForm()
         ;
     }
 

@@ -70,12 +70,12 @@
 
     <div class="col-10 p-0">
           <div class="container-fluid">
-          <div class="row top">
-            <div class="my-auto text_bloc_top col col-md-8 col-lg-9 p-0 bloc_top">
-              <p class="m-0 ml-2 titre_bandeau">Saisir un nouveau véhicule</p>
+            <div class="row top">
+              <div class="my-auto text_bloc_top col col-md-8 col-lg-9 p-0 bloc_top">
+                <p class="m-0 ml-2 titre_bandeau">Saisir un nouveau véhicule</p>
+              </div>
             </div>
-          </div>
-            <div class="row mx-auto w-75 p-0 mt-5">
+              <div class="row mx-auto w-75 p-0 mt-5">
                 <div class="col">
 
                 {{ form_start(form) }}
@@ -89,9 +89,7 @@
                         <form action={{ path('vehicules') }} method="POST">
                           <div class="row">
                             <div class="col m-1">
-
                                 <label for="cheese"> {{ form_row (form.immatriculation)}} </label>
-                                {# <p class="card-text"><input type="text" placeholder="AA-000-AA"/></p> #}
                             </div>
                             <div class="col m-1">
                                 <label for="marque" class="liste2"> {{ form_row (form.marque)}} </label>
@@ -111,22 +109,14 @@
                                 {# </select> #}
                             </div>
                 
-                            <div class="col m-1">
-                                <label for="cheese" > {{ form_row (form.modele)}} </label>
-                                {# <p class="card-text"><input type="text" placeholder="Modèle S"/></p> #}
-                            </div>
-                            <div class="col m-1">
-                                <label for="cheese"> {{ form_row (form.annee)}} </label>
-                                {# <p class="card-text"><input type="text" placeholder="2007"/></p> #}
-                            </div>
+                           
                             
-                            <div class="col-lg-12 m-1">
+                            <div class="col m-1">
                                 <label for="cheese"> {{ form_row (form.chevaux_fiscaux)}} </label>
-                                {# <p class="card-text"><input type="text" placeholder="78"/></p> #}
                             </div>
 
 
-                              <div class="col-lg-12 m-1">
+                              <div class="col m-1">
                                 <label for="cheese"> {{ form_row (form.carburant)}} </label>
                                 {# <label for="carburant" class="liste3">  </label>
                                 <select class="form-control " type="button">
@@ -136,22 +126,21 @@
                                     <option value="GNV">GNV</option>
                                     <option value="GPL">GPL</option>
                                 </select> #}
-
                             </div>
-      
-                          
-                                <button type="button" class="btn btn-outline-success mt-3">Ajouter</button>
-                            
 
-                               {{ form_end(form) }}
+                             <div class="col m-1">
+                                <label for="cheese" > {{ form_row (form.modele)}} </label>
+                            </div>
 
+                            <div class="col m-1">
+                                <label for="cheese"> {{ form_row (form.annee)}} </label>
+                            </div>
+                          </div>
 
-                                 
+                          <button class="btn btn-outline-success mt-3" type="submit">Ajouter</button>
 
-{# {{ form_rest(form)}}   #}
-      
+                                 {{ form_end(form) }}
 
-                        </div>
                     </div>
                 </div>
             </div>
