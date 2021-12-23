@@ -4,12 +4,20 @@ namespace App\Entity;
 
 use App\Repository\FicheFraisRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=FicheFraisRepository::class)
  */
 class FicheFrais
 {
+
+    const ETAT = [          // Constante pour définir les différents états
+        0 => 'Terminer',
+        1 => 'En cours',
+        2 => 'Pas finit',
+    ];
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -19,26 +27,31 @@ class FicheFrais
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\NotBlank()
      */
     private $mois;
 
     /**
      * @ORM\Column(type="string", length=5)
+     * @Assert\NotBlank()
      */
     private $nbJustificatif;
 
     /**
      * @ORM\Column(type="string", length=6)
+     * @Assert\NotBlank()
      */
     private $montantValide;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\NotBlank()
      */
     private $dateModif;
 
     /**
-     * @ORM\Column(type="string", length=15)
+     * @ORM\Column(type="integer")
+     * @Assert\NotBlank()
      */
     private $etat;
 
@@ -95,12 +108,12 @@ class FicheFrais
         return $this;
     }
 
-    public function getEtat(): ?string
+    public function getEtat(): ?int
     {
         return $this->etat;
     }
 
-    public function setEtat(string $etat): self
+    public function setEtat(int $etat): self
     {
         $this->etat = $etat;
 

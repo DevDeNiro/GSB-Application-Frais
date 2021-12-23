@@ -109,12 +109,12 @@ class Vehicules
         return $this;
     }
 
-    public function getChevauxFiscaux(): ?string
+    public function getChevauxFiscaux(): ?int
     {
         return $this->chevaux_fiscaux;
     }
 
-    public function setChevauxFiscaux(string $chevaux_fiscaux): self
+    public function setChevauxFiscaux(int $chevaux_fiscaux): self
     {
         $this->chevaux_fiscaux = $chevaux_fiscaux;
 
