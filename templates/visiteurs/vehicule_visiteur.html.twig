@@ -93,7 +93,7 @@
                                  {{ form_label (form.immatriculation)}} {{ form_widget (form.immatriculation)}}  
                             </div>
 
-                                  {# <ul>
+                                  {# <ul>                      // Je souhaite afficher un message d'erreur si constante pas rescepté :(
                                   {% for error in errors %}
                                       <li>{{ error.message }}</li>
                                   {% endfor %}
@@ -104,7 +104,7 @@
                             </div>
                 
                             <div class="col m-1">
-                              {{ form_label (form.chevaux_fiscaux)}}  {{ form_widget (form.chevaux_fiscaux)}} 
+                              {{ form_label (form.chevaux_fiscaux)}} (Km) {{ form_widget (form.chevaux_fiscaux)}} 
                             </div>
 
                               <div class="col m-1">
