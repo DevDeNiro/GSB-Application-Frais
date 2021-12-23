@@ -74,14 +74,20 @@
           </div>
             <div class="row mx-auto w-75 p-0 mt-5">
                 <div class="col">
+
+                {{ form_start(form) }}
+
                     <div class="card">
                         <div class="card-header bg-info title">
                             Frais au forfait
                         </div>
                         <div class="card-body">
+
+                          <form action={{ path('fiche_frais') }} method="POST">
+
                           <div class="row">
                             <div class="col m-1">
-                                <p class="card-text"><input type="text" placeholder="Repas midi"/></p>
+                                 {{ form_label (form.Repas_Midi)}} {{ form_widget (form.repasMidi)}}
                             </div>
                             <div class="col m-1">
                                 <p class="card-text"><input type="text" placeholder="Nuitées"/></p>
@@ -130,7 +136,7 @@
                             </div>
                         </div>
 
-                          
+                          {{ form_end(form) }}
                     </div>
                 </div>
             </div>

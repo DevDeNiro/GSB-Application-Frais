@@ -60,7 +60,7 @@ class FicheFrais
         return $this->id;
     }
 
-    public function getMois(): ?string
+    public function getMois(): ?string 
     {
         return $this->mois;
     }
