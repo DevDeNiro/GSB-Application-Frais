@@ -10,6 +10,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
+
 use App\Entity\Vehicules;
 use App\Form\VehiculesType;
 
@@ -87,4 +89,20 @@ class visiteurs extends AbstractController
             'form' => $form->createView()
         ]); 
     }
+
+    // public function Immatriculation (ValidatorInterface $validator) 
+
+    // {
+    //     $immatriculation = new Immatriculation;
+    //     $errors = $validator->validate($immatriculation);
+
+
+    //     if (preg_match('#^([a-hj-np-tvx-z][a-hj-np-rtv-z]|[a-hj-np-rtv-z][a-hj-np-tvx-z])-?[0-9]{3}-?([a-hj-np-tv-z][a-hj-np-rtv-z]|[a-hj-np-rtv-z][a-hj-np-tv-z])$#i', $immatriculation) || preg_match('#[0-9]{1,4}(-)?[a-z]{2,3}(-)?(?:(9)7[1-6]|0[1-9]|[1-8][0-9]|9[1-5])#', $errors))
+    //         {
+    //             $errorsString = (string) $errors;
+    //             return new Response($errorsString);            
+    //         }
+
+    //     return new Response('The author is valid! Yes!');
+    // }
 }

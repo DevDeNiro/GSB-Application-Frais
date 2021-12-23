@@ -88,9 +88,17 @@
 
                         <form action={{ path('vehicules') }} method="POST">
                           <div class="row">
+                          
                             <div class="col m-1">
                                  {{ form_label (form.immatriculation)}} {{ form_widget (form.immatriculation)}}  
                             </div>
+
+                                  {# <ul>
+                                  {% for error in errors %}
+                                      <li>{{ error.message }}</li>
+                                  {% endfor %}
+                                  </ul> #}
+
                             <div class="col m-1">
                               {{ form_label (form.marque)}} {{ form_widget (form.marque)}} 
                             </div>

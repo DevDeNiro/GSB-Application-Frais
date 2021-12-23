@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Validator\Constraints\Length;
 
 class VehiculesType extends AbstractType
 {
@@ -47,6 +48,7 @@ class VehiculesType extends AbstractType
             ->add('immatriculation', TextType::class ,[
                 
                 'required' => true,
+                'constraints' => [new Length(['max' => 9])],
                 'attr' => array ( 
                     'placeholder' => 'AA-123-AA' )
             ])

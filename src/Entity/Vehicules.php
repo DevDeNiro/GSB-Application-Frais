@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\VehiculesRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=VehiculesRepository::class)
@@ -21,26 +22,36 @@ class Vehicules
 
     /**
      * @ORM\Column(type="string", length=15)
+     * @Assert\NotBlank()
      */
     private $marque;
 
     /**
      * @ORM\Column(type="string", length=15)
+     * @Assert\NotBlank()
      */
     private $modele;
 
     /**
      * @ORM\Column(type="string", length=9)
+      * @Assert\Regex(
+     *     pattern = "#^([a-hj-np-rtvx-z]{2}|s[a-hj-np-rtv-z]|w[a-hj-np-tvx-z])-[0-9]{3}-([a-hj-np-rtv-z]{2}|s[a-hj-np-rtv-z])$#i",
+     *     message = "L'immatriculation du véhicule doit être valide"
+     * )
+     * @Assert\NotBlank()
+     * 
      */
     private $immatriculation;
 
     /**
      * @ORM\Column(type="string", length=15)
+     * @Assert\NotBlank()
      */
     private $carburant;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank()
      */
     private $chevaux_fiscaux;
 
