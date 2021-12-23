@@ -86,18 +86,10 @@
                           <form action={{ path('fiche_frais') }} method="POST">
 
                           <div class="row">
-                            <div class="col m-1">
-                                 {{ form_label (form.Repas_Midi)}} {{ form_widget (form.repasMidi)}}
-                            </div>
-                            <div class="col m-1">
-                                <p class="card-text"><input type="text" placeholder="Nuitées"/></p>
-                            </div>
-                            <div class="col m-1">
-                                <p class="card-text"><input type="text" placeholder="Etape"/></p>
-                            </div>
-                            <div class="col m-1">
-                            <p class="card-text"><input type="text" placeholder="Kilomètre"/></p>
-                            </div>
+                            <div class="col m-1"> {{ form_row (form.repasMidi)}} </div>
+                            <div class="col m-1"> {{ form_row (form.nuit)}} </div>
+                            <div class="col m-1"> {{ form_row (form.etape)}} </div>
+                            <div class="col m-1"> {{ form_row (form.km)}} </div>
                           </div> 
 
                           <div class="row">

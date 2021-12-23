@@ -35,7 +35,7 @@ class visiteurs extends AbstractController
      * @Method({"POST"})
     */
     
-    public function afficherBdd() : Response 
+    public function Accueil() : Response 
     {
         return $this->render('visiteurs/accueil_visiteur.html.twig', [
 
@@ -47,9 +47,9 @@ class visiteurs extends AbstractController
      * @Method({"POST"})
     */
     
-    public function fiche(Request $request) : Response
+    public function Saisir_frais(Request $request) : Response
     {
-        $fiche = new SaisiFicheFrais ();
+        $fiche = new FraisForfait ();
         $entityManager = $this->getDoctrine()->getManager();
 
         $form = $this->createForm(SaisiFicheFraisType::class, $fiche); 
@@ -61,8 +61,7 @@ class visiteurs extends AbstractController
             $entityManager->flush();
 
             $this->addFlash('success', 'Véhicule ajouté'); // Affiche un message de confirmation sur la page d'accueil   
-            return $this->redirectToRoute('accueil_visiteurs');  // Rediriger vers la page d'accueil
-             
+            return $this->redirectToRoute('accueil_visiteurs');  // Rediriger vers la page d'accueil 
         }
 
         return $this->render('visiteurs\fiche_visiteur.html.twig',[ // Création du formulaire par symfony
@@ -77,7 +76,7 @@ class visiteurs extends AbstractController
      * @Method({"POST"})
     */
     
-    public function suivi() : Response 
+    public function Suivre_frais() : Response 
     {
         return $this->render('visiteurs/remboursement_visiteur.html.twig', [
 
@@ -89,7 +88,7 @@ class visiteurs extends AbstractController
      * @Method({"POST"})
     */
     
-    public function vehicule(Request $request) : Response 
+    public function Saisi_vehicule(Request $request) : Response 
     {
 
         $Vehicule = new Vehicules ();
