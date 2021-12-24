@@ -11,7 +11,7 @@
     {% endblock %}
   </head>
 
-   <body>
+   {% block body %}
    <div class="container-fluid px-0">
       <div class="row">
         <div class="col">
@@ -90,28 +90,40 @@
                           <div class="row">
                           
                             <div class="col m-1">
-                                 {{ form_label (form.immatriculation)}} {{ form_widget (form.immatriculation)}}  
+                                 {{ form_label (form.immatriculation)}} 
+                                 {{ form_widget (form.immatriculation)}}
+
+                                    {{ form_errors (form.immatriculation)}} 
                             </div>
 
-                                  {# <ul>                      // Je souhaite afficher un message d'erreur si constante pas rescepté :(
+                                  {# <ul>                      // Je souhaite afficher un message d'erreur si constante mais pas rescepté, A personnaliser :(
                                   {% for error in errors %}
                                       <li>{{ error.message }}</li>
                                   {% endfor %}
                                   </ul> #}
-
                             <div class="col m-1">
-                              {{ form_label (form.marque)}} {{ form_widget (form.marque)}} 
+                              {{ form_label (form.marque)}} 
+                              {{ form_widget (form.marque)}} 
+                              {{ form_errors (form.marque)}} 
                             </div>
                 
                             <div class="col m-1">
-                              {{ form_label (form.chevaux_fiscaux)}} (Km) {{ form_widget (form.chevaux_fiscaux)}} 
+                              {{ form_label (form.chevaux_fiscaux)}} (en Km) 
+                              {{ form_widget (form.chevaux_fiscaux)}}  
+                              {# {{form.row (form.chevaux_fiscaux)}} #}
+                                  {{ form_errors (form.chevaux_fiscaux)}}
                             </div>
 
-                              <div class="col m-1">
-                                {{ form_label (form.carburant)}}  {{ form_widget(form.carburant)}}
+                              <div class="col m-1 form-error">
+                                {{ form_label (form.carburant)}}  
+                                {{ form_widget(form.carburant)}} 
+                                {{ form_errors (form.carburant)}} 
+                              </div>
 
                              <div class="col m-1">
-                              {{ form_label (form.modele)}}  {{ form_widget (form.modele)}} 
+                              {{ form_label (form.modele)}}  
+                              {{ form_widget (form.modele)}} 
+                              {{ form_errors (form.modele)}}
                             </div>
 
                             
@@ -132,5 +144,5 @@
     </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-  </body>
+  {% endblock %}
 </html>

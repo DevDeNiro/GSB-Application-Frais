@@ -15,9 +15,11 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 use App\Entity\Vehicules;
 use App\Form\VehiculesType;
 
+use App\Entity\FraisHorsForfait;
+use App\Form\FraisHorsForfaitType;
+
 use App\Entity\FraisForfait;
-use App\Entity\FraisHorsforfait;
-use App\Form\SaisiFicheFraisType;
+use App\Form\FraisForfaitType;
 
 
 class visiteurs extends AbstractController
@@ -47,21 +49,38 @@ class visiteurs extends AbstractController
      * @Method({"POST"})
     */
     
-    public function Saisir_frais(Request $request) : Response
+    public function Saisir_frais(Request $request) : Response           
     {
         $fiche = new FraisForfait ();
         $entityManager = $this->getDoctrine()->getManager();
 
-        $form = $this->createForm(SaisiFicheFraisType::class, $fiche); 
+        $form = $this->createForm(FraisForfaitType::class, $fiche); 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
        
             $entityManager->persist($fiche);
             $entityManager->flush();
+        }
 
-            $this->addFlash('success', 'Véhicule ajouté'); // Affiche un message de confirmation sur la page d'accueil   
-            return $this->redirectToRoute('accueil_visiteurs');  // Rediriger vers la page d'accueil 
+        return $this->render('visiteurs\fiche_visiteur.html.twig',[ // Création du formulaire par symfony
+            'form' => $form->createView()
+        ]); 
+    }
+
+   
+    public function Saisir_frais_2(Request $request) : Response     // idée nul, très nul... à corriger
+    {
+        $fiche2 = new FraisHorsForfait ();
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $form = $this->createForm(FraisHorsForfaitType::class, $fiche2); 
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+       
+            $entityManager->persist($fiche2);
+            $entityManager->flush();
         }
 
         return $this->render('visiteurs\fiche_visiteur.html.twig',[ // Création du formulaire par symfony
