@@ -90,33 +90,26 @@
                           <div class="row">
                           
                             <div class="col m-1">
-                                {{ form_label (form.immatriculation)}} 
-                                {{ form_widget (form.immatriculation)}}
-                                {{ form_errors (form.immatriculation)}} 
+                                {{ form_row (form.immatriculation)}}
                             </div>
 
                             <div class="col m-1">
-                                {{ form_label (form.marque)}} 
-                                {{ form_widget (form.marque)}} 
-                                {{ form_errors (form.marque)}} 
+                                {{ form_row (form.marque)}}
+
                             </div>
                 
                             <div class="col m-1">
-                                {{ form_label (form.chevaux_fiscaux)}} (en Km) 
-                                {{ form_widget (form.chevaux_fiscaux)}}  
-                                {{ form_errors (form.chevaux_fiscaux)}}
+                                {{ form_row (form.chevaux_fiscaux)}}
+                             
                             </div>
 
-                              <div class="col m-1 form-error">
-                                {{ form_label (form.carburant)}}  
-                                {{ form_widget(form.carburant)}} 
-                                {{ form_errors (form.carburant)}} 
+                              <div class="col m-1">
+                                {{ form_row (form.carburant)}}
+                             
                               </div>
 
                              <div class="col m-1">
-                                {{ form_label (form.modele)}}  
-                                {{ form_widget (form.modele)}} 
-                                {{ form_errors (form.modele)}}
+                                {{ form_row (form.modele)}}
                             </div>
 
                             

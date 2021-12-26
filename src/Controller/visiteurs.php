@@ -95,12 +95,32 @@ class visiteurs extends AbstractController
      * @Method({"POST"})
     */
     
-    public function Suivre_frais() : Response 
+    public function Suivre_frais_forfait() : Response 
     {
-        return $this->render('visiteurs/remboursement_visiteur.html.twig', [
+        $repository = $this->getDoctrine()
+        ->getRepository(FraisForfait::class)
+        ->findAll();
 
+        return $this->render('visiteurs/remboursement_visiteur.html.twig', [
+            "ÔForfait" => $repository
         ]); 
     }
+
+    /**
+     * @Route("/suivi_frais", name = "visiteur_frais")
+     * @Method({"POST"})
+    */
+
+    // public function Suivre_frais_hors_forfait() : Response 
+    // {
+    //     $repository = $this->getDoctrine()
+    //     ->getRepository(FraisHorsForfait::class)
+    //     ->findAll();
+
+    //     return $this->render('visiteurs/remboursement_visiteur.html.twig', [
+    //         "Hors_Forfait" => $repository
+    //     ]); 
+    // }
 
     /**
      * @Route("/vehicule", name = "vehicules")
@@ -121,7 +141,7 @@ class visiteurs extends AbstractController
             $entityManager->persist($Vehicule);
             $entityManager->flush();
 
-            $this->addFlash('success', 'Véhicule ajouté'); // Affiche un message de confirmation sur la page d'accueil   
+            $this->addFlash('success1', 'Véhicule ajouté'); // Affiche un message de confirmation sur la page d'accueil   
             return $this->redirectToRoute('accueil_visiteurs');  // Rediriger vers la page d'accueil
              
         }

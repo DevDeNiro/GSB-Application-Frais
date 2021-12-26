@@ -11,7 +11,7 @@
     {% endblock %}
   </head>
 
-   <body>
+ {% block body %}
    <div class="container-fluid px-0">
       <div class="row">
         <div class="col">
@@ -80,7 +80,7 @@
                         <div class="card-header bg-info title">
                             Frais au forfait
                         </div>
-                        <div class="card-body">
+                        {# <div class="card-body">
                           <div class="row">
                             <div class="col m-1">
                                 <p class="card-text">Repas midi</p>
@@ -94,7 +94,32 @@
                             <div class="col m-1">
                             <p class="card-text">Kilomètres</p>
                             </div>
-                          </div> 
+                          </div>  #}
+
+                        {% if ÔForfait %} {# Condition qui affiche le tableau, uniquement si la base de données n'est pas vide #}
+                          <table class="table table-hover table-striped table-bordered">
+                              <tbody>
+                                  <thead class="thead">
+                                      <tr>
+                                          <th scope="col">Repas midi</th>
+                                          <th scope="col">Nuit</th>
+                                          <th scope="col">Etapes</th>
+                                          <th scope="col">Km</th>
+                                      </tr>
+                                  </thead>
+                                    <tr>
+                                    {% for auForfait in ÔForfait %}  
+                                        <th scope="row"> </th>
+                                        <td>{{ auForfait.repasMidi }}</td>
+                                        <td>{{ auForfait.nuit }}</td>
+                                        <td>{{ auForfait.etape }}</td>
+                                        <td>{{ auForfait.km }}</td>
+                                    </tr>
+                                    {% endfor %}
+                        {% endif %}
+
+                              </tbody>
+                          </table>
                     </div>
                 </div>
             </div>
@@ -107,7 +132,7 @@
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            <div class="col m-1">
+                            {# <div class="col m-1">
                                 <p class="card-text">Date</p>
                             </div>
                             <div class="col m-1">
@@ -115,14 +140,35 @@
                             </div>
                             <div class="col m-1">
                                 <p class="card-text">Montant</p>
-                            </div>
+                            </div> #}
                         </div> 
                     </div>
+
+                    {# {% if Hors_Forfait %} 
+                          <table class="table table-hover table-striped table-bordered">
+                              <tbody>
+                                  <thead class="thead">
+                                      <tr>
+                                          <th scope="col">Date</th>
+                                          <th scope="col">Libellé</th>
+                                          <th scope="col">Montant</th>
+                                      </tr>
+                                  </thead>
+                                    <tr>
+                                    {% for horsForfait in Hors_Forfait %}  
+                                        <th scope="row"> </th>
+                                        <td>{{ horsForfait.dates }}</td>
+                                        <td>{{ horsForfait.libelle }}</td>
+                                        <td>{{ horsForfait.montant }}</td>
+                                    </tr>
+                                    {% endfor %}
+                      {% endif %} #}
+
                 </div>
             </div>
         </div>
     </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-  </body>
+  {% endblock %}
 </html>
