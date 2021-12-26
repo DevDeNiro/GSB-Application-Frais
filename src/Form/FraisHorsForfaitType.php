@@ -12,8 +12,6 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
-
-
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 
@@ -31,18 +29,18 @@ class FraisHorsForfaitType extends AbstractType
                     ],
                 )  
 
-            ->add('libelle', TextType::class, [
-                'required' => true,
-                'attr' => array ( 
-                    'placeholder' => 'libelle' )
-            ],
-        )
-            ->add('dates', DateType::class, [
-                'required' => true,
-                'attr' => array ( 
-                    'placeholder' => '' )     
-            ],   
-        )
+                ->add('libelle', TextType::class, [
+                    'required' => true,
+                    'attr' => array ( 
+                        'placeholder' => 'libelle' )
+                ],
+            )
+                ->add('dates', DateType::class, [
+                    'required' => true,
+                    'attr' => array ( 
+                        'placeholder' => '' )     
+                ],   
+            )
         ;
     }
 

@@ -63,32 +63,32 @@ class visiteurs extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->render('visiteurs\fiche_visiteur.html.twig',[ // Création du formulaire par symfony
+        return $this->render('visiteurs\fiche_visiteur.html.twig',[    // Création du formulaire par symfony
             'form' => $form->createView()
         ]); 
     }
 
-   
-    public function Saisir_frais_2(Request $request) : Response     // idée nul, très nul... à corriger
-    {
-        $fiche2 = new FraisHorsForfait ();
-        $entityManager = $this->getDoctrine()->getManager();
 
-        $form = $this->createForm(FraisHorsForfaitType::class, $fiche2); 
-        $form->handleRequest($request);
+        
+    // public function Saisir_frais_2(Request $request) : Response    
+    // {
+    //     $fiche2 = new FraisHorsForfait ();
+    //     $entityManager = $this->getDoctrine()->getManager();
 
-        if ($form->isSubmitted() && $form->isValid()) {
+    //     $form2 = $this->createForm(FraisHorsForfaitType::class, $fiche2); 
+    //     $form2->handleRequest($request);
+
+    //     if ($form2->isSubmitted() && $form2->isValid()) {
        
-            $entityManager->persist($fiche2);
-            $entityManager->flush();
-        }
+    //         $entityManager->persist($fiche2);
+    //         $entityManager->flush();
+    //     }
 
-        return $this->render('visiteurs\fiche_visiteur.html.twig',[ // Création du formulaire par symfony
-            'form' => $form->createView()
-        ]); 
-    }
+    //     return $this->render('visiteurs\fiche_visiteur.html.twig',[ // Création du formulaire par symfony
+    //         'form' => $form->createView()
+    //     ]); 
+    // }
        
-    
 
      /**
      * @Route("/suivi_frais", name = "visiteur_frais")
@@ -131,19 +131,4 @@ class visiteurs extends AbstractController
         ]); 
     }
 
-    // public function Immatriculation (ValidatorInterface $validator) 
-
-    // {
-    //     $immatriculation = new Immatriculation;
-    //     $errors = $validator->validate($immatriculation);
-
-
-    //     if (preg_match('#^([a-hj-np-tvx-z][a-hj-np-rtv-z]|[a-hj-np-rtv-z][a-hj-np-tvx-z])-?[0-9]{3}-?([a-hj-np-tv-z][a-hj-np-rtv-z]|[a-hj-np-rtv-z][a-hj-np-tv-z])$#i', $immatriculation) || preg_match('#[0-9]{1,4}(-)?[a-z]{2,3}(-)?(?:(9)7[1-6]|0[1-9]|[1-8][0-9]|9[1-5])#', $errors))
-    //         {
-    //             $errorsString = (string) $errors;
-    //             return new Response($errorsString);            
-    //         }
-
-    //     return new Response('The author is valid! Yes!');
-    // }
 }

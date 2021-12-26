@@ -13,7 +13,6 @@ use Symfony\Component\Validator\Constraints\Length;
 
 // use App\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-
 use App\Entity\FraisForfait;
 
 class FraisForfaitType extends AbstractType
@@ -38,7 +37,7 @@ class FraisForfaitType extends AbstractType
             ->add('etape', NumberType::class,[
                     'required' => true,
                     'attr' => array ( 
-                        'placeholder' => 'Nombre d"\étape' )
+                        'placeholder' => 'Nombre détape' )
                 ],
             )  
 

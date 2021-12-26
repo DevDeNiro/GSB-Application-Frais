@@ -24,7 +24,7 @@ class FraisHorsForfait
     private $mois;
 
     /**
-     * @ORM\Column(type="string", length=6)
+     * @ORM\Column(type="integer")
      */
     private $montant;
 
@@ -55,12 +55,12 @@ class FraisHorsForfait
         return $this;
     }
 
-    public function getMontant(): ?string
+    public function getMontant(): ?int
     {
         return $this->montant;
     }
 
-    public function setMontant(string $montant): self
+    public function setMontant(int $montant): self
     {
         $this->montant = $montant;
 

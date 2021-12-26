@@ -20,7 +20,7 @@ class VehiculesType extends AbstractType
         ->add('marque', ChoiceType::class, [
                 'choices'  => [
 
-                    'Sélectionner un véhicule' => '',
+                    'Type de véhicule' => '',
  
                     'Marque de voitures' => [
                         'Tesla' => 'Tesla',
@@ -56,7 +56,7 @@ class VehiculesType extends AbstractType
             ->add('carburant', ChoiceType::class, [
                 'choices'  => [
 
-                    'Sélectionner un carburant' => '',
+                    'Type de carburant' => '',
                    
                     'Type de carburant' => [
                         'Diesel' => 'Diesel',
