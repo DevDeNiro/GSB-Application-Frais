@@ -14,7 +14,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 class login extends AbstractController
 {
        /**
-     * @Route("/login", name = "formulaire")
+     * @Route("", name = "login")
      * @Method({"GET"})
     */
 
