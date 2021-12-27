@@ -10,7 +10,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class SecurityController extends AbstractController
 {
     /**
-     * @Route("", name="app_login")
+     * @Route("", name="app_login") //rien dans la route pour qu'elle soit la route par défaut
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
