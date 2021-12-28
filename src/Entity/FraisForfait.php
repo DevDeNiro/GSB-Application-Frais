@@ -26,7 +26,6 @@ class FraisForfait
 
     /**
      * @ORM\Column(type="string", length=6)
-     * @Assert\NotBlank()
      */
     private $montant;
 

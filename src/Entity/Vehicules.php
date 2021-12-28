@@ -55,7 +55,6 @@ class Vehicules
      * @ORM\Column(type="integer")
      * @Assert\Regex(
      *     pattern = "'^[0-9]+$'",
-     *     message = "La valeur doit être un entier"
      * )
      * @Assert\NotBlank()   
      * @Assert\Positive 
