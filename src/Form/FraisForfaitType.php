@@ -37,7 +37,7 @@ class FraisForfaitType extends AbstractType
             ->add('etape', NumberType::class,[
                     'required' => true,
                     'attr' => array ( 
-                        'placeholder' => 'Nombre détape' )
+                        'placeholder' => 'Nombre d\'étape' )
                 ],
             )  
 
