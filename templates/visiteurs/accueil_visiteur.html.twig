@@ -33,7 +33,13 @@
         <div class="col-2 sidebar p-0 ">
               <header>
                 
-                <a href="#"> <i class="fas fa-user-circle"></i> John Doe <span class="id_user">#0000 </a></a>
+                <a href="#">
+                  {% if app.user is null %}
+                    <h3 class="my-3">Aucun utilisateur connexté</h3>
+                  {% else %}
+                    <h3 class="py-3">Bienvenue {{ app.user.username }}</h3>
+                  {% endif %}<span class="id_user">
+                </a>
                 
               </header>
               <div class="ml-3 nav w-auto pl-3 mt-4">
