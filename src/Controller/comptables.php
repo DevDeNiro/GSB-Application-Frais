@@ -15,7 +15,7 @@ class comptables extends AbstractController
 {
 
      /**
-     * @Route("/accueil_comptables", name = "accueil_comptables")
+     * @Route("/comptables/accueil_comptable", name = "accueil_comptables")
      * @Method({"GET", "POST"})
     */
     
@@ -26,7 +26,7 @@ class comptables extends AbstractController
     }
 
     /**
-     * @Route("/fiche_comptable", name = "liste_visiteur")
+     * @Route("/comptables/fiche_comptable", name = "liste_visiteur")
      * @Method({"GET", "POST"})
     */
     
@@ -37,7 +37,7 @@ class comptables extends AbstractController
     }
 
      /**
-     * @Route("/fiche_frais", name = "suivi_frais")
+     * @Route("/comptables/fiche_frais", name = "suivi_frais")
      * @Method({"GET", "POST"})
     */
     

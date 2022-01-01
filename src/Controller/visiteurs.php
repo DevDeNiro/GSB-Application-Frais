@@ -15,7 +15,7 @@ class visiteurs extends AbstractController
 {
 
     /**
-     * @Route("/accueil_visiteur", name = "accueil_visiteurs")
+     * @Route("/visiteurs/accueil_visiteur", name = "accueil_visiteurs")
      * @Method({"GET", "POST"})
     */
     
@@ -27,7 +27,7 @@ class visiteurs extends AbstractController
     }
 
     /**
-     * @Route("/frais_visiteur", name = "fiche_frais")
+     * @Route("/visiteurs/frais_visiteur", name = "fiche_frais")
      * @Method({"GET", "POST"})
     */
     
@@ -39,7 +39,7 @@ class visiteurs extends AbstractController
     }
 
      /**
-     * @Route("/suivi_frais", name = "visiteur_frais")
+     * @Route("/visiteurs/suivi_frais", name = "visiteur_frais")
      * @Method({"GET", "POST"})
     */
     
@@ -51,7 +51,7 @@ class visiteurs extends AbstractController
     }
 
     /**
-     * @Route("/vehicule", name = "vehicule")
+     * @Route("/visiteurs/vehicule", name = "vehicule")
      * @Method({"GET", "POST"})
     */
     
