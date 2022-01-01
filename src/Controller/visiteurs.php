@@ -21,7 +21,7 @@ class visiteurs extends AbstractController
     
     public function afficherBdd() : Response // Fonction qui permet d'afficher tous le matériel sur la page d'accueil
     {
-        return $this->render('visiteurs/accueil_visiteur.html.twig', [
+        return $this->render('/visiteurs/accueil_visiteur.html.twig', [
 
         ]); 
     }
@@ -33,7 +33,7 @@ class visiteurs extends AbstractController
     
     public function fiche() : Response // Fonction qui permet d'afficher tous le matériel sur la page d'accueil
     {
-        return $this->render('visiteurs/fiche_visiteur.html.twig', [
+        return $this->render('/visiteurs/fiche_visiteur.html.twig', [
 
         ]); 
     }
@@ -45,7 +45,7 @@ class visiteurs extends AbstractController
     
     public function suivi() : Response // Fonction qui permet d'afficher tous le matériel sur la page d'accueil
     {
-        return $this->render('visiteurs/remboursement_visiteur.html.twig', [
+        return $this->render('/visiteurs/remboursement_visiteur.html.twig', [
 
         ]); 
     }
@@ -57,7 +57,7 @@ class visiteurs extends AbstractController
     
     public function vehicule() : Response // Fonction qui permet d'afficher tous le matériel sur la page d'accueil
     {
-        return $this->render('visiteurs/vehicul_visiteur.html.twig', [
+        return $this->render('/visiteurs/vehicul_visiteur.html.twig', [
 
         ]); 
     }

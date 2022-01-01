@@ -21,7 +21,7 @@ class comptables extends AbstractController
     
     public function afficherBdd() : Response // Fonction qui permet d'afficher tous le matériel sur la page d'accueil
     {
-        return $this->render('comptables/accueil_comptable.html.twig', [
+        return $this->render('/comptables/accueil_comptable.html.twig', [
         ]); 
     }
 
@@ -32,7 +32,7 @@ class comptables extends AbstractController
     
     public function fiche() : Response // Fonction qui permet d'afficher tous le matériel sur la page d'accueil
     {
-        return $this->render('comptables/liste_visiteur.html.twig', [
+        return $this->render('/comptables/liste_visiteur.html.twig', [
         ]); 
     }
 
@@ -43,7 +43,7 @@ class comptables extends AbstractController
     
     public function suivi() : Response // Fonction qui permet d'afficher tous le matériel sur la page d'accueil
     {
-        return $this->render('comptables/fiche_frais.html.twig', [
+        return $this->render('/comptables/fiche_frais.html.twig', [
         ]); 
     }
 }
