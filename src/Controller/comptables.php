@@ -5,21 +5,28 @@ namespace App\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use App\Entity\Equipement;
-use App\Form\FormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
+use App\Entity\User;
+
 class comptables extends AbstractController
 {
+
+    private $em;
+
+    public function __construct (EntityManagerInterface $em)
+    {
+        $this->EntityManager = $em;
+    }
 
      /**
      * @Route("/comptables/accueil_comptable", name = "accueil_comptables")
      * @Method({"GET", "POST"})
     */
     
-    public function afficherBdd() : Response // Fonction qui permet d'afficher tous le matériel sur la page d'accueil
+    public function afficherBdd() : Response
     {
         return $this->render('/comptables/accueil_comptable.html.twig', [
         ]); 
@@ -30,9 +37,20 @@ class comptables extends AbstractController
      * @Method({"GET", "POST"})
     */
     
-    public function fiche() : Response // Fonction qui permet d'afficher tous le matériel sur la page d'accueil
+    public function Afficher_liste_visiteur() : Response
     {
-        return $this->render('/comptables/liste_visiteur.html.twig', [
+        $repository = $this->getDoctrine()
+        ->getRepository(User::class)
+        ->findAll();
+
+        // if (!$repository) {
+        //     throw $this->createNotFoundException(
+        //         'Il n\'existe aucun utilisateur en base de donnée'
+        //     );
+        // }
+
+        return $this->render('comptables/liste_visiteur.html.twig', [
+            "liste_visiteur" => $repository
         ]); 
     }
 
@@ -41,9 +59,29 @@ class comptables extends AbstractController
      * @Method({"GET", "POST"})
     */
     
-    public function suivi() : Response // Fonction qui permet d'afficher tous le matériel sur la page d'accueil
+    public function suivi_fiche_frais() : Response
     {
-        return $this->render('/comptables/fiche_frais.html.twig', [
+
+        // $em=$this->getDoctrine()->getManager();
+
+        $repository = $this->getDoctrine()
+                ->getRepository(User::class)
+                ->findAll();
+
+                
+        // $em->remove($repository);
+        // $em->flush();
+
+        // $this->addFlash('success', 'Suppression effectuée'); 
+
+                // if (!$repository) {
+                //     throw $this->createNotFoundException(
+                //         'Il n\'existe aucun produit en BdD'
+                //     );
+                // }
+
+        return $this->render('comptables/fiche_frais.html.twig', [
+            "fiches" => $repository
         ]); 
     }
 }
