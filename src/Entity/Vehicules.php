@@ -4,44 +4,64 @@ namespace App\Entity;
 
 use App\Repository\VehiculesRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=VehiculesRepository::class)
  */
 class Vehicules
 {
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @ORM\ManyToOne(targetEntity="post")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=15)
+     * @Assert\NotBlank()
      */
     private $marque;
 
     /**
      * @ORM\Column(type="string", length=15)
+     * @Assert\NotBlank()
      */
     private $modele;
 
     /**
      * @ORM\Column(type="string", length=9)
+     * @Assert\Regex(
+     *     pattern = "#^([a-hj-np-rtvx-z]{2}|s[a-hj-np-rtv-z]|w[a-hj-np-tvx-z])-[0-9]{3}-([a-hj-np-rtv-z]{2}|s[a-hj-np-rtv-z])$#i",
+     *     message = "L'immatriculation du véhicule doit respecter le format AA-123-AA"
+     * )
+     * @Assert\NotBlank()
+     * 
      */
     private $immatriculation;
 
     /**
      * @ORM\Column(type="string", length=15)
+     * @Assert\NotBlank()
+     * @Assert\NotNull
      */
     private $carburant;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Regex(
+     *     pattern = "'^[0-9]+$'",
+     * )
+     * @Assert\NotBlank()   
+     * @Assert\Positive 
      */
     private $chevaux_fiscaux;
 
+   
     public function getId(): ?int
     {
         return $this->id;
@@ -95,15 +115,17 @@ class Vehicules
         return $this;
     }
 
-    public function getChevauxFiscaux(): ?string
+    public function getChevauxFiscaux(): ?int
     {
         return $this->chevaux_fiscaux;
     }
 
-    public function setChevauxFiscaux(string $chevaux_fiscaux): self
+    public function setChevauxFiscaux(int $chevaux_fiscaux): self
     {
         $this->chevaux_fiscaux = $chevaux_fiscaux;
 
         return $this;
     }
+
+     
 }
