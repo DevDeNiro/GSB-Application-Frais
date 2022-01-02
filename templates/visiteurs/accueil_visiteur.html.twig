@@ -70,7 +70,10 @@
 
         <div class="col-10 p-0 py-5 bg-light">
           <div class="container">
-            <div class="page-header text-center"> <h1> Bienvenue sur votre espace visiteur</h1> </div>
+            <div class="page-header text-center"> <h1> Bienvenue <span class="id_user">{% if app.user is null %}
+                  {% else %}
+                    {{ app.user.username }}
+                  {% endif %}</span> sur votre espace visiteur</h1> </div>
             {# Message envoyé en session et supprimé au prochain affichage #}
               {% for message_vehicule in app.flashes ('success1') %}  
               <div class="alert alert-primary" role="alert">
@@ -109,7 +112,7 @@
                     <p> Saisir un nouveau véhicule </p>
 
                     <p>
-                        <a class="btn btn-primary btn-lg" href="{{ path('vehicules') }}">
+                        <a class="btn btn-primary btn-lg" href="{{ path('vehicule') }}">
                             <i class="fas fa-car" aria-hidden="true"></i> Saisir un nouveau véhicule
                         </a>
                     </p>
