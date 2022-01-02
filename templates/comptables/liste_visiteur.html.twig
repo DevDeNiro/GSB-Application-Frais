@@ -35,9 +35,9 @@
                 
                 <a href="#">
                   {% if app.user is null %}
-                    <h3 class="my-3">Aucun utilisateur connexté</h3>
+                    <h3 class="my-3">Aucun utilisateur connecté</h3>
                   {% else %}
-                    <h3 class="py-3">Bienvenue {{ app.user.username }}</h3>
+                    <h3 class="py-3">Bienvenue {{ app.user.prenom }}</h3>
                   {% endif %}<span class="id_user">
                 </a>
                 

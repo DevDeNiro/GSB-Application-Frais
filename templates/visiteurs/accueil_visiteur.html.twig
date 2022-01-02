@@ -36,7 +36,7 @@
                   {% if app.user is null %}
                     <h3 class="my-3">Aucun utilisateur connexté</h3>
                   {% else %}
-                    <h3 class="py-3">Bienvenue {{ app.user.username }}</h3>
+                    <h3 class="py-3">Bienvenue {{ app.user.prenom }}</h3>
                   {% endif %}<span class="id_user">
                 </a>
               </header>
@@ -72,7 +72,7 @@
           <div class="container">
             <div class="page-header text-center"> <h1> Bienvenue <span class="id_user">{% if app.user is null %}
                   {% else %}
-                    {{ app.user.username }}
+                    {{ app.user.prenom }}
                   {% endif %}</span> sur votre espace visiteur</h1> </div>
             {# Message envoyé en session et supprimé au prochain affichage #}
               {% for message_vehicule in app.flashes ('success1') %}  

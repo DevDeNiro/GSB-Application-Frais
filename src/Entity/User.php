@@ -45,11 +45,6 @@ class User implements UserInterface
     private $prenom;
 
     /**
-     * @ORM\Column(type="string", length=50)
-     */
-    private $pseudo;
-
-    /**
      * @ORM\Column(type="smallint")
      */
     private $cp;
@@ -63,11 +58,6 @@ class User implements UserInterface
      * @ORM\Column(type="datetime")
      */
     private $date_embauche;
-
-    /**
-     * @ORM\Column(type="string", length=1)
-     */
-    private $profil;
 
     /**
      * @ORM\Column(type="string", length=50)
@@ -174,18 +164,6 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getPseudo(): ?string
-    {
-        return $this->pseudo;
-    }
-
-    public function setPseudo(string $pseudo): self
-    {
-        $this->pseudo = $pseudo;
-
-        return $this;
-    }
-
     public function getCp(): ?int
     {
         return $this->cp;
@@ -218,18 +196,6 @@ class User implements UserInterface
     public function setDateEmbauche(\DateTimeInterface $date_embauche): self
     {
         $this->date_embauche = $date_embauche;
-
-        return $this;
-    }
-
-    public function getProfil(): ?string
-    {
-        return $this->profil;
-    }
-
-    public function setProfil(string $profil): self
-    {
-        $this->profil = $profil;
 
         return $this;
     }
