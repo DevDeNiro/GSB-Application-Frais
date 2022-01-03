@@ -13,9 +13,10 @@ class FicheFrais
 {
 
     const ETAT = [          // Constante pour définir les différents états
-        0 => 'Terminer',
-        1 => 'En cours',
-        2 => 'Pas finit',
+        0 => 'Remboursée',
+        1 => 'Saisie clôturée',
+        2 => 'Fiche créée, saisie en cours',
+        3 => 'Validée et mise en paiement',
     ];
 
     /**
