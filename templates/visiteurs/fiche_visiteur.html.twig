@@ -91,12 +91,12 @@
 
                           <form action= {{ path('fiche_frais') }} method="POST">
 
-                          <div class="row">
+                          {# <div class="row">
                             <div class="col m-1"> {{ form_row (form.repasMidi)}} </div>
                             <div class="col m-1"> {{ form_row (form.nuit)}}      </div>
                             <div class="col m-1"> {{ form_row (form.etape)}}     </div>
                             <div class="col m-1"> {{ form_row (form.km)}}        </div>
-                          </div> 
+                          </div>  #}
 
                           <div class="row">
                             <div class="col-8 col-sm-5 col-md-4 col-lg-3 col-xl-2">
@@ -118,13 +118,13 @@
                         Frais hors forfait
                     </div>
                     <div class="card-body">
-                      {# <form action= {{ path('fiche_frais') }} method="POST">
+                      <form action= {{ path('fiche_frais') }} method="POST">
 
                         <div class="row">
                             <div class="col m-1"> {{ form_row (form.dates)}}   </div>
                             <div class="col m-1"> {{ form_row (form.libelle)}} </div>
                             <div class="col m-1"> {{ form_row (form.montant)}} </div>
-                        </div>  #}
+                        </div> 
 
                         <div class="row">
                             <div class="col-8 col-sm-5 col-md-4 col-lg-3 col-xl-2">

@@ -20,7 +20,7 @@ class FraisHorsForfaitType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('mois')
+            // ->add('mois')
 
             ->add('montant',  NumberType::class, [
                         'required' => true,
@@ -32,13 +32,17 @@ class FraisHorsForfaitType extends AbstractType
                 ->add('libelle', TextType::class, [
                     'required' => true,
                     'attr' => array ( 
-                        'placeholder' => 'libelle' )
+                        'placeholder' => 'libelle' ),
+                    'label' => 'Libellé (ex: Exemple)'
+                    
                 ],
             )
                 ->add('dates', DateType::class, [
                     'required' => true,
                     'attr' => array ( 
-                        'placeholder' => '' )     
+                        'placeholder' => '' ),
+                    'label' => 'Date'
+                        
                 ],   
             )
         ;

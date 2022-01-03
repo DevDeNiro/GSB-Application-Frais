@@ -44,78 +44,83 @@ class visiteurs extends AbstractController
         ]); 
     }
 
+    
+    
+    // public function Saisir_frais(Request $request) : Response           
+    // {
+    //     $fiche = new FraisForfait ();
+    //     $entityManager = $this->getDoctrine()->getManager();
+
+    //     $form = $this->createForm(FraisForfaitType::class, $fiche); 
+    //     $form->handleRequest($request);
+
+    //     if ($form->isSubmitted() && $form->isValid()) {
+       
+    //         $entityManager->persist($fiche);
+    //         $entityManager->flush();
+    //     }
+
+    //     return $this->render('visiteurs\fiche_visiteur.html.twig',[    
+    //         'form' => $form->createView()
+    //     ]); 
+    // }
+
     /**
      * @Route("/visiteurs/frais_visiteur", name = "fiche_frais")
      * @Method({"GET", "POST"})
     */
-    
-    public function Saisir_frais(Request $request) : Response           
+
+        
+    public function Saisir_frais_2(Request $request) : Response    
     {
-        $fiche = new FraisForfait ();
+        $fiche2 = new FraisHorsForfait ();
         $entityManager = $this->getDoctrine()->getManager();
 
-        $form = $this->createForm(FraisForfaitType::class, $fiche); 
+        $form = $this->createForm(FraisHorsForfaitType::class, $fiche2); 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
        
-            $entityManager->persist($fiche);
+            $entityManager->persist($fiche2);
             $entityManager->flush();
         }
 
-        return $this->render('visiteurs\fiche_visiteur.html.twig',[    // Création du formulaire par symfony
+        return $this->render('visiteurs\fiche_visiteur.html.twig',[ // Création du formulaire par symfony
             'form' => $form->createView()
         ]); 
     }
+       
 
-
-        
-    // public function Saisir_frais_2(Request $request) : Response    
+    
+    
+    // public function Suivre_frais_forfait() : Response 
     // {
-    //     $fiche2 = new FraisHorsForfait ();
-    //     $entityManager = $this->getDoctrine()->getManager();
+    //     $repository = $this->getDoctrine()
+    //     ->getRepository(FraisForfait::class)
+    //     ->findAll();
 
-    //     $form2 = $this->createForm(FraisHorsForfaitType::class, $fiche2); 
-    //     $form2->handleRequest($request);
-
-    //     if ($form2->isSubmitted() && $form2->isValid()) {
-       
-    //         $entityManager->persist($fiche2);
-    //         $entityManager->flush();
-    //     }
-
-    //     return $this->render('visiteurs\fiche_visiteur.html.twig',[ // Création du formulaire par symfony
-    //         'form' => $form->createView()
+    //     return $this->render('visiteurs/remboursement_visiteur.html.twig', [
+    //         "ÔForfait" => $repository
     //     ]); 
+
     // }
-       
 
      /**
      * @Route("/visiteurs/suivi_frais", name = "visiteur_frais")
      * @Method({"GET", "POST"})
-    */
+     */
+
+    public function Suivre_frais_hors_forfait() : Response 
+        {
+            $repository = $this->getDoctrine()
+            ->getRepository(FraisHorsForfait::class)
+            ->findAll();
+
+            return $this->render('visiteurs/remboursement_visiteur.html.twig', [
+                "Hors_Forfait" => $repository
+            ]); 
+        }
     
-    public function Suivre_frais_forfait() : Response 
-    {
-        $repository = $this->getDoctrine()
-        ->getRepository(FraisForfait::class)
-        ->findAll();
-
-        return $this->render('visiteurs/remboursement_visiteur.html.twig', [
-            "ÔForfait" => $repository
-        ]); 
-
-    // public function Suivre_frais_hors_forfait() : Response 
-    // {
-    //     $repository = $this->getDoctrine()
-    //     ->getRepository(FraisHorsForfait::class)
-    //     ->findAll();
-
-    //     return $this->render('visiteurs/remboursement_visiteur.html.twig', [
-    //         "Hors_Forfait" => $repository
-    //     ]); 
-    // }
-    }
 
     /**
      * @Route("/visiteurs/vehicule", name = "vehicule")

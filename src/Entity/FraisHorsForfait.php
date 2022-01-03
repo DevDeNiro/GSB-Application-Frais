@@ -19,7 +19,7 @@ class FraisHorsForfait
     private $id;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      */
     private $mois;
 
@@ -34,7 +34,7 @@ class FraisHorsForfait
     private $libelle;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      */
     private $dates;
 
@@ -43,12 +43,12 @@ class FraisHorsForfait
         return $this->id;
     }
 
-    public function getMois(): ?string
+    public function getMois()
     {
         return $this->mois;
     }
 
-    public function setMois(string $mois): self
+    public function setMois($mois): self
     {
         $this->mois = $mois;
 
@@ -79,12 +79,12 @@ class FraisHorsForfait
         return $this;
     }
 
-    public function getDates(): ?string
+    public function getDates(): ?\DateTime
     {
         return $this->dates;
     }
 
-    public function setDates(string $dates): self
+    public function setDates(\DateTime $dates): self
     {
         $this->dates = $dates;
 

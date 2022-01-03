@@ -102,7 +102,7 @@
                             </div>
                           </div>  #}
 
-                        {% if ÔForfait %} {# Condition qui affiche le tableau, uniquement si la base de données n'est pas vide #}
+                        {# {% if ÔForfait %} 
                           <table class="table table-hover table-striped table-bordered">
                               <tbody>
                                   <thead class="thead">
@@ -122,7 +122,7 @@
                                         <td>{{ auForfait.km }}</td>
                                     </tr>
                                     {% endfor %}
-                        {% endif %}
+                        {% endif %} #}
 
                               </tbody>
                           </table>
@@ -138,7 +138,7 @@
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            {# <div class="col m-1">
+                            <div class="col m-1">
                                 <p class="card-text">Date</p>
                             </div>
                             <div class="col m-1">
@@ -146,11 +146,11 @@
                             </div>
                             <div class="col m-1">
                                 <p class="card-text">Montant</p>
-                            </div> #}
+                            </div>
                         </div> 
                     </div>
 
-                    {# {% if Hors_Forfait %} 
+                    {% if Hors_Forfait %} 
                           <table class="table table-hover table-striped table-bordered">
                               <tbody>
                                   <thead class="thead">
@@ -168,7 +168,7 @@
                                         <td>{{ horsForfait.montant }}</td>
                                     </tr>
                                     {% endfor %}
-                      {% endif %} #}
+                      {% endif %}
 
                 </div>
             </div>
