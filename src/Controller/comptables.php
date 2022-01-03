@@ -43,11 +43,11 @@ class comptables extends AbstractController
         ->getRepository(User::class)
         ->findAll();
 
-        // if (!$repository) {
-        //     throw $this->createNotFoundException(
-        //         'Il n\'existe aucun utilisateur en base de donnée'
-        //     );
-        // }
+        if (!$repository) {
+            throw $this->createNotFoundException(
+                'Il n\'existe aucun utilisateur en base de donnée'
+            );
+        }
 
         return $this->render('comptables/liste_visiteur.html.twig', [
             "liste_visiteur" => $repository
