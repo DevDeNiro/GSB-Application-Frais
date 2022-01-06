@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '28759c40219ec434c8fc511bad7fc51267a0dcd2',
+        'reference' => '46e976be4c7b2a872978340c3debefbb3d480542',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '28759c40219ec434c8fc511bad7fc51267a0dcd2',
+            'reference' => '46e976be4c7b2a872978340c3debefbb3d480542',
             'dev_requirement' => false,
         ),
         'composer/package-versions-deprecated' => array(
@@ -1227,12 +1227,12 @@
             'dev_requirement' => false,
         ),
         'symfony/validator' => array(
-            'pretty_version' => 'v4.4.35',
-            'version' => '4.4.35.0',
+            'pretty_version' => 'v4.4.36',
+            'version' => '4.4.36.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/validator',
             'aliases' => array(),
-            'reference' => '629f420d8350634fd8ed686d4472c1f10044b265',
+            'reference' => 'dba84cf8f0f26bdf76057235b3cdc881c476a282',
             'dev_requirement' => false,
         ),
         'symfony/var-dumper' => array(

@@ -91,12 +91,14 @@
 
                           <form action= {{ path('fiche_frais') }} method="POST">
 
-                          {# <div class="row">
+                          <div class="row">
                             <div class="col m-1"> {{ form_row (form.repasMidi)}} </div>
                             <div class="col m-1"> {{ form_row (form.nuit)}}      </div>
                             <div class="col m-1"> {{ form_row (form.etape)}}     </div>
                             <div class="col m-1"> {{ form_row (form.km)}}        </div>
-                          </div>  #}
+                            <div class="col m-1"> {{ form_row (form.libelle)}}        </div>
+                            <div class="col m-1"> {{ form_row (form.montant)}}        </div>
+                          </div>
 
                           <div class="row">
                             <div class="col-8 col-sm-5 col-md-4 col-lg-3 col-xl-2">
@@ -110,7 +112,8 @@
                 </div>
             </div>
         </div>
-
+        {{ form_end(form) }}
+{{ form_start(form2) }}
         <div class="row mt-5 mx-auto w-75 p-0">
             <div class="col">
                 <div class="card">
@@ -132,7 +135,7 @@
                             </div>
                         </div>
 
-                          {{ form_end(form) }}
+                          {{ form_end(form2) }}
                     </div>
                 </div>
             </div>

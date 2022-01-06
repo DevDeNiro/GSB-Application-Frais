@@ -44,51 +44,63 @@ class visiteurs extends AbstractController
         ]); 
     }
 
-    
-    
-    // public function Saisir_frais(Request $request) : Response           
-    // {
-    //     $fiche = new FraisForfait ();
-    //     $entityManager = $this->getDoctrine()->getManager();
-
-    //     $form = $this->createForm(FraisForfaitType::class, $fiche); 
-    //     $form->handleRequest($request);
-
-    //     if ($form->isSubmitted() && $form->isValid()) {
-       
-    //         $entityManager->persist($fiche);
-    //         $entityManager->flush();
-    //     }
-
-    //     return $this->render('visiteurs\fiche_visiteur.html.twig',[    
-    //         'form' => $form->createView()
-    //     ]); 
-    // }
-
     /**
      * @Route("/visiteurs/frais_visiteur", name = "fiche_frais")
      * @Method({"GET", "POST"})
     */
 
-        
-    public function Saisir_frais_2(Request $request) : Response    
+    public function Saisir_frais(Request $request) : Response           
     {
-        $fiche2 = new FraisHorsForfait ();
-        $entityManager = $this->getDoctrine()->getManager();
+        $fiche = new FraisForfait ();
+        $fiche2 = new FraisHorsForfait();
 
-        $form = $this->createForm(FraisHorsForfaitType::class, $fiche2); 
+        $form = $this->createForm(FraisForfaitType::class, $fiche); 
+        $form2 = $this->createForm(FraisForfaitType::class, $fiche2); 
+
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
-       
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($fiche);
+            $entityManager->flush();
+        }
+
+        $form2 = $this->createForm(FraisHorsForfaitType::class, $fiche2); 
+        $form2->handleRequest($request);
+        if ($form2->isSubmitted() && $form2->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($fiche2);
             $entityManager->flush();
         }
 
-        return $this->render('visiteurs\fiche_visiteur.html.twig',[ // Création du formulaire par symfony
-            'form' => $form->createView()
+        return $this->render('visiteurs\fiche_visiteur.html.twig',[    
+            'form' => $form->createView(),
+            'form2' => $form2->createView()
         ]); 
     }
+
+    // /**
+    //  * @Route("/visiteurs/frais_visiteur", name = "fiche_frais2")
+    //  * @Method({"GET", "POST"})
+    // */
+
+    // public function Saisir_frais_2(Request $request) : Response    
+    // {
+    //     $fiche2 = new FraisHorsForfait ();
+    //     $entityManager = $this->getDoctrine()->getManager();
+
+    //     $form = $this->createForm(FraisHorsForfaitType::class, $fiche2); 
+    //     $form->handleRequest($request);
+
+    //     if ($form->isSubmitted() && $form->isValid()) {
+       
+    //         $entityManager->persist($fiche2);
+    //         $entityManager->flush();
+    //     }
+
+    //     return $this->render('visiteurs\fiche_visiteur.html.twig',[ // Création du formulaire par symfony
+    //         'form' => $form->createView()
+    //     ]); 
+    // }
        
 
     
