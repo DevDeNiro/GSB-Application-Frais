@@ -16,3 +16,20 @@
 .id_user {
     font-weight: bold;
 }
+
+.bloc_card {
+    margin: 7.5em;
+    display: flex;
+    text-align: center;
+}
+
+.color {
+    color: black;
+    text-decoration: none;
+}
+
+.color:hover {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}

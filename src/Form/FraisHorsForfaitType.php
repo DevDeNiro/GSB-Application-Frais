@@ -37,14 +37,15 @@ class FraisHorsForfaitType extends AbstractType
                     
                 ],
             )
-                ->add('dates', DateType::class, [
-                    'required' => true,
-                    'attr' => array ( 
-                        'placeholder' => '' ),
-                    'label' => 'Date'
-                        
-                ],   
-            )
+
+            ->add('mois', DateType::class, [
+                'required' => true,
+                'attr' => array ( 
+                    'placeholder' => 'Mois' ),
+                'label' => 'Mois'
+                    
+            ],   
+        )
         ;
     }
 
