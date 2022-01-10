@@ -33,11 +33,6 @@ class FraisHorsForfait
      */
     private $libelle;
 
-    /**
-     * @ORM\Column(type="date")
-     */
-    private $dates;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -75,18 +70,6 @@ class FraisHorsForfait
     public function setLibelle(string $libelle): self
     {
         $this->libelle = $libelle;
-
-        return $this;
-    }
-
-    public function getDates(): ?\DateTime
-    {
-        return $this->dates;
-    }
-
-    public function setDates(\DateTime $dates): self
-    {
-        $this->dates = $dates;
 
         return $this;
     }

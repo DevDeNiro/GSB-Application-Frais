@@ -50,7 +50,7 @@
                 </div>
 
                 <div class="p-0 pb-2 col-12 liste  ">
-                  <a href="/visiteurs/frais_visiteur" class="p-0" >
+                  <a href="/visiteurs/choix_fiche" class="p-0" >
                     <i class="fas fa-edit"></i>Saisir une fiche
                   </a>
                 </div>
@@ -139,7 +139,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col m-1">
-                                <p class="card-text">Date</p>
+                                <p class="card-text">Mois</p>
                             </div>
                             <div class="col m-1">
                                 <p class="card-text">Libellé</p>
@@ -155,7 +155,7 @@
                               <tbody>
                                   <thead class="thead">
                                       <tr>
-                                          <th scope="col">Date</th>
+                                          <th scope="col">Mois</th>
                                           <th scope="col">Libellé</th>
                                           <th scope="col">Montant</th>
                                       </tr>
@@ -163,7 +163,7 @@
                                     <tr>
                                     {% for horsForfait in Hors_Forfait %}  
                                         <th scope="row"> </th>
-                                        <td>{{ horsForfait.dates }}</td>
+                                        <td>{{ horsForfait.mois }}</td>
                                         <td>{{ horsForfait.libelle }}</td>
                                         <td>{{ horsForfait.montant }}</td>
                                     </tr>
