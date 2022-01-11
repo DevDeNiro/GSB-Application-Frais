@@ -11,6 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
+use App\Entity\User;
 
 use App\Entity\Vehicules;
 use App\Form\VehiculesType;
@@ -76,7 +77,12 @@ class visiteurs extends AbstractController
 
     public function choix_fiche() : Response           
     {
+        // $date_Engagement = $this->getDoctrine()
+                // ->getRepository(User::class)           
+                // ->find($date_embauche);
+
         return $this->render('visiteurs\choix_fiche.html.twig', [
+            // "date" => $date_ngagement
         ]); 
     }
 
