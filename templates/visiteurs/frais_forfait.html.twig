@@ -83,6 +83,12 @@
 
                 {{ form_start(form) }}
 
+                {% for message in app.flashes('OK') %}
+                  <div class="alert alert-success">
+                      {{ message }}
+                  </div>
+                {% endfor %}
+
                     <div class="card">
                         <div class="card-header bg-info title">
                             Frais au forfait
@@ -96,8 +102,8 @@
                             <div class="col m-1"> {{ form_row (form.nuit)}}      </div>
                             <div class="col m-1"> {{ form_row (form.etape)}}     </div>
                             <div class="col m-1"> {{ form_row (form.km)}}        </div>
-                            <div class="col m-1"> {{ form_row (form.libelle)}}        </div>
-                            <div class="col m-1"> {{ form_row (form.montant)}}        </div>
+                            <div class="col m-1"> {{ form_row (form.libelle)}}   </div>
+                            <div class="col m-1"> {{ form_row (form.montant)}}   </div>
                           </div>
 
                           <div class="row">

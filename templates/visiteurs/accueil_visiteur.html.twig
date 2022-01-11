@@ -73,13 +73,7 @@
                   {% else %}
                     {{ app.user.prenom }}
                   {% endif %}</span> sur votre espace visiteur</h1> </div>
-            {# Message envoyé en session et supprimé au prochain affichage #}
-              {% for message_vehicule in app.flashes ('success1') %}  
-              <div class="alert alert-primary" role="alert">
-                  {{ message_vehicule }}
-              </div>
-              {% endfor %} 
-
+           
               <div class="row mt-5">
              {# <div class="mx-auto w-75 p-0 mt-5 card"> #}
                 <div class="col-6 col-md-4">

@@ -60,6 +60,8 @@ class visiteurs extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($fiche);
             $entityManager->flush();
+
+            $this->addFlash('OK', 'Vos frais ont bien été saisis !');
         }
 
         return $this->render('visiteurs\frais_forfait.html.twig',[    
@@ -95,6 +97,8 @@ class visiteurs extends AbstractController
        
             $entityManager->persist($fiche2);
             $entityManager->flush();
+            $this->addFlash('ok', 'Vos frais ont bien été saisis !');
+
         }
 
         return $this->render('visiteurs\frais_hors_forfait.html.twig',[ // Création du formulaire par symfony
@@ -161,9 +165,7 @@ class visiteurs extends AbstractController
             $entityManager->persist($Vehicule);
             $entityManager->flush();
 
-            $this->addFlash('success1', 'Véhicule ajouté'); // Affiche un message de confirmation sur la page d'accueil   
-            return $this->redirectToRoute('accueil_visiteurs');  // Rediriger vers la page d'accueil
-             
+            $this->addFlash('success1', 'Votre véhicule a été ajouté avec succès ! ');                 
         }
 
         return $this->render('visiteurs\vehicule_visiteur.html.twig',[ // Création du formulaire par symfony

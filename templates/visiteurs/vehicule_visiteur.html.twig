@@ -86,6 +86,15 @@
                 <div class="col">
 
                 {{ form_start(form) }}
+
+                {% for message_vehicule in app.flashes ('success1') %}  
+                    <div class="alert alert-success alert-dismissible">
+                        {{ message_vehicule }}         
+                        {# <button  type = "button"  class = " close "  data-dismiss = " alert "  aria-label = "Close">
+                            <span aria-hidden = " true " > &times; </span>
+                        </bouton > #}
+                    </div>
+                {% endfor %} 
                 
                     <div class="card">
                         <div class="card-header bg-info title">
