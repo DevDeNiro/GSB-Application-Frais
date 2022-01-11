@@ -102,7 +102,10 @@ class visiteurs extends AbstractController
         ]); 
     }
        
-
+    /**
+     * @Route("/visiteurs/suivi_frais", name = "visiteur_frais")
+     * @Method({"GET", "POST"})
+     */
     
     
     // public function Suivre_frais_forfait() : Response 
@@ -124,12 +127,16 @@ class visiteurs extends AbstractController
 
     public function Suivre_frais_hors_forfait() : Response 
         {
-            $repository = $this->getDoctrine()
-            ->getRepository(FraisHorsForfait::class)
+            $repository = $this->getDoctrine([
+                ->getRepository(FraisHorsForfait::class),
+                ->getRepository(FraisForfait::class)
+            ])
+           
             ->findAll();
 
             return $this->render('visiteurs/remboursement_visiteur.html.twig', [
-                "Hors_Forfait" => $repository
+                "Hors_Forfait" => $repository,
+                "ÔForfait" => $repository
             ]); 
         }
     

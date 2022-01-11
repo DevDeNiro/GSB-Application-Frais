@@ -86,7 +86,7 @@
                         <div class="card-header bg-info title">
                             Frais au forfait
                         </div>
-                        {# <div class="card-body">
+                        <div class="card-body">
                           <div class="row">
                             <div class="col m-1">
                                 <p class="card-text">Repas midi</p>
@@ -102,7 +102,7 @@
                             </div>
                           </div>  #}
 
-                        {# {% if ÔForfait %} 
+                          {% if ÔForfait %} 
                           <table class="table table-hover table-striped table-bordered">
                               <tbody>
                                   <thead class="thead">
@@ -111,6 +111,9 @@
                                           <th scope="col">Nuit</th>
                                           <th scope="col">Etapes</th>
                                           <th scope="col">Km</th>
+                                          <th scope="col">Libellé</th>
+                                          <th scope="col">Montant (en €)</th>
+
                                       </tr>
                                   </thead>
                                     <tr>
@@ -120,9 +123,12 @@
                                         <td>{{ auForfait.nuit }}</td>
                                         <td>{{ auForfait.etape }}</td>
                                         <td>{{ auForfait.km }}</td>
+                                        <td>{{ auForfait.libelle }}</td>
+                                        <td>{{ auForfait.montant }}</td>
+
                                     </tr>
                                     {% endfor %}
-                        {% endif %} #}
+                        {% endif %} 
 
                               </tbody>
                           </table>
