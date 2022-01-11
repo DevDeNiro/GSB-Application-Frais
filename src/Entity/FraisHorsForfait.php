@@ -19,7 +19,7 @@ class FraisHorsForfait
     private $id;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="string", length=10)
      */
     private $mois;
 
