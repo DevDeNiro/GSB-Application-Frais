@@ -21,6 +21,8 @@ use App\Form\FraisHorsForfaitType;
 use App\Entity\FraisForfait;
 use App\Form\FraisForfaitType;
 
+use Twig\Extra\Intl\IntlExtension;
+
 
 class visiteurs extends AbstractController
 {
@@ -51,6 +53,9 @@ class visiteurs extends AbstractController
 
     public function Saisir_frais(Request $request) : Response           
     {
+        setlocale(LC_TIME, "fr_FR");
+        $mois_actuel = date("F");
+
         $fiche = new FraisForfait ();
 
         $form = $this->createForm(FraisForfaitType::class, $fiche); 
@@ -64,6 +69,7 @@ class visiteurs extends AbstractController
 
         return $this->render('visiteurs\frais_forfait.html.twig',[    
             'form' => $form->createView(),
+            'date' => $mois_actuel,
         ]); 
     }
 
@@ -78,6 +84,10 @@ class visiteurs extends AbstractController
         ]); 
     }
 
+
+
+
+
     /**
      * @Route("/visiteurs/frais_hors_forfais", name = "fiche_frais")
      * @Method({"GET", "POST"})
@@ -85,6 +95,9 @@ class visiteurs extends AbstractController
 
     public function Saisir_frais_2(Request $request) : Response    
     {
+        setlocale(LC_TIME, "fr_FR");
+        $mois_actuel = date("F");
+
         $fiche2 = new FraisHorsForfait ();
         $entityManager = $this->getDoctrine()->getManager();
 
@@ -98,7 +111,8 @@ class visiteurs extends AbstractController
         }
 
         return $this->render('visiteurs\frais_hors_forfait.html.twig',[ // Création du formulaire par symfony
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'date' => $mois_actuel,
         ]); 
     }
        

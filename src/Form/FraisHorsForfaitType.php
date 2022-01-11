@@ -19,6 +19,9 @@ class FraisHorsForfaitType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        setlocale(LC_TIME, "fr_FR");
+        $mois_actuel = date("F");
+
         $builder
             // ->add('mois')
 
@@ -38,11 +41,13 @@ class FraisHorsForfaitType extends AbstractType
                 ],
             )
 
-            ->add('mois', DateType::class, [
-                'required' => true,
+            ->add('mois', TextType::class, [
+                'required' => false,
                 'attr' => array ( 
-                    'placeholder' => 'Mois' ),
-                'label' => 'Mois'
+                    'placeholder' => 'Mois',
+                'data' =>  $mois_actuel ),
+                'label' => 'Mois',
+                'empty_data' => $mois_actuel
                     
             ],   
         )
