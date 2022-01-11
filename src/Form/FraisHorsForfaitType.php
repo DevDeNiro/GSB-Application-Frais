@@ -27,26 +27,22 @@ class FraisHorsForfaitType extends AbstractType
                         'attr' => array ( 
                             'placeholder' => 'montant' )
                     ],
-                )  
+            )  
 
-                ->add('libelle', TextType::class, [
-                    'required' => true,
-                    'attr' => array ( 
-                        'placeholder' => 'libelle' ),
-                    'label' => 'Libellé (ex: Exemple)'
-                    
+            ->add('libelle', TextType::class, [
+                'required' => true,
+                'attr' => array ( 
+                    'placeholder' => 'libelle' ),
+                'label' => 'Libellé (ex: Exemple)'
+                
                 ],
             )
 
-            ->add('mois', DateType::class, [
+            ->add('date', DateType::class, [
                 'required' => true,
-                'attr' => array ( 
-                    'placeholder' => 'Mois' ),
-                'label' => 'Mois'
-                    
+                'label' => 'Date de saisie'        
             ],   
-        )
-        ;
+            );
     }
 
     public function configureOptions(OptionsResolver $resolver): void
