@@ -86,22 +86,6 @@
                         <div class="card-header bg-info title">
                             Frais au forfait
                         </div>
-                        <div class="card-body">
-                          <div class="row">
-                            <div class="col m-1">
-                                <p class="card-text">Repas midi</p>
-                            </div>
-                            <div class="col m-1">
-                                <p class="card-text">Nuitées</p>
-                            </div>
-                            <div class="col m-1">
-                                <p class="card-text">Etapes</p>
-                            </div>
-                            <div class="col m-1">
-                            <p class="card-text">Kilomètres</p>
-                            </div>
-                          </div>  #}
-
                           {% if ÔForfait %} 
                           <table class="table table-hover table-striped table-bordered">
                               <tbody>
@@ -142,36 +126,24 @@
                     <div class="card-header bg-info title">
                         Frais hors forfait
                     </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col m-1">
-                                <p class="card-text">Mois</p>
-                            </div>
-                            <div class="col m-1">
-                                <p class="card-text">Libellé</p>
-                            </div>
-                            <div class="col m-1">
-                                <p class="card-text">Montant</p>
-                            </div>
-                        </div> 
-                    </div>
+                    
 
                     {% if Hors_Forfait %} 
                           <table class="table table-hover table-striped table-bordered">
                               <tbody>
                                   <thead class="thead">
                                       <tr>
-                                          <th scope="col">Mois</th>
                                           <th scope="col">Libellé</th>
                                           <th scope="col">Montant</th>
+                                          <th scope="col">Date</th>
                                       </tr>
                                   </thead>
                                     <tr>
                                     {% for horsForfait in Hors_Forfait %}  
                                         <th scope="row"> </th>
-                                        <td>{{ horsForfait.mois }}</td>
                                         <td>{{ horsForfait.libelle }}</td>
                                         <td>{{ horsForfait.montant }}</td>
+                                        <td>{{ horsForfait.mois.format('d/m/Y')}} </td>
                                     </tr>
                                     {% endfor %}
                       {% endif %}
