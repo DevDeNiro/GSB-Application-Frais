@@ -8,8 +8,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-
 use App\Entity\User;
+use App\Controller\PaginatorInterface;
+
+use App\Entity\RechercheClient;
+use App\Form\RechercheClientType;
 
 class comptables extends AbstractController
 {
@@ -59,29 +62,65 @@ class comptables extends AbstractController
      * @Method({"GET", "POST"})
     */
     
-    public function suivi_fiche_frais() : Response
-    {
+    // public function suivi_fiche_frais() : Response
+    // {
 
-        // $em=$this->getDoctrine()->getManager();
+    //     // $em=$this->getDoctrine()->getManager();
 
-        $repository = $this->getDoctrine()
-                ->getRepository(User::class)
-                ->findAll();
+    //     $repository = $this->getDoctrine()
+    //             ->getRepository(User::class)
+    //             ->findAll();
 
                 
-        // $em->remove($repository);
-        // $em->flush();
+    //     // $em->remove($repository);
+    //     // $em->flush();
 
-        // $this->addFlash('success', 'Suppression effectuée'); 
+    //     // $this->addFlash('success', 'Suppression effectuée'); 
 
-                // if (!$repository) {
-                //     throw $this->createNotFoundException(
-                //         'Il n\'existe aucun produit en BdD'
-                //     );
-                // }
+    //             // if (!$repository) {
+    //             //     throw $this->createNotFoundException(
+    //             //         'Il n\'existe aucun produit en BdD'
+    //             //     );
+    //             // }
 
-        return $this->render('comptables/fiche_frais.html.twig', [
-            "fiches" => $repository
-        ]); 
+    //     return $this->render('comptables/fiche_frais.html.twig', [
+    //         "fiches" => $repository
+    //     ]); 
+    // }
+
+
+
+
+
+
+    // public function findAllVisibleQuery(RechercheClient $search): Query
+    // {
+    //     $query = $this->$findVisibleQuery();
+
+    //     if ($search->getDateUser()) {
+    //         $query = $query
+    //             ->where ('$dateUser > mindate')
+    //             ->setParameter('mindate', $search->getDateUser());
+    //     }
+
+
+    //     return $query->getQuery();
+    // } 
+
+
+    public function recherche_client(/*PaginatorInterface $paginator, */ Request $request): Response
+    {
+        $search = new RechercheClient();
+        $form = $this->createForm (RechercheClientType::class, $search);
+        $form->handleRequest($request);
+
+        // $properties = $paginator->paginate(
+        //     $this->repository->findAllVisibleQuery($search),
+        //     $request-> query ('page', 1),12
+        // );
+
+        return $this->render ('comptables/fiche_frais.html.twig', [
+            'form' => $form->createView()
+        ]);
     }
 }

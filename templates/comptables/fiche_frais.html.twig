@@ -75,8 +75,27 @@
 
           <div class="col-11 mt-4 mx-auto">
             <div class="col row"> Liste de toutes les fiches de frais </div>
-           
-            {% if fiches %} 
+
+              {% if form is defined %}
+                {{form_start(form)}}
+                    <div class="form-row">
+                        <div class="col">
+                            {{form_row (form.user)}}
+                        </div>
+
+                        <div class="col">
+                            {{form_row (form.dateUser)}}
+                        </div>
+
+                        <div class="col">
+                            <button class="btn btn-primary" type="submit"> Rechercher </button>
+                        </div>
+                    </div>
+                {{form_end(form)}}  
+              {% endif %}  
+            
+
+            {# {% if fiches %}  #}
             <table class="table table-hover table-striped table-bordered">
                 <tbody>
                     <thead class="thead">
@@ -108,7 +127,7 @@
                     {% endfor %} #}
                 </tbody>
             </table>   
-          {% endif %} 
+          {# {% endif %}  #}
 
           </div>
         </div>

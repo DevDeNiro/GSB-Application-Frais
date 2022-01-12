@@ -5,6 +5,9 @@ namespace App\Entity;
 use App\Repository\FicheFraisRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use App\Entity\User;
+use Doctrine\ORM\Mapping\ManyToOne;
+use Doctrine\ORM\Mapping\JoinColumn;
 
 /**
  * @ORM\Entity(repositoryClass=FicheFraisRepository::class)
@@ -24,7 +27,7 @@ class FicheFrais
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      * @ManyToOne(targetEntity="App\Entity\User", inversedBy="id")
-     * @JoinColumn(name="fiche_id", referencedColumnName="id"
+     * @JoinColumn(name="fiche_id", referencedColumnName="id")
      */
     private $id;
 
