@@ -19,6 +19,9 @@ class FraisForfaitType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        $calcul = 10 + 10;
+        strval($calcul);
+
         $builder
             ->add('repasMidi', NumberType::class,[
                     'required' => true,
@@ -55,10 +58,13 @@ class FraisForfaitType extends AbstractType
             ],
         )
 
-            ->add('montant', NumberType::class,[
-                'required' => true,
+            ->add('montant', TextType::class,[
+                'required' => false,
                 'attr' => array ( 
-                    'placeholder' => 'Nombre de repas' )
+                    'placeholder' => 'Nombre de repas' ,
+                    'data' =>  $calcul),
+                    'label' => 'calcul',
+                    'empty_data' => $calcul
             ],
         )
             ;

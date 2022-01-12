@@ -96,7 +96,7 @@
                             <div class="col m-1"> {{ form_row (form.etape)}}     </div>
                             <div class="col m-1"> {{ form_row (form.km)}}        </div>
                             <div class="col m-1"> {{ form_row (form.libelle)}}        </div>
-                            <div class="col m-1"> {{ form_row (form.montant)}}        </div>
+                            {% do form.montant.setRendered() %}
                           </div>
 
                           <div class="row">

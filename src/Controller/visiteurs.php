@@ -138,12 +138,18 @@ class visiteurs extends AbstractController
 
     public function Suivre_frais_hors_forfait() : Response 
         {
+
             $repository = $this->getDoctrine()
             ->getRepository(FraisHorsForfait::class)
             ->findAll();
 
+            $repository2 = $this->getDoctrine()
+            ->getRepository(FraisForfait::class)
+            ->findAll();
+
             return $this->render('visiteurs/remboursement_visiteur.html.twig', [
-                "Hors_Forfait" => $repository
+                "Hors_Forfait" => $repository,
+                "ÔForfait" => $repository2,
             ]); 
         }
     
