@@ -23,6 +23,8 @@ class FicheFrais
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @ManyToOne(targetEntity="App\Entity\User", inversedBy="id")
+     * @JoinColumn(name="fiche_id", referencedColumnName="id"
      */
     private $id;
 

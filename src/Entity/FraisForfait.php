@@ -15,6 +15,8 @@ class FraisForfait
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @ORM\OneToOne(targetEntity="App\Entity\FicheFrais")
+     * @ORM\JoinColumn(name="FicheFrais_id", referencedColumnName="id")
      */
     private $id;
 

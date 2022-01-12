@@ -17,7 +17,8 @@ class Vehicules
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @ORM\ManyToOne(targetEntity="post")
+     * @ManyToOne(targetEntity="App\Entity\User", inversedBy="id")
+     * @JoinColumn(name="vehicules_id", referencedColumnName="id"
      */
     private $id;
 
