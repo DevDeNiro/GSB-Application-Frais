@@ -96,6 +96,9 @@
                                           <th scope="col">Nuit</th>
                                           <th scope="col">Etapes</th>
                                           <th scope="col">Km</th>
+                                          {% if 2 == 3 %}
+                                          <th scope="col">Montant</th>
+                                          {% endif %}
                                       </tr>
                                   </thead>
                                     <tr>
@@ -104,6 +107,9 @@
                                         <td>{{ auForfait.nuit }}</td>
                                         <td>{{ auForfait.etape }}</td>
                                         <td>{{ auForfait.km }}</td>
+                                        {% if 2 == 3 %}
+                                        <td>{{ auForfait.repasMidi * 8 + auForfait.nuit * 80 }}</td>
+                                        {% endif %}
                                     </tr>
                                     {% endfor %}
                         {% endif %}
