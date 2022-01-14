@@ -50,7 +50,7 @@ class FicheFrais
     private $montantValide;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      * @Assert\NotBlank()
      */
     private $dateModif;
