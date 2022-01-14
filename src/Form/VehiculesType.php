@@ -16,6 +16,8 @@ class VehiculesType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+
+
         $builder
         ->add('marque', ChoiceType::class, [
                 'choices'  => [
@@ -73,6 +75,14 @@ class VehiculesType extends AbstractType
                 'required' => true,
                 'attr' => array ( 
                     'placeholder' => 'Chevaux fiscaux' )
+            ])
+
+            ->add('usernane', TextType::class ,[
+                
+                'required' => false,
+                'attr' => array ( 
+                    'placeholder' => 'username'),
+                'label' => 'username',
             ])
   
             ->getForm()

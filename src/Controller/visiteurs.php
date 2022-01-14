@@ -16,6 +16,7 @@ use App\Entity\Vehicules;
 use App\Form\VehiculesType;
 
 use App\Entity\FraisHorsForfait;
+use App\Entity\User;
 use App\Form\FraisHorsForfaitType;
 
 use App\Entity\FraisForfait;
@@ -161,7 +162,8 @@ class visiteurs extends AbstractController
     
     public function Saisi_vehicule(Request $request) : Response 
     {
-
+        $test =  getUsername();
+                
         $Vehicule = new Vehicules ();
         $entityManager = $this->getDoctrine()->getManager();
 

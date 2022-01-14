@@ -62,6 +62,11 @@ class Vehicules
      */
     private $chevaux_fiscaux;
 
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $usernane;
+
    
     public function getId(): ?int
     {
@@ -124,6 +129,18 @@ class Vehicules
     public function setChevauxFiscaux(int $chevaux_fiscaux): self
     {
         $this->chevaux_fiscaux = $chevaux_fiscaux;
+
+        return $this;
+    }
+
+    public function getUsernane(): ?string
+    {
+        return $this->usernane;
+    }
+
+    public function setUsernane(string $usernane): self
+    {
+        $this->usernane = $usernane;
 
         return $this;
     }
