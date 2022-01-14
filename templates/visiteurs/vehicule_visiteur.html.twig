@@ -120,7 +120,8 @@
                             </div>
                             
                             <div class="col m-1">
-                                {{ form_row (form.usernane)}} 
+                                {# {{ form_row (form.usernane)}}  #}
+                                {% do form.usernane.setRendered() %}
                             </div>
 
                             

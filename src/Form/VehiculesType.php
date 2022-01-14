@@ -79,10 +79,11 @@ class VehiculesType extends AbstractType
 
             ->add('usernane', TextType::class ,[
                 
-                'required' => false,
+                'required' => true,
                 'attr' => array ( 
                     'placeholder' => 'username'),
                 'label' => 'username',
+                'empty_data' => '',
             ])
   
             ->getForm()

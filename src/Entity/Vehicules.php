@@ -6,6 +6,9 @@ use App\Repository\VehiculesRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\ORM\Mapping\ManyToOne;
+use Doctrine\ORM\Mapping\JoinColumn;
+
 
 /**
  * @ORM\Entity(repositoryClass=VehiculesRepository::class)
@@ -14,11 +17,8 @@ class Vehicules
 {
 
     /**
-     * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @ManyToOne(targetEntity="App\Entity\User", inversedBy="id")
-     * @JoinColumn(name="vehicules_id", referencedColumnName="id"
      */
     private $id;
 
@@ -63,7 +63,10 @@ class Vehicules
     private $chevaux_fiscaux;
 
     /**
+     * @ORM\Id
      * @ORM\Column(type="string", length=100)
+     * @ManyToOne(targetEntity="App\Entity\User", inversedBy="id")
+     * @JoinColumn(name="username", referencedColumnName="id")
      */
     private $usernane;
 

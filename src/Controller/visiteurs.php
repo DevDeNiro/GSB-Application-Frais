@@ -162,7 +162,7 @@ class visiteurs extends AbstractController
     
     public function Saisi_vehicule(Request $request) : Response 
     {
-        $test =  getUsername();
+        //$test =  getUsername();
                 
         $Vehicule = new Vehicules ();
         $entityManager = $this->getDoctrine()->getManager();

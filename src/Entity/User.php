@@ -22,10 +22,11 @@ class User implements UserInterface
      */
     private $id;
 
+    /*
     public function __construct() {
         $this->addresses = new ArrayCollection();
     }
-
+*/
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      */
