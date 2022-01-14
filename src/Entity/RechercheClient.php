@@ -4,11 +4,21 @@ namespace App\Entity;
 
 class RechercheClient {
 
+    /** 
+     * @var string|null
+     */
 
     private $user;
 
+     /**
+     * @var null
+     */
+
     private $dateUser;
 
+    /**
+     * @return string|null
+     */
 
      public function getUser ()
      {
