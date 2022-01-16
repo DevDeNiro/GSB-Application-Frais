@@ -12,8 +12,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
-use App\Entity\Vehicules;
-use App\Form\VehiculesType;
+use App\Entity\Vehicule;
+use App\Form\VehiculeType;
 
 use App\Entity\FraisHorsForfait;
 use App\Entity\User;
@@ -157,21 +157,21 @@ class visiteurs extends AbstractController
 
     /**
      * @Route("/visiteurs/vehicule", name = "vehicule")
-     * @Method({"GET", "POST"})
     */  
     
-    public function Saisi_vehicule(Request $request) : Response 
+    public function Saisi_vehicule(Request $request) 
     {
-        //$test =  getUsername();
-                
-        $Vehicule = new Vehicules ();
+        $Vehicule = new Vehicule();
         $entityManager = $this->getDoctrine()->getManager();
-
-        $form = $this->createForm(VehiculesType::class, $Vehicule); 
+        $form = $this->createForm(VehiculeType::class, $Vehicule); 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
        
+            //$test =  $this->getUsername();
+            $bis = "testets";
+            $Vehicule->setProprietaire('testest');
+
             $entityManager->persist($Vehicule);
             $entityManager->flush();
 
@@ -179,7 +179,6 @@ class visiteurs extends AbstractController
             return $this->redirectToRoute('accueil_visiteurs');  // Rediriger vers la page d'accueil
              
         }
-
         return $this->render('visiteurs\vehicule_visiteur.html.twig',[ // Création du formulaire par symfony
             'form' => $form->createView()
         ]); 

@@ -2,73 +2,51 @@
 
 namespace App\Entity;
 
-use App\Repository\VehiculesRepository;
+use App\Repository\VehiculeRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Symfony\Component\Validator\Constraints as Assert;
-use Doctrine\ORM\Mapping\ManyToOne;
-use Doctrine\ORM\Mapping\JoinColumn;
-
 
 /**
- * @ORM\Entity(repositoryClass=VehiculesRepository::class)
+ * @ORM\Entity(repositoryClass=VehiculeRepository::class)
  */
-class Vehicules
+class Vehicule
 {
-
     /**
+     * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=15)
-     * @Assert\NotBlank()
+     * @ORM\Column(type="string", length=20)
      */
     private $marque;
 
     /**
-     * @ORM\Column(type="string", length=15)
-     * @Assert\NotBlank()
+     * @ORM\Column(type="string", length=20)
      */
     private $modele;
 
     /**
      * @ORM\Column(type="string", length=9)
-     * @Assert\Regex(
-     *     pattern = "#^([a-hj-np-rtvx-z]{2}|s[a-hj-np-rtv-z]|w[a-hj-np-tvx-z])-[0-9]{3}-([a-hj-np-rtv-z]{2}|s[a-hj-np-rtv-z])$#i",
-     *     message = "L'immatriculation du véhicule doit respecter le format AA-123-AA"
-     * )
-     * @Assert\NotBlank()
-     * 
      */
     private $immatriculation;
 
     /**
      * @ORM\Column(type="string", length=15)
-     * @Assert\NotBlank()
-     * @Assert\NotNull
      */
     private $carburant;
 
     /**
-     * @ORM\Column(type="integer")
-     * @Assert\Regex(
-     *     pattern = "'^[0-9]+$'",
-     * )
-     * @Assert\NotBlank()   
-     * @Assert\Positive 
+     * @ORM\Column(type="bigint")
      */
-    private $chevaux_fiscaux;
+    private $chevaux;
 
     /**
-     * @ORM\Id
      * @ORM\Column(type="string", length=100)
      */
-    private $usernane;
+    private $proprietaire;
 
-   
     public function getId(): ?int
     {
         return $this->id;
@@ -122,29 +100,27 @@ class Vehicules
         return $this;
     }
 
-    public function getChevauxFiscaux(): ?int
+    public function getChevaux(): ?string
     {
-        return $this->chevaux_fiscaux;
+        return $this->chevaux;
     }
 
-    public function setChevauxFiscaux(int $chevaux_fiscaux): self
+    public function setChevaux(string $chevaux): self
     {
-        $this->chevaux_fiscaux = $chevaux_fiscaux;
+        $this->chevaux = $chevaux;
 
         return $this;
     }
 
-    public function getUsernane(): ?string
+    public function getProprietaire(): ?string
     {
-        return $this->usernane;
+        return $this->proprietaire;
     }
 
-    public function setUsernane(string $usernane): self
+    public function setProprietaire(string $proprietaire): self
     {
-        $this->usernane = $usernane;
+        $this->proprietaire = $proprietaire;
 
         return $this;
     }
-
-     
 }

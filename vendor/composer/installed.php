@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '39798b10139c61c39ac5c1af962d24551ca7f1bd',
+        'reference' => 'd4a711ef4e6187d5df55913ec20d29bd09801b9e',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '39798b10139c61c39ac5c1af962d24551ca7f1bd',
+            'reference' => 'd4a711ef4e6187d5df55913ec20d29bd09801b9e',
             'dev_requirement' => false,
         ),
         'composer/package-versions-deprecated' => array(
@@ -819,12 +819,12 @@
             'dev_requirement' => false,
         ),
         'symfony/form' => array(
-            'pretty_version' => 'v4.4.34',
-            'version' => '4.4.34.0',
+            'pretty_version' => 'v4.4.36',
+            'version' => '4.4.36.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/form',
             'aliases' => array(),
-            'reference' => '762f9c74d720e3c78249d67f2ee98bf198489de2',
+            'reference' => '384c0be0f33d2b166b2188194aaf57b0f1c54f77',
             'dev_requirement' => false,
         ),
         'symfony/framework-bundle' => array(

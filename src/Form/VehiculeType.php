@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\Vehicules;
+use App\Entity\Vehicule;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -12,7 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Validator\Constraints\Length;
 
-class VehiculesType extends AbstractType
+class VehiculeType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -70,14 +70,14 @@ class VehiculesType extends AbstractType
             ]
         ])
 
-            ->add('chevaux_fiscaux', NumberType::class ,[
+            ->add('chevaux', NumberType::class ,[
                
                 'required' => true,
                 'attr' => array ( 
                     'placeholder' => 'Chevaux fiscaux' )
             ])
 
-            ->add('usernane', TextType::class ,[
+            ->add('proprietaire', TextType::class ,[
 
                 'required' => true,
                 'constraints' => [new Length(['max' => 9])],
@@ -92,7 +92,7 @@ class VehiculesType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Vehicules::class,
+            'data_class' => Vehicule::class,
         ]);
     }
 }
