@@ -35,6 +35,11 @@ class FraisHorsForfait
      */
     private $libelle;
 
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $proprietaire;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -72,6 +77,18 @@ class FraisHorsForfait
     public function setLibelle(string $libelle): self
     {
         $this->libelle = $libelle;
+
+        return $this;
+    }
+
+    public function getProprietaire(): ?string
+    {
+        return $this->proprietaire;
+    }
+
+    public function setProprietaire(string $proprietaire): self
+    {
+        $this->proprietaire = $proprietaire;
 
         return $this;
     }

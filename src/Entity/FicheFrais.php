@@ -23,8 +23,6 @@ class FicheFrais
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @ManyToOne(targetEntity="App\Entity\User", inversedBy="id")
-     * @JoinColumn(name="fiche_id", referencedColumnName="id"
      */
     private $id;
 
@@ -57,6 +55,11 @@ class FicheFrais
      * @Assert\NotBlank()
      */
     private $etat;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $proprietaire;
 
     public function getId(): ?int
     {
@@ -119,6 +122,18 @@ class FicheFrais
     public function setEtat(int $etat): self
     {
         $this->etat = $etat;
+
+        return $this;
+    }
+
+    public function getProprietaire(): ?string
+    {
+        return $this->proprietaire;
+    }
+
+    public function setProprietaire(string $proprietaire): self
+    {
+        $this->proprietaire = $proprietaire;
 
         return $this;
     }

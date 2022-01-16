@@ -93,6 +93,7 @@
                           <div class="col m-1"> {{ form_row (form.libelle)}} </div>
                           <div class="col m-1"> {{ form_row (form.montant)}} </div>
                            {% do form.mois.setRendered() %}
+                           {% do form.proprietaire.setRendered() %}
                       </div> 
                       <div class="row">
                           <div class="col-8 col-sm-5 col-md-4 col-lg-3 col-xl-2">

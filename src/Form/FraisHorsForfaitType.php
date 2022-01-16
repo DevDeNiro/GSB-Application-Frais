@@ -51,6 +51,13 @@ class FraisHorsForfaitType extends AbstractType
                     
             ],   
         )
+            ->add('proprietaire', TextType::class ,[
+
+                'required' => true,
+                'constraints' => [new Length(['max' => 9])],
+                'attr' => array ( 
+                    'placeholder' => 'AA-123-AA' )
+            ])
         ;
     }
 

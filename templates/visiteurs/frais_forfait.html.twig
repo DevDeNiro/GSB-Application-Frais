@@ -97,6 +97,7 @@
                             <div class="col m-1"> {{ form_row (form.km)}}        </div>
                             <div class="col m-1"> {{ form_row (form.libelle)}}        </div>
                             {% do form.montant.setRendered() %}
+                            {% do form.proprietaire.setRendered() %}
                           </div>
 
                           <div class="row">

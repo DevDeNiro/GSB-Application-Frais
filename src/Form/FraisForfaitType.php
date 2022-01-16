@@ -67,6 +67,14 @@ class FraisForfaitType extends AbstractType
                     'empty_data' => $calcul
             ],
         )
+
+            ->add('proprietaire', TextType::class ,[
+
+                'required' => true,
+                'constraints' => [new Length(['max' => 9])],
+                'attr' => array ( 
+                    'placeholder' => 'AA-123-AA' )
+            ])
             ;
     }
 

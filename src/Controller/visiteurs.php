@@ -82,9 +82,16 @@ class visiteurs extends AbstractController
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $user = $this->getUser();
+            $user = $user->getId();
+            $fiche->setProprietaire($user);
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($fiche);
             $entityManager->flush();
+
+            $this->addFlash('success1', 'Frais forfaitaire ajouté avec succès !'); // Affiche un message de confirmation sur la page d'accueil   
+            return $this->redirectToRoute('accueil_visiteurs');  // Rediriger vers la page d'accueil
         }
 
         return $this->render('visiteurs\frais_forfait.html.twig',[    
@@ -125,9 +132,15 @@ class visiteurs extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-       
+            $user = $this->getUser();
+            $user = $user->getId();
+            $fiche2->setProprietaire($user);
+
             $entityManager->persist($fiche2);
             $entityManager->flush();
+
+            $this->addFlash('success1', 'Frais hors forfait ajouté avec succès !'); // Affiche un message de confirmation sur la page d'accueil   
+            return $this->redirectToRoute('accueil_visiteurs');  // Rediriger vers la page d'accueil
         }
 
         return $this->render('visiteurs\frais_hors_forfait.html.twig',[ // Création du formulaire par symfony
@@ -194,7 +207,7 @@ class visiteurs extends AbstractController
             $entityManager->persist($Vehicule);
             $entityManager->flush();
 
-            $this->addFlash('success1', 'Véhicule ajouté'); // Affiche un message de confirmation sur la page d'accueil   
+            $this->addFlash('success1', 'Véhicule ajouté avec succès !'); // Affiche un message de confirmation sur la page d'accueil   
             return $this->redirectToRoute('accueil_visiteurs');  // Rediriger vers la page d'accueil
              
         }

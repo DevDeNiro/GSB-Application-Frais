@@ -58,6 +58,11 @@ class FraisForfait
 
     private $km;
 
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $proprietaire;
+
 
     public function getId(): ?int
     {
@@ -132,6 +137,18 @@ class FraisForfait
     public function setkm(int $km): self
     {
         $this->km = $km;
+
+        return $this;
+    }
+
+    public function getProprietaire(): ?string
+    {
+        return $this->proprietaire;
+    }
+
+    public function setProprietaire(string $proprietaire): self
+    {
+        $this->proprietaire = $proprietaire;
 
         return $this;
     }
