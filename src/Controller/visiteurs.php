@@ -23,17 +23,36 @@ use App\Entity\FraisForfait;
 use App\Form\FraisForfaitType;
 
 use Twig\Extra\Intl\IntlExtension;
+use Symfony\Component\Security\Core\Security;
+use Symfony\Component\Security\Core\SecurityContextInterface;
+
+use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
+use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
+use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\UserProviderInterface;
+
 
 
 class visiteurs extends AbstractController
 {
 
-    private $entityManager;
+    /**
+     * @var Security
+     */
+    private $security;
 
-    public function __construct(EntityManagerInterface $entityManager)
+    public function __construct(Security $security)
     {
-        $this->entityManager = $entityManager;
+       $this->security = $security;
     }
+
+    // private $entityManager;
+
+    // public function __construct(EntityManagerInterface $entityManager)
+    // {
+    //     $this->entityManager = $entityManager;
+    // }
 
     /**
      * @Route("/visiteurs/accueil_visiteur", name = "accueil_visiteurs")
@@ -168,9 +187,9 @@ class visiteurs extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
        
-            //$test =  $this->getUsername();
-            $bis = "testets";
-            $Vehicule->setProprietaire('testest');
+            $user = $this->getUser();
+            $user = $user->getId();
+            $Vehicule->setProprietaire($user);
 
             $entityManager->persist($Vehicule);
             $entityManager->flush();
