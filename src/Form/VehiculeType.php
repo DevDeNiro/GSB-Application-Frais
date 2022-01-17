@@ -25,16 +25,15 @@ class VehiculeType extends AbstractType
                     'Type de véhicule' => '',
  
                     'Marque de voitures' => [
-                        'Tesla' => 'Tesla',
                         'Renauld' => 'Renauld',
                         'Peugeot' => 'Peugeot',
                         'Toyota' => 'Toyota',
-                        'mitsubishi' => 'mitsubishi',
-                        'honda' => 'honda',
-                        'bmw' => 'bmw',
-                        'mercedes' => 'mercedes',
+                        'Mitsubishi' => 'mitsubishi',
+                        'Honda' => 'honda',
+                        'BMW' => 'bmw',
+                        'Mercedes' => 'mercedes',
                         'Volkswagen' => 'Volkswagen',
-                        'audi' => 'audi',
+                        'Audi' => 'audi',
                         // 'autre' => 'autre', Autre à pouvoir renseigner librement          
                 ],
             ]
@@ -62,9 +61,7 @@ class VehiculeType extends AbstractType
                    
                     'Type de carburant' => [
                         'Diesel' => 'Diesel',
-                        'Essence' => 'Essence',
-                        'GNV' => 'GNV',
-                        'GPL' => 'GPL',
+                        'Essence' => 'Essence'
                         // 'autre' => 'autre', Autre à pouvoir renseigner librement          
                 ],
             ]
