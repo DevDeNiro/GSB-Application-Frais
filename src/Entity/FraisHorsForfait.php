@@ -23,7 +23,7 @@ class FraisHorsForfait
     /**
      * @ORM\Column(type="string", length=10)
      */
-    private $mois;
+    private $date;
 
     /**
      * @ORM\Column(type="integer")
@@ -45,14 +45,14 @@ class FraisHorsForfait
         return $this->id;
     }
 
-    public function getMois()
+    public function getDate()
     {
-        return $this->mois;
+        return $this->date;
     }
 
-    public function setMois($mois): self
+    public function setDate($date): self
     {
-        $this->mois = $mois;
+        $this->date = $date;
 
         return $this;
     }

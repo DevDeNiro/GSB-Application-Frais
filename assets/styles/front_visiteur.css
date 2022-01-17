@@ -33,3 +33,19 @@
     text-decoration: none;
     font-weight: bold;
 }
+
+.center {
+
+    display: flex;
+    justify-content: center;
+
+}
+
+.Center {
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    position: relative;
+    grid-gap: 10rem;
+}

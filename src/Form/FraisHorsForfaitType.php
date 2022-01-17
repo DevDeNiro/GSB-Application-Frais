@@ -30,14 +30,14 @@ class FraisHorsForfaitType extends AbstractType
                         'attr' => array ( 
                             'placeholder' => 'montant' )
                     ],
-                )  
+            )  
 
-                ->add('libelle', TextType::class, [
-                    'required' => true,
-                    'attr' => array ( 
-                        'placeholder' => 'libelle' ),
-                    'label' => 'Libellé (ex: Exemple)'
-                    
+            ->add('libelle', TextType::class, [
+                'required' => true,
+                'attr' => array ( 
+                    'placeholder' => 'libelle' ),
+                'label' => 'Libellé (ex: Exemple)'
+                
                 ],
             )
 

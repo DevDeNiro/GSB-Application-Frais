@@ -160,7 +160,8 @@
                                       <tr>
                                           <th scope="col">Mois</th>
                                           <th scope="col">Libellé</th>
-                                          <th scope="col">Montant</th>
+                                          <th scope="col">Montant (en €)</th>
+                                          <th scope="col">Date</th>
                                       </tr>
                                   </thead>
                                     <tr>
@@ -168,6 +169,7 @@
                                         <td>{{ horsForfait.mois }}</td>
                                         <td>{{ horsForfait.libelle }}</td>
                                         <td>{{ horsForfait.montant }}</td>
+                                        <td>{{ horsForfait.date.format('d/m/Y')}} </td>
                                     </tr>
                                     {% endfor %}
                       {% endif %}
