@@ -4,6 +4,10 @@ namespace App\Entity;
 
 use App\Repository\VehiculeRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\ORM\Mapping\ManyToOne;
+use Doctrine\ORM\Mapping\JoinColumn;
 
 /**
  * @ORM\Entity(repositoryClass=VehiculeRepository::class)
@@ -29,6 +33,10 @@ class Vehicule
 
     /**
      * @ORM\Column(type="string", length=9)
+     * @Assert\Regex(
+     *     pattern = "#^([a-hj-np-rtvx-z]{2}|s[a-hj-np-rtv-z]|w[a-hj-np-tvx-z])-[0-9]{3}-([a-hj-np-rtv-z]{2}|s[a-hj-np-rtv-z])$#i",
+     *     message = "L'immatriculation du véhicule doit respecter le format AA-123-AA"
+     * )
      */
     private $immatriculation;
 
