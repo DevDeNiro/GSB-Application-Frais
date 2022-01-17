@@ -65,7 +65,7 @@ class User implements UserInterface
     private $ville;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="datetime")
      */
     private $date_embauche;
 

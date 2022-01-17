@@ -73,7 +73,13 @@
                   {% else %}
                     {{ app.user.prenom }}
                   {% endif %}</span> sur votre espace visiteur</h1> </div>
-           
+            {# Message envoyé en session et supprimé au prochain affichage #}
+              {% for message_vehicule in app.flashes ('success1') %}  
+              <div class="alert alert-primary" role="alert">
+                  {{ message_vehicule }}
+              </div>
+              {% endfor %} 
+
               <div class="row mt-5">
              {# <div class="mx-auto w-75 p-0 mt-5 card"> #}
                 <div class="col-6 col-md-4">
@@ -81,7 +87,7 @@
                     <p> Saisir une fiche de frais </p>
 
                     <p>
-                        <a class="btn btn-primary btn-lg" href="{{ path('choix_fiche') }}">
+                        <a class="btn btn-primary btn-lg" href="{{ path('fiche_frais') }}">
                             <i class="fas fa-edit" aria-hidden="true"></i> Remplir une fiche de frais
                         </a>
                     </p>

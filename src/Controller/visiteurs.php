@@ -11,7 +11,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
-use App\Entity\User;
 
 use App\Entity\Vehicule;
 use App\Form\VehiculeType;
@@ -112,6 +111,10 @@ class visiteurs extends AbstractController
         ]); 
     }
 
+
+
+
+
     /**
      * @Route("/visiteurs/frais_hors_forfais", name = "fiche_frais")
      * @Method({"GET", "POST"})
@@ -144,13 +147,9 @@ class visiteurs extends AbstractController
             'form' => $form->createView(),
             'date' => $mois_actuel,
         ]); 
-    
     }
        
-    /**
-     * @Route("/visiteurs/suivi_frais", name = "visiteur_frais")
-     * @Method({"GET", "POST"})
-     */
+
     
     
     // public function Suivre_frais_forfait() : Response 
