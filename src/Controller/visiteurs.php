@@ -189,6 +189,7 @@ class visiteurs extends AbstractController
             return $this->render('visiteurs/remboursement_visiteur.html.twig', [
                 "Hors_Forfait" => $repository,
                 "ÔForfait" => $repository2,
+                "vehicule" => $repository3
             ]); 
         }
     
