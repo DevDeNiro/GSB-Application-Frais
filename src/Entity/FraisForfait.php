@@ -63,6 +63,16 @@ class FraisForfait
      */
     private $proprietaire;
 
+    /**
+     * @ORM\Column(type="string", length=12)
+     */
+    private $mois;
+
+    /**
+     * @ORM\Column(type="string", length=20, nullable=true)
+     */
+    private $etat;
+
 
     public function getId(): ?int
     {
@@ -149,6 +159,30 @@ class FraisForfait
     public function setProprietaire(string $proprietaire): self
     {
         $this->proprietaire = $proprietaire;
+
+        return $this;
+    }
+
+    public function getMois(): ?string
+    {
+        return $this->mois;
+    }
+
+    public function setMois(string $mois): self
+    {
+        $this->mois = $mois;
+
+        return $this;
+    }
+
+    public function getEtat(): ?string
+    {
+        return $this->etat;
+    }
+
+    public function setEtat(?string $etat): self
+    {
+        $this->etat = $etat;
 
         return $this;
     }

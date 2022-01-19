@@ -8,8 +8,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use App\Entity\Vehicule;
+use App\Form\VehiculeType;
 
+use App\Entity\FraisHorsForfait;
 use App\Entity\User;
+use App\Form\FraisHorsForfaitType;
+
+use App\Entity\FraisForfait;
+use App\Form\FraisForfaitType;
 
 class comptables extends AbstractController
 {
@@ -61,27 +68,30 @@ class comptables extends AbstractController
     
     public function suivi_fiche_frais() : Response
     {
+            $user = $this->getUser();
+            $user = $user->getId();
 
-        // $em=$this->getDoctrine()->getManager();
+            $repository = $this->getDoctrine()
+            ->getRepository(FraisHorsForfait::class)
+            ->findBy(['proprietaire' => $user]);
 
-        $repository = $this->getDoctrine()
-                ->getRepository(User::class)
-                ->findAll();
+            $repository2 = $this->getDoctrine()
+            ->getRepository(FraisForfait::class)
+            ->findAll();
 
-                
-        // $em->remove($repository);
-        // $em->flush();
+            $repository3 = $this->getDoctrine()
+            ->getRepository(Vehicule::class)
+            ->findBy(['proprietaire' => $user]);
 
-        // $this->addFlash('success', 'Suppression effectuée'); 
+            $repository4 = $this->getDoctrine()
+            ->getRepository(User::class)
+            ->findAll();
 
-                // if (!$repository) {
-                //     throw $this->createNotFoundException(
-                //         'Il n\'existe aucun produit en BdD'
-                //     );
-                // }
-
-        return $this->render('comptables/fiche_frais.html.twig', [
-            "fiches" => $repository
-        ]); 
+            return $this->render('comptables\fiche_frais.html.twig', [
+                "Hors_Forfait" => $repository,
+                "Forfait" => $repository2,
+                "vehicule" => $repository3,
+                "user" => $repository4
+            ]);
     }
 }

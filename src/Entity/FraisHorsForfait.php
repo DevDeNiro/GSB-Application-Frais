@@ -40,6 +40,11 @@ class FraisHorsForfait
      */
     private $proprietaire;
 
+    /**
+     * @ORM\Column(type="string", length=20, nullable=true)
+     */
+    private $etat;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -89,6 +94,18 @@ class FraisHorsForfait
     public function setProprietaire(string $proprietaire): self
     {
         $this->proprietaire = $proprietaire;
+
+        return $this;
+    }
+
+    public function getEtat(): ?string
+    {
+        return $this->etat;
+    }
+
+    public function setEtat(?string $etat): self
+    {
+        $this->etat = $etat;
 
         return $this;
     }

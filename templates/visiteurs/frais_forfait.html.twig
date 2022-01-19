@@ -98,6 +98,8 @@
                             <div class="col m-1"> {{ form_row (form.libelle)}}        </div>
                             {% do form.montant.setRendered() %}
                             {% do form.proprietaire.setRendered() %}
+                            {% do form.mois.setRendered() %}
+                            {% do form.etat.setRendered() %}
                           </div>
 
                           <div class="row">

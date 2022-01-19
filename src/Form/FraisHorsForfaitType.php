@@ -58,6 +58,12 @@ class FraisHorsForfaitType extends AbstractType
                 'attr' => array ( 
                     'placeholder' => 'AA-123-AA' )
             ])
+
+            ->add('etat', TextType::class, [
+                'required' => false,
+                'empty_data' => 'En attente'      
+            ],   
+        )
         ;
     }
 

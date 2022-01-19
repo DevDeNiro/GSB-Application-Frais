@@ -19,8 +19,8 @@ class FraisForfaitType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $calcul = 10 + 10;
-        strval($calcul);
+        setlocale(LC_TIME, "fr_FR");
+        $mois_actuel = date("F");
 
         $builder
             ->add('repasMidi', NumberType::class,[
@@ -61,10 +61,9 @@ class FraisForfaitType extends AbstractType
             ->add('montant', TextType::class,[
                 'required' => false,
                 'attr' => array ( 
-                    'placeholder' => 'Nombre de repas' ,
-                    'data' =>  $calcul),
+                    'placeholder' => 'Nombre de repas'),
                     'label' => 'calcul',
-                    'empty_data' => $calcul
+                    'empty_data' => ''
             ],
         )
 
@@ -75,6 +74,23 @@ class FraisForfaitType extends AbstractType
                 'attr' => array ( 
                     'placeholder' => 'AA-123-AA' )
             ])
+
+            ->add('mois', TextType::class, [
+                'required' => false,
+                'attr' => array ( 
+                    'placeholder' => 'Mois',
+                'data' =>  $mois_actuel ),
+                'label' => 'Mois',
+                'empty_data' => $mois_actuel
+                    
+            ],   
+        )
+
+        ->add('etat', TextType::class, [
+            'required' => false,
+            'empty_data' => 'En attente'      
+        ],   
+    )
             ;
     }
 
