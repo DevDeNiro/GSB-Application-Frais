@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'd4a711ef4e6187d5df55913ec20d29bd09801b9e',
+        'reference' => '08b7e191c9d343d4038131de72c0dc46237def5e',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'd4a711ef4e6187d5df55913ec20d29bd09801b9e',
+            'reference' => '08b7e191c9d343d4038131de72c0dc46237def5e',
             'dev_requirement' => false,
         ),
         'composer/package-versions-deprecated' => array(
@@ -1270,15 +1270,6 @@
             'aliases' => array(),
             'reference' => '24227617a4ddbdf78f8ab12ce2b76dfb54a7d851',
             'dev_requirement' => true,
-        ),
-        'symfony/webpack-encore-bundle' => array(
-            'pretty_version' => 'v1.12.0',
-            'version' => '1.12.0.0',
-            'type' => 'symfony-bundle',
-            'install_path' => __DIR__ . '/../symfony/webpack-encore-bundle',
-            'aliases' => array(),
-            'reference' => '9943a59f8551b7a8181e19a2b4efa60e5907c667',
-            'dev_requirement' => false,
         ),
         'symfony/yaml' => array(
             'pretty_version' => 'v4.4.29',
