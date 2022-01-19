@@ -81,7 +81,7 @@ class comptables extends AbstractController
 
             $repository3 = $this->getDoctrine()
             ->getRepository(Vehicule::class)
-            ->findBy(['proprietaire' => $user]);
+            ->findAll();
 
             $repository4 = $this->getDoctrine()
             ->getRepository(User::class)

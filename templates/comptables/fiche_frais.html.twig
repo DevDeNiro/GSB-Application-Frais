@@ -94,16 +94,54 @@
                         {# <th scope="row"> {{ visiteurs.id }}</th> #}
 
                     <tr>
-                    {% for Forfait in Forfait %}                
-                        <td>{{ Forfait.id }}</td>
+                      
+                    
+                    
+                    {% for Forfait in Forfait %}   
+                                 
+                        {% for user in user %}  
+                        {% if user.id == Forfait.proprietaire %}
+                        <td>{{ user.prenom }} {{ user.nom }}</td>
+                        {% endif %}
+                        {% endfor %}
                         <td>{{ Forfait.mois }}</td>
-                        <td>{{ Forfait.montant }}</td>
+                            {% for vehicule in vehicule %}
+                            {% for user in user %}  
+                            {% if user.id == vehicule.proprietaire %}
+                            {% if vehicule.carburant == "Diesel" %}
+                              {% if vehicule.chevaux <= 4 %}
+                            <td>{{ Forfait.km * 0.52 + Forfait.nuit * 80 + Forfait.repasMidi * 29}}</td>
+
+                              {% endif %}
+                              {% if vehicule.chevaux > 4 %}
+
+                            <td>{{ Forfait.km * 0.58 + Forfait.nuit * 80 + Forfait.repasMidi * 29}}</td>
+
+                              {% endif %}
+                            {% endif %}
+
+                            {% if vehicule.carburant == "Essence" %}
+                              {% if vehicule.chevaux <= 4 %}
+
+                            <td>{{ Forfait.km * 0.62 + Forfait.nuit * 80 + Forfait.repasMidi * 29}}</td>
+
+                              {% endif %}
+                              {% if vehicule.chevaux > 4 %}
+
+                            <td>{{ Forfait.km * 0.67 + Forfait.nuit * 80 + Forfait.repasMidi * 29}}</td>
+
+                              {% endif %}
+                            {% endif %}
+                            {% endif %}
+                            {% endfor %}
+                            {% endfor %}
                         <td>{{ Forfait.etat }}</td>
                         {# <td>
                             <a class="btn btn-outline-danger btn1" href={{ path("supprimer", {'id': Forfait.id}) }} role="button">Supprimer</a> 
                             <a class="btn btn-outline btn1" href={{ path("modifier", {'id': Forfait.id}) }} role="button">Modifier</a> 
                         </td> #}
                     </tr>
+                    
                     {% endfor %}
                 </tbody>
             </table>   
@@ -120,5 +158,6 @@
   <script src="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-  <script src="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.js"></script>  {% endblock %}
+  <script src="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.js"></script>  
+  {% endblock %}
 </html>
