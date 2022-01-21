@@ -32,53 +32,50 @@
       </div>
       <div class="row">
         <div class="col-2 sidebar p-0">
-              <header>
-                
-                <a href="#">
-                  {% if app.user is null %}
-                    <h3 class="my-3">Aucun utilisateur connexté</h3>
-                  {% else %}
-                    <h3 class="py-3">Bienvenue {{ app.user.prenom }}</h3>
-                  {% endif %}<span class="id_user">
-                </a>
-                
-              </header>
-              <div class="ml-3 nav w-auto pl-3 mt-4">
-                <div class="p-0 pb-2 col-12 liste  ">
-                  <a href="/visiteurs/accueil_visiteur" class="p-0" >
-                    <i class="fas fa-home"></i>Accueil
-                  </a>
-                </div>
+          <header>
+            <a href="#">
+              {% if app.user is null %}
+                <h3 class="my-3">Aucun utilisateur connexté</h3>
+              {% else %}
+                <h3 class="py-3">Bienvenue {{ app.user.prenom }}</h3>
+              {% endif %}<span class="id_user">
+            </a>
+          </header>
+          <div class="ml-3 nav w-auto pl-3 mt-4">
+            <div class="p-0 pb-2 col-12 liste  ">
+              <a href="/visiteurs/accueil_visiteur" class="p-0" >
+                <i class="fas fa-home"></i>Accueil
+              </a>
+            </div>
 
-                <div class="p-0 pb-2 col-12 liste  ">
-                  <a href="/visiteurs/choix_fiche" class="p-0" >
-                    <i class="fas fa-edit"></i>Saisir une fiche
-                  </a>
-                </div>
+            <div class="p-0 pb-2 col-12 liste  ">
+              <a href="/visiteurs/choix_fiche" class="p-0" >
+                <i class="fas fa-edit"></i>Saisir une fiche
+              </a>
+            </div>
 
-                <div class="p-0 pb-2 col-12 liste  ">
-                  <a href="/visiteurs/suivi_frais" class="p-0 " >
-                    <i class="fas fa-file-alt"></i> Suivre ses remboursements
-                  </a>
-                </div>
+            <div class="p-0 pb-2 col-12 liste  ">
+              <a href="/visiteurs/suivi_frais" class="p-0 " >
+                <i class="fas fa-file-alt"></i> Suivre ses remboursements
+              </a>
+            </div>
 
-                <div class="p-0 pb-2 col-12 liste  ">
-                  <a href="/visiteurs/vehicule" class="p-0  " >
-                    <i class="fas fa-car"></i> Saisir un nouveau véhicule
-                  </a>
-                </div>
-    
+            <div class="p-0 pb-2 col-12 liste  ">
+              <a href="/visiteurs/vehicule" class="p-0  " >
+                <i class="fas fa-car"></i> Saisir un nouveau véhicule
+              </a>
+            </div>
         </div>
-        </div>
+      </div>
 
-    <div class="col-10 p-0">
+      <div class="col-10 p-0">
           <div class="container-fluid">
           <div class="row top">
             <div class="my-auto text_bloc_top col col-md-8 col-lg-9 p-0 bloc_top">
               <p class="m-0 ml-2 titre_bandeau">Suivre ses remboursements</p>
             </div>
             <div class="my-auto text_bloc_top col col-md-4 col-lg-3 p-0 bloc_top">
-              <p class="m-0">Période : novembre 2021</p>
+              <p class="m-0">Période : {{date}}</p>
             </div>
           </div>
             <div class="row mx-auto w-100 p-0 mt-5">

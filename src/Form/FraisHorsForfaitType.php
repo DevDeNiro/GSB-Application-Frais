@@ -23,48 +23,43 @@ class FraisHorsForfaitType extends AbstractType
         $mois_actuel = date("F");
 
         $builder
-            // ->add('mois')
 
-            ->add('montant',  NumberType::class, [
-                        'required' => true,
-                        'attr' => array ( 
-                            'placeholder' => 'montant' )
-                    ],
-                )  
-
-                ->add('libelle', TextType::class, [
+        ->add('montant',  NumberType::class, [
                     'required' => true,
                     'attr' => array ( 
-                        'placeholder' => 'libelle' ),
-                    'label' => 'Libellé (ex: Exemple)'
-                    
-                ],
-            )
+                        'placeholder' => 'montant' )
+                ])  
 
-            ->add('mois', TextType::class, [
-                'required' => false,
-                'attr' => array ( 
-                    'placeholder' => 'Mois',
-                'data' =>  $mois_actuel ),
-                'label' => 'Mois',
-                'empty_data' => $mois_actuel
-                    
-            ],   
-        )
-            ->add('proprietaire', TextType::class ,[
+        ->add('libelle', TextType::class, [
+            'required' => true,
+            'attr' => array ( 
+                'placeholder' => 'libelle' ),
+            'label' => 'Libellé (ex: Exemple)'
+            
+        ])
 
-                'required' => true,
-                'constraints' => [new Length(['max' => 9])],
-                'attr' => array ( 
-                    'placeholder' => 'AA-123-AA' )
-            ])
+        ->add('mois', TextType::class, [
+            'required' => false,
+            'attr' => array ( 
+                'placeholder' => 'Mois',
+            'data' =>  $mois_actuel ),
+            'label' => 'Mois',
+            'empty_data' => $mois_actuel
+                
+        ])
+        
+        ->add('proprietaire', TextType::class ,[
 
-            ->add('etat', TextType::class, [
-                'required' => false,
-                'empty_data' => 'En attente'      
-            ],   
-        )
-        ;
+            'required' => true,
+            'constraints' => [new Length(['max' => 9])],
+            'attr' => array ( 
+                'placeholder' => 'AA-123-AA' )
+        ])
+
+        ->add('etat', TextType::class, [
+            'required' => false,
+            'empty_data' => 'En attente'      
+        ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

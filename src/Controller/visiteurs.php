@@ -107,13 +107,13 @@ class visiteurs extends AbstractController
 
     public function choix_fiche() : Response           
     {
+        setlocale(LC_TIME, "fr_FR");
+        $mois_actuel = date("F");
+
         return $this->render('visiteurs\choix_fiche.html.twig', [
+            'date' => $mois_actuel,
         ]); 
     }
-
-
-
-
 
     /**
      * @Route("/visiteurs/frais_hors_forfais", name = "fiche_frais")
@@ -171,6 +171,9 @@ class visiteurs extends AbstractController
 
     public function Suivre_frais_hors_forfait() : Response 
         {
+            setlocale(LC_TIME, "fr_FR");
+            $mois_actuel = date("F");
+
             $user = $this->getUser();
             $user = $user->getId();
 
@@ -189,7 +192,8 @@ class visiteurs extends AbstractController
             return $this->render('visiteurs/remboursement_visiteur.html.twig', [
                 "Hors_Forfait" => $repository,
                 "ÔForfait" => $repository2,
-                "vehicule" => $repository3
+                "vehicule" => $repository3,
+                'date' => $mois_actuel,
             ]); 
         }
     
@@ -200,6 +204,9 @@ class visiteurs extends AbstractController
     
     public function Saisi_vehicule(Request $request) 
     {
+        setlocale(LC_TIME, "fr_FR");
+        $mois_actuel = date("F");
+
         $Vehicule = new Vehicule();
         $entityManager = $this->getDoctrine()->getManager();
         $form = $this->createForm(VehiculeType::class, $Vehicule); 
@@ -219,7 +226,8 @@ class visiteurs extends AbstractController
              
         }
         return $this->render('visiteurs\vehicule_visiteur.html.twig',[ // Création du formulaire par symfony
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'date' => $mois_actuel
         ]); 
     }
 

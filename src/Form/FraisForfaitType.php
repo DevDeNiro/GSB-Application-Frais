@@ -23,75 +23,66 @@ class FraisForfaitType extends AbstractType
         $mois_actuel = date("F");
 
         $builder
-            ->add('repasMidi', NumberType::class,[
-                    'required' => true,
-                    'attr' => array ( 
-                        'placeholder' => 'Nombre de repas' )
-                ],
-            )    
-            
-            ->add('nuit', NumberType::class,[
-                    'required' => true,
-                    'attr' => array ( 
-                        'placeholder' => 'Nombre de nuit' )
-                ],
-            )  
-
-            ->add('etape', NumberType::class,[
-                    'required' => true,
-                    'attr' => array ( 
-                        'placeholder' => 'Nombre d\'étape' )
-                ],
-            )  
-
-            ->add('km', NumberType::class,[
-                    'required' => true,
-                    'attr' => array ( 
-                        'placeholder' => 'Nombre de repas' )
-                ],
-            )  
-
-            ->add('libelle', NumberType::class,[
+        ->add('repasMidi', NumberType::class,[
                 'required' => true,
                 'attr' => array ( 
                     'placeholder' => 'Nombre de repas' )
-            ],
-        )
-
-            ->add('montant', TextType::class,[
-                'required' => false,
-                'attr' => array ( 
-                    'placeholder' => 'Nombre de repas'),
-                    'label' => 'calcul',
-                    'empty_data' => ''
-            ],
-        )
-
-            ->add('proprietaire', TextType::class ,[
-
+        ])    
+        
+        ->add('nuit', NumberType::class,[
                 'required' => true,
-                'constraints' => [new Length(['max' => 9])],
                 'attr' => array ( 
-                    'placeholder' => 'AA-123-AA' )
-            ])
+                    'placeholder' => 'Nombre de nuit' )
+        ])  
 
-            ->add('mois', TextType::class, [
-                'required' => false,
+        ->add('etape', NumberType::class,[
+                'required' => true,
                 'attr' => array ( 
-                    'placeholder' => 'Mois',
-                'data' =>  $mois_actuel ),
-                'label' => 'Mois',
-                'empty_data' => $mois_actuel
-                    
-            ],   
-        )
+                    'placeholder' => 'Nombre d\'étape' )
+        ])  
+
+        ->add('km', NumberType::class,[
+                'required' => true,
+                'attr' => array ( 
+                    'placeholder' => 'Nombre de repas' )
+        ])  
+
+        ->add('libelle', NumberType::class,[
+            'required' => true,
+            'attr' => array ( 
+                'placeholder' => 'Nombre de repas' )
+        ])
+
+        ->add('montant', TextType::class,[
+            'required' => false,
+            'attr' => array ( 
+                'placeholder' => 'Nombre de repas'),
+                'label' => 'calcul',
+                'empty_data' => ''
+        ])
+
+        ->add('proprietaire', TextType::class ,[
+
+            'required' => true,
+            'constraints' => [new Length(['max' => 9])],
+            'attr' => array ( 
+                'placeholder' => 'AA-123-AA' )
+        ])
+
+        ->add('mois', TextType::class, [
+            'required' => false,
+            'attr' => array ( 
+                'placeholder' => 'Mois',
+            'data' =>  $mois_actuel ),
+            'label' => 'Mois',
+            'empty_data' => $mois_actuel
+                
+        ])
 
         ->add('etat', TextType::class, [
             'required' => false,
             'empty_data' => 'En attente'      
-        ],   
-    )
-            ;
+        ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

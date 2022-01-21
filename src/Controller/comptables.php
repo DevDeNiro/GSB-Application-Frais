@@ -46,6 +46,9 @@ class comptables extends AbstractController
     
     public function Afficher_liste_visiteur() : Response
     {
+        setlocale(LC_TIME, "fr_FR");
+        $mois_actuel = date("F");
+
         $repository = $this->getDoctrine()
         ->getRepository(User::class)
         ->findAll();
@@ -57,7 +60,8 @@ class comptables extends AbstractController
         }
 
         return $this->render('comptables/liste_visiteur.html.twig', [
-            "liste_visiteur" => $repository
+            "liste_visiteur" => $repository,
+            'date' => $mois_actuel
         ]); 
     }
 
@@ -68,30 +72,58 @@ class comptables extends AbstractController
     
     public function suivi_fiche_frais() : Response
     {
-            $user = $this->getUser();
-            $user = $user->getId();
+        setlocale(LC_TIME, "fr_FR");
+        $mois_actuel = date("F");
+        
+        $user = $this->getUser();
+        $user = $user->getId();
 
-            $repository = $this->getDoctrine()
-            ->getRepository(FraisHorsForfait::class)
-            ->findBy(['proprietaire' => $user]);
+        $repository = $this->getDoctrine()
+        ->getRepository(FraisHorsForfait::class)
+        ->findBy(['proprietaire' => $user]);
 
-            $repository2 = $this->getDoctrine()
-            ->getRepository(FraisForfait::class)
-            ->findAll();
+        $repository2 = $this->getDoctrine()
+        ->getRepository(FraisForfait::class)
+        ->findAll();
 
-            $repository3 = $this->getDoctrine()
-            ->getRepository(Vehicule::class)
-            ->findAll();
+        $repository3 = $this->getDoctrine()
+        ->getRepository(Vehicule::class)
+        ->findAll();
 
-            $repository4 = $this->getDoctrine()
-            ->getRepository(User::class)
-            ->findAll();
+        $repository4 = $this->getDoctrine()
+        ->getRepository(User::class)
+        ->findAll();
 
-            return $this->render('comptables\fiche_frais.html.twig', [
-                "Hors_Forfait" => $repository,
-                "Forfait" => $repository2,
-                "vehicule" => $repository3,
-                "user" => $repository4
-            ]);
+        return $this->render('comptables\fiche_frais.html.twig', [
+            "Hors_Forfait" => $repository,
+            "Forfait" => $repository2,
+            "vehicule" => $repository3,
+            "user" => $repository4,
+            'date' => $mois_actuel
+        ]);
+    }
+
+    /**
+     * @Route("/supprimer/{id}", name = "supprimer")
+    */
+
+    public function supprimer(int $id) : Response{
+
+        $entityManager=$this->getDoctrine()->getManager();
+        
+        $repository20 = $this->getDoctrine()
+                ->getRepository(FraisForfait::class)
+                ->find($id);
+
+
+        $entityManager->remove($repository20);
+        $entityManager->flush();
+
+        $this->addFlash('success', 'Suppression effectuée'); // Affiche un message de confirmation sur la page d'accueil
+        
+        return $this->render('comptables\fiche_frais.html.twig', [
+        ]);
+
+        // return $this->redirectToRoute('accueil'); // Rediriger vers la page d'accueil
     }
 }

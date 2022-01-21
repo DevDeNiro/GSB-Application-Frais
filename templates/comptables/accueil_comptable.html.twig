@@ -29,15 +29,9 @@
           </nav> 
         </div>
       </div>
-
-
-     
-        
-
       <div class="row">
         <div class="col-2 sidebar p-0">
               <header>
-                
                 <a href="#">
                   {% if app.user is null %}
                     <h3 class="my-3">Aucun utilisateur connecté</h3>
@@ -45,7 +39,6 @@
                     <h3 class="py-3">Bienvenue {{ app.user.prenom }}</h3>
                   {% endif %}<span class="id_user">
                 </a>
-                
               </header>
               <div class="ml-3 nav w-auto pl-3 mt-4">
                 <div class="p-0 pb-2 col-12 liste">
@@ -65,17 +58,15 @@
                     <i class="fas fa-file-alt"></i> Fiche de frais
                   </a>
                 </div>
-    
           </div>
         </div>
 
       <div class="col-10 p-0">
           <div class="container-fluid">
-            <div class="row top">
-              <div class="my-auto text_bloc_top col col-md-8 col-lg-9 p-0 bloc_top">
-                <p class="m-0 ml-2 titre_bandeau">Accueil</p>
-              </div>
-            </div>
+            <div class="page-header text-center pt-5"> <h1> Bienvenue <span class="id_user">{% if app.user is null %}
+                  {% else %}
+                    {{ app.user.prenom }}
+                  {% endif %}</span> sur votre espace comptable</h1> </div>
           </div>
       </div>
     </div>

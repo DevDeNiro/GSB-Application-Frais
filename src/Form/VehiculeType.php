@@ -31,57 +31,54 @@ class VehiculeType extends AbstractType
                         'BMW' => 'bmw',
                         'Mercedes' => 'mercedes',
                         'Volkswagen' => 'Volkswagen',
-                        'Audi' => 'audi',
-                        // 'autre' => 'autre', Autre à pouvoir renseigner librement          
+                        'Audi' => 'audi',      
                 ],
             ]
         ])
             
-            ->add('modele', TextType::class ,[
-               
-                'required' => true,
-                'attr' => array ( 
-                    'placeholder' => 'Modèle du véhicule' )
-            ])
+        ->add('modele', TextType::class ,[
+            
+            'required' => true,
+            'attr' => array ( 
+                'placeholder' => 'Modèle du véhicule' )
+        ])
 
-            ->add('immatriculation', TextType::class ,[
+        ->add('immatriculation', TextType::class ,[
+            
+            'required' => true,
+            'constraints' => [new Length(['max' => 9])],
+            'attr' => array ( 
+                'placeholder' => 'AA-123-AA' )
+        ])
+
+        ->add('carburant', ChoiceType::class, [
+            'choices'  => [
+
+                'Type de carburant' => '',
                 
-                'required' => true,
-                'constraints' => [new Length(['max' => 9])],
-                'attr' => array ( 
-                    'placeholder' => 'AA-123-AA' )
-            ])
-
-            ->add('carburant', ChoiceType::class, [
-                'choices'  => [
-
-                    'Type de carburant' => '',
-                   
-                    'Type de carburant' => [
-                        'Diesel' => 'Diesel',
-                        'Essence' => 'Essence'
-                        // 'autre' => 'autre', Autre à pouvoir renseigner librement          
+                'Type de carburant' => [
+                    'Diesel' => 'Diesel',
+                    'Essence' => 'Essence'
                 ],
             ]
         ])
 
-            ->add('chevaux', NumberType::class ,[
-               
-                'required' => true,
-                'attr' => array ( 
-                    'placeholder' => 'Chevaux fiscaux' )
-            ])
+        ->add('chevaux', NumberType::class ,[
+            
+            'required' => true,
+            'attr' => array ( 
+                'placeholder' => 'Chevaux fiscaux' )
+        ])
 
-            ->add('proprietaire', TextType::class ,[
+        ->add('proprietaire', TextType::class ,[
 
-                'required' => true,
-                'constraints' => [new Length(['max' => 9])],
-                'attr' => array ( 
-                    'placeholder' => 'AA-123-AA' )
-            ])
-  
-            ->getForm()
-        ;
+            'required' => true,
+            'constraints' => [new Length(['max' => 9])],
+            'attr' => array ( 
+                'placeholder' => 'AA-123-AA' )
+        ])
+
+        ->getForm();
     }
 
     public function configureOptions(OptionsResolver $resolver): void
