@@ -50,8 +50,8 @@ class comptables extends AbstractController
         $mois_actuel = date("F");
 
         $repository = $this->getDoctrine()
-        ->getRepository(User::class)
-        ->findAll();
+            ->getRepository(User::class)
+            ->findAll();
 
         if (!$repository) {
             throw $this->createNotFoundException(
@@ -79,20 +79,20 @@ class comptables extends AbstractController
         $user = $user->getId();
 
         $repository = $this->getDoctrine()
-        ->getRepository(FraisHorsForfait::class)
-        ->findBy(['proprietaire' => $user]);
+            ->getRepository(FraisHorsForfait::class)
+            ->findBy(['proprietaire' => $user]);
 
         $repository2 = $this->getDoctrine()
-        ->getRepository(FraisForfait::class)
-        ->findAll();
+            ->getRepository(FraisForfait::class)
+            ->findAll();
 
         $repository3 = $this->getDoctrine()
-        ->getRepository(Vehicule::class)
-        ->findAll();
+            ->getRepository(Vehicule::class)
+            ->findAll();
 
         $repository4 = $this->getDoctrine()
-        ->getRepository(User::class)
-        ->findAll();
+            ->getRepository(User::class)
+            ->findAll();
 
         return $this->render('comptables\fiche_frais.html.twig', [
             "Hors_Forfait" => $repository,
