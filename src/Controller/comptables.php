@@ -108,7 +108,7 @@ class comptables extends AbstractController
         $repository4 = $this->getDoctrine()
             ->getRepository(User::class)
             ->findAll();
-
+        
         return $this->render('comptables\fiche_frais.html.twig', [
             "Hors_Forfait" => $repository,
             "Forfait" => $repository2,
@@ -157,7 +157,7 @@ class comptables extends AbstractController
         $repository21->setEtat('Validé');
         $entityManager->flush();
 
-        $this->addFlash('success', 'Frais validé'); // Affiche un message de confirmation sur la page d'accueil
+        $this->addFlash('valide', 'Validation effectuée'); // Affiche un message de confirmation sur la page d'accueil
         
         // return $this->render('comptables\fiche_frais.html.twig', [
         // ]);
@@ -180,7 +180,7 @@ class comptables extends AbstractController
         $repository21->setEtat('En attente');
         $entityManager->flush();
 
-        $this->addFlash('success', 'Frais mis en attente'); // Affiche un message de confirmation sur la page d'accueil
+        $this->addFlash('attente', 'Mise en attente effectuée'); // Affiche un message de confirmation sur la page d'accueil
         
         // return $this->render('comptables\fiche_frais.html.twig', [
         // ]);
@@ -203,14 +203,15 @@ class comptables extends AbstractController
         $repository21->setEtat('Rejeté');
         $entityManager->flush();
 
-        $this->addFlash('success', 'Frais rejeté'); // Affiche un message de confirmation sur la page d'accueil
-        
+        $this->addFlash('rejete', 'Rejet effectué'); // Affiche un message de confirmation sur la page d'accueil
+
         // return $this->render('comptables\fiche_frais.html.twig', [
         // ]);
-
+            
         return $this->redirectToRoute('suivi_frais'); // Rediriger vers la page d'accueil
     }
 
+    
     /**
      * @Route("/comptables/info/{id}/{proprietaire}", name = "info")
     */
@@ -228,6 +229,8 @@ class comptables extends AbstractController
         $repository25 = $this->getDoctrine()
             ->getRepository(Vehicule::class)
             ->findBy(['proprietaire' => $proprietaire]);
+
+        
 
         // return $this->redirectToRoute('suivi_frais'); // Rediriger vers la page d'accueil
         return $this->render('comptables\info.html.twig', [
