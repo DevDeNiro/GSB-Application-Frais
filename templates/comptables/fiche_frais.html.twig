@@ -69,7 +69,7 @@
                 <p class="m-0 ml-2 titre_bandeau">Fiche de frais</p>
               </div>
               <div class="my-auto text_bloc_top col col-md-4 col-lg-3 p-0 bloc_top">
-                <p class="m-0">Période : {{date}}</p>
+                <p class="m-0">Période : {{ date }}</p>
               </div>
             </div>
           </div>
@@ -87,8 +87,9 @@
                         <th scope="col" data-sortable="true" data-field="action">Action</th>
                     </tr>
                 </thead>
-                <tr>
-                  {% for Forfait in Forfait %}            
+                
+                  {% for Forfait in Forfait %}
+                  <tr>            
                     {% for user in user %}  
                       {% if user.id == Forfait.proprietaire %}
                         <td>{{ user.prenom }} {{ user.nom }}</td>
@@ -132,8 +133,9 @@
                       <a class="btn btn-outline-danger btn1" href={{ path("supprimer", {'id': Forfait.id}) }} role="button">Supprimer</a> 
                       {# <a class="btn btn-outline btn1" href={{ path("modifier", {'id': Forfait.id}) }} role="button">Modifier</a>  #}
                     </td>
+                    </tr>   
                   {% endfor %}
-                </tr>     
+                  
               </tbody>
               </table>   
             {# {% endif %}  #}

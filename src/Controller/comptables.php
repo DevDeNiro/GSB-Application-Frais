@@ -121,9 +121,9 @@ class comptables extends AbstractController
 
         $this->addFlash('success', 'Suppression effectuée'); // Affiche un message de confirmation sur la page d'accueil
         
-        return $this->render('comptables\fiche_frais.html.twig', [
-        ]);
+        // return $this->render('comptables\fiche_frais.html.twig', [
+        // ]);
 
-        // return $this->redirectToRoute('accueil'); // Rediriger vers la page d'accueil
+        return $this->redirectToRoute('suivi_frais'); // Rediriger vers la page d'accueil
     }
 }
