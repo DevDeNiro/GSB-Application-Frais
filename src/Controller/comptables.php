@@ -40,12 +40,12 @@ class comptables extends AbstractController
             ->findBy(['etat' => "En attente"]);
 
         $repository27 = $this->getDoctrine()
-        ->getRepository(FraisForfait::class)
-        ->findBy(['etat' => "Rejeté"]);
+            ->getRepository(FraisForfait::class)
+            ->findBy(['etat' => "Rejeté"]);
         
         $repository28 = $this->getDoctrine()
-        ->getRepository(FraisForfait::class)
-        ->findBy(['etat' => "Validé"]);
+            ->getRepository(FraisForfait::class)
+            ->findBy(['etat' => "Validé"]);
 
         return $this->render('/comptables/accueil_comptable.html.twig', [
             "attente" => $repository26,

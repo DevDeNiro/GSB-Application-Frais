@@ -93,6 +93,13 @@ class visiteurs extends AbstractController
         setlocale(LC_TIME, "fr_FR");
         $mois_actuel = date("F Y");
 
+        $user = $this->getUser();
+        $user = $user->getId();
+
+        $repository28 = $this->getDoctrine()
+            ->getRepository(Vehicule::class)
+            ->findBy(['proprietaire' => $user]);
+
         $fiche = new FraisForfait ();
 
         $form = $this->createForm(FraisForfaitType::class, $fiche); 
@@ -114,6 +121,7 @@ class visiteurs extends AbstractController
         return $this->render('visiteurs\frais_forfait.html.twig',[    
             'form' => $form->createView(),
             'date' => $mois_actuel,
+            'vehicule' => $repository28
         ]); 
     }
 
@@ -127,8 +135,16 @@ class visiteurs extends AbstractController
         setlocale(LC_TIME, "fr_FR");
         $mois_actuel = date("F Y");
 
+        $user = $this->getUser();
+        $user = $user->getId();
+
+        $repository28 = $this->getDoctrine()
+            ->getRepository(Vehicule::class)
+            ->findBy(['proprietaire' => $user]);
+
         return $this->render('visiteurs\choix_fiche.html.twig', [
             'date' => $mois_actuel,
+            'vehicule' => $repository28
         ]); 
     }
 
@@ -141,6 +157,13 @@ class visiteurs extends AbstractController
     {
         setlocale(LC_TIME, "fr_FR");
         $mois_actuel = date("F Y");
+
+        $user = $this->getUser();
+        $user = $user->getId();
+
+        $repository28 = $this->getDoctrine()
+            ->getRepository(Vehicule::class)
+            ->findBy(['proprietaire' => $user]);
 
         $fiche2 = new FraisHorsForfait ();
         $entityManager = $this->getDoctrine()->getManager();
@@ -163,6 +186,7 @@ class visiteurs extends AbstractController
         return $this->render('visiteurs\frais_hors_forfait.html.twig',[ // Création du formulaire par symfony
             'form' => $form->createView(),
             'date' => $mois_actuel,
+            'vehicule' => $repository28
         ]); 
     }
        
