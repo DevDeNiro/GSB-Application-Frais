@@ -87,7 +87,7 @@
 
                         {% if ÔForfait %}
 
-                                    <table class="table table-hover table-striped table-bordered" data-toggle="table" data-search="true"> 
+                                    <table class="table table-hover table-striped table-bordered" data-toggle="table" data-search="true" data-sort-name="etat" data-sort-order="asc"> 
                                     <thead class="thead">
                                         <tr>
                                             <th scope="col" data-sortable="true" data-field="id">Repas midi</th>
@@ -105,13 +105,13 @@
                                         <td>{{ auForfait.etape }}</td>
                                         <td>{{ auForfait.km }}</td>
                                       {% if auForfait.etat == "En attente" %}
-                                        <td style="background-color: orange; font-weight: bold;"><i class="far fa-pause-circle"></i> {{ auForfait.etat }}</td>
+                                        <td style="background-color: orange; font-weight: bold;">{{ auForfait.etat }} <i class="far fa-pause-circle"></i></td>
                                       {% endif %}
                                       {% if auForfait.etat == "Validé" %}
-                                        <td style="background-color: green; font-weight: bold;"><i class="far fa-check-circle"></i> {{ auForfait.etat }}</td>
+                                        <td style="background-color: green; font-weight: bold;">{{ auForfait.etat }} <i class="far fa-check-circle"></i></td>
                                       {% endif %}
                                       {% if auForfait.etat == "Rejeté" %}
-                                        <td style="background-color: red; font-weight: bold;"><i class="fas fa-exclamation-triangle"></i> {{ auForfait.etat }}</td>
+                                        <td style="background-color: red; font-weight: bold;">{{ auForfait.etat }} <i class="fas fa-exclamation-triangle"></i></td>
                                       {% endif %}
                                         {% for vehicule in vehicule %}
 
@@ -160,7 +160,7 @@
                     </div>
 
                     {% if Hors_Forfait %} 
-                      <table class="table table-hover table-striped table-bordered" data-toggle="table" data-search="true"> 
+                      <table class="table table-hover table-striped table-bordered" data-toggle="table" data-search="true" data-sort-name="etat" data-sort-order="asc"> 
                         <thead class="thead">
                             <tr>
                                 <th scope="col" data-sortable="true" data-field="id">Mois</th>
@@ -175,13 +175,13 @@
                             <td>{{ horsForfait.libelle }}</td>
                             
                             {% if horsForfait.etat == "En attente" %}
-                              <td style="background-color: orange; font-weight: bold;"><i class="far fa-pause-circle"></i> {{ horsForfait.etat }}</td>
+                              <td style="background-color: orange; font-weight: bold;">{{ horsForfait.etat }} <i class="far fa-pause-circle"></i></td>
                             {% endif %}
                             {% if horsForfait.etat == "Validé" %}
-                              <td style="background-color: green; font-weight: bold;"><i class="far fa-check-circle"></i> {{ horsForfait.etat }}</td>
+                              <td style="background-color: green; font-weight: bold;">{{ horsForfait.etat }} <i class="far fa-check-circle"></i></td>
                             {% endif %}
                             {% if horsForfait.etat == "Rejeté" %}
-                              <td style="background-color: red; font-weight: bold;"><i class="fas fa-exclamation-triangle"></i> {{ horsForfait.etat }}</td>
+                              <td style="background-color: red; font-weight: bold;">{{ horsForfait.etat }} <i class="fas fa-exclamation-triangle"></i></td>
                             {% endif %}
 
                             <td>{{ horsForfait.montant }}</td>
