@@ -104,14 +104,14 @@
                                         <td>{{ auForfait.nuit }}</td>
                                         <td>{{ auForfait.etape }}</td>
                                         <td>{{ auForfait.km }}</td>
-                                       {% if auForfait.etat == "En attente" %}
-                                      <td style="background-color: orange; font-weight: bold;">{{ auForfait.etat }}</td>
+                                      {% if auForfait.etat == "En attente" %}
+                                        <td style="background-color: orange; font-weight: bold;"><i class="far fa-pause-circle"></i> {{ auForfait.etat }}</td>
                                       {% endif %}
                                       {% if auForfait.etat == "Validé" %}
-                                      <td style="background-color: green; font-weight: bold;">{{ auForfait.etat }}</td>
+                                        <td style="background-color: green; font-weight: bold;"><i class="far fa-check-circle"></i> {{ auForfait.etat }}</td>
                                       {% endif %}
                                       {% if auForfait.etat == "Rejeté" %}
-                                      <td style="background-color: red; font-weight: bold;">{{ auForfait.etat }}</td>
+                                        <td style="background-color: red; font-weight: bold;"><i class="fas fa-exclamation-triangle"></i> {{ auForfait.etat }}</td>
                                       {% endif %}
                                         {% for vehicule in vehicule %}
 
@@ -175,13 +175,13 @@
                             <td>{{ horsForfait.libelle }}</td>
                             
                             {% if horsForfait.etat == "En attente" %}
-                            <td style="background-color: orange; font-weight: bold;">{{ horsForfait.etat }}</td>
+                              <td style="background-color: orange; font-weight: bold;"><i class="far fa-pause-circle"></i> {{ horsForfait.etat }}</td>
                             {% endif %}
                             {% if horsForfait.etat == "Validé" %}
-                            <td style="background-color: green; font-weight: bold;">{{ horsForfait.etat }}</td>
+                              <td style="background-color: green; font-weight: bold;"><i class="far fa-check-circle"></i> {{ horsForfait.etat }}</td>
                             {% endif %}
                             {% if horsForfait.etat == "Rejeté" %}
-                            <td style="background-color: red; font-weight: bold;">{{ horsForfait.etat }}</td>
+                              <td style="background-color: red; font-weight: bold;"><i class="fas fa-exclamation-triangle"></i> {{ horsForfait.etat }}</td>
                             {% endif %}
 
                             <td>{{ horsForfait.montant }}</td>

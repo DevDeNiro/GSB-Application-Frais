@@ -144,13 +144,13 @@
                     {% endfor %}
 
                     {% if Forfait.etat == "En attente" %}
-                    <td style="background-color: orange; font-weight: bold;">{{ Forfait.etat }}</td>
+                    <td style="background-color: orange; font-weight: bold;"><i class="far fa-pause-circle"></i> {{ Forfait.etat }}</td>
                     {% endif %}
                     {% if Forfait.etat == "Validé" %}
-                    <td style="background-color: green; font-weight: bold;">{{ Forfait.etat }}</td>
+                    <td style="background-color: green; font-weight: bold;"><i class="far fa-check-circle"></i> {{ Forfait.etat }}</td>
                     {% endif %}
                     {% if Forfait.etat == "Rejeté" %}
-                    <td style="background-color: red; font-weight: bold;">{{ Forfait.etat }}</td>
+                    <td style="background-color: red; font-weight: bold;"><i class="fas fa-exclamation-triangle"></i> {{ Forfait.etat }}</td>
                     {% endif %}
                     <td><div class="row pb-2">
                       <div class="col"><a class="btn btn-outline-success btn1" href={{ path("valide", {'id': Forfait.id}) }} role="button">Valider</a></div>
