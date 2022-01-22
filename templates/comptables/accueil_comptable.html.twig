@@ -66,8 +66,48 @@
             <div class="page-header text-center pt-5"> <h1> Bienvenue <span class="id_user">{% if app.user is null %}
                   {% else %}
                     {{ app.user.prenom }}
-                  {% endif %}</span> sur votre espace comptable</h1> </div>
-          </div>
+                  {% endif %}</span> sur votre espace comptable</h1> </div>        
+                  <div class="row mt-5 justify-content-center">
+                    <div class="card text-white bg-success mb-3 col px-0" style="max-width: 18rem;">
+                      <div class="card-header" style="font-weight: bold; font-size: large">Frais forfaitaires validés</div>
+                        <div class="card-body">
+                          {% for valide in valide %}
+                            {% if loop.last %}
+                              <p class="card-text" style="font-size: 60px;">{{loop.index}}</p>
+                            {% endif %}
+                            {% else %}
+                              <p class="card-text" style="font-size: 60px;">0</p>
+                          {% endfor %}
+                        </div>
+                      </div>
+
+                    <div class="card text-white bg-warning mb-3 col mx-3 px-0" style="max-width: 18rem;">
+                      <div class="card-header" style="font-weight: bold; font-size: large">Frais forfaitaires en attente</div>
+                        <div class="card-body">
+                          {% for attente in attente %}
+                            {% if loop.last %}
+                              <p class="card-text" style="font-size: 60px;">{{loop.index}}</p>
+                            {% endif %}
+                            {% else %}
+                              <p class="card-text" style="font-size: 60px;">0</p>
+                          {% endfor %}
+                        </div>
+                      </div>
+
+                    <div class="card text-white bg-danger mb-3 col px-0" style="max-width: 18rem;">
+                      <div class="card-header" style="font-weight: bold; font-size: large">Frais forfaitaires rejetés</div>
+                        <div class="card-body">
+                          {% for rejete in rejete %}
+                            {% if loop.last %}
+                              <p class="card-text" style="font-size: 60px;">{{loop.index}}</p>
+                            {% endif %}
+                            {% else %}
+                              <p class="card-text" style="font-size: 60px;">0</p>
+                          {% endfor %}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
       </div>
     </div>
 

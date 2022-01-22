@@ -35,7 +35,22 @@ class comptables extends AbstractController
     
     public function afficherBdd() : Response
     {
+        $repository26 = $this->getDoctrine()
+            ->getRepository(FraisForfait::class)
+            ->findBy(['etat' => "En attente"]);
+
+        $repository27 = $this->getDoctrine()
+        ->getRepository(FraisForfait::class)
+        ->findBy(['etat' => "Rejeté"]);
+        
+        $repository28 = $this->getDoctrine()
+        ->getRepository(FraisForfait::class)
+        ->findBy(['etat' => "Validé"]);
+
         return $this->render('/comptables/accueil_comptable.html.twig', [
+            "attente" => $repository26,
+            "rejete" => $repository27,
+            "valide" => $repository28
         ]); 
     }
 
