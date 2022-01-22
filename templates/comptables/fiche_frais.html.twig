@@ -75,12 +75,12 @@
           </div>
           <div class="col-11 mt-4 mx-auto">
           {% for message in app.flashes ('rejete') %}  
-              <div class="alert alert-success" role="alert">
+              <div class="alert alert-danger" role="alert">
                   {{ message }}
               </div>
               {% endfor %} 
               {% for message in app.flashes ('attente') %}  
-              <div class="alert alert-success" role="alert">
+              <div class="alert alert-warning" role="alert">
                   {{ message }}
               </div>
               {% endfor %} 
@@ -89,8 +89,7 @@
                   {{ message }}
               </div>
               {% endfor %} 
-              <table class="table table-hover table-striped table-bordered" data-toggle="table" data-search="true" data-sort-name="etat"
-  data-sort-order="asc"> 
+              <table class="table table-hover table-striped table-bordered" data-toggle="table" data-search="true" data-sort-name="etat" data-sort-order="asc"> 
                 <thead class="thead">
                     <tr>
                         <th scope="col" data-sortable="true" data-field="id">Visiteur</th>
