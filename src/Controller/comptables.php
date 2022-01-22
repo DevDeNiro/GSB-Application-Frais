@@ -47,7 +47,7 @@ class comptables extends AbstractController
     public function Afficher_liste_visiteur() : Response
     {
         setlocale(LC_TIME, "fr_FR");
-        $mois_actuel = date("F");
+        $mois_actuel = date("F Y");
 
         $repository = $this->getDoctrine()
             ->getRepository(User::class)
@@ -73,7 +73,7 @@ class comptables extends AbstractController
     public function suivi_fiche_frais() : Response
     {
         setlocale(LC_TIME, "fr_FR");
-        $mois_actuel = date("F");
+        $mois_actuel = date("F Y");
         
         $user = $this->getUser();
         $user = $user->getId();
@@ -126,4 +126,101 @@ class comptables extends AbstractController
 
         return $this->redirectToRoute('suivi_frais'); // Rediriger vers la page d'accueil
     }
+
+    /**
+     * @Route("/valide/{id}", name = "valide")
+    */
+
+    public function valide(int $id) : Response{
+
+        $entityManager=$this->getDoctrine()->getManager();
+        
+        $repository21 = $this->getDoctrine()
+                ->getRepository(FraisForfait::class)
+                ->find($id);
+
+        $repository21->setEtat('Validé');
+        $entityManager->flush();
+
+        $this->addFlash('success', 'Frais validé'); // Affiche un message de confirmation sur la page d'accueil
+        
+        // return $this->render('comptables\fiche_frais.html.twig', [
+        // ]);
+
+        return $this->redirectToRoute('suivi_frais'); // Rediriger vers la page d'accueil
+    }
+
+    /**
+     * @Route("/attente/{id}", name = "attente")
+    */
+
+    public function attente(int $id) : Response{
+
+        $entityManager=$this->getDoctrine()->getManager();
+        
+        $repository21 = $this->getDoctrine()
+                ->getRepository(FraisForfait::class)
+                ->find($id);
+
+        $repository21->setEtat('En attente');
+        $entityManager->flush();
+
+        $this->addFlash('success', 'Frais mis en attente'); // Affiche un message de confirmation sur la page d'accueil
+        
+        // return $this->render('comptables\fiche_frais.html.twig', [
+        // ]);
+
+        return $this->redirectToRoute('suivi_frais'); // Rediriger vers la page d'accueil
+    }
+
+    /**
+     * @Route("/rejete/{id}", name = "rejete")
+    */
+
+    public function rejete(int $id) : Response{
+
+        $entityManager=$this->getDoctrine()->getManager();
+        
+        $repository21 = $this->getDoctrine()
+                ->getRepository(FraisForfait::class)
+                ->find($id);
+
+        $repository21->setEtat('Rejeté');
+        $entityManager->flush();
+
+        $this->addFlash('success', 'Frais rejeté'); // Affiche un message de confirmation sur la page d'accueil
+        
+        // return $this->render('comptables\fiche_frais.html.twig', [
+        // ]);
+
+        return $this->redirectToRoute('suivi_frais'); // Rediriger vers la page d'accueil
+    }
+
+    /**
+     * @Route("/comptables/info/{id}/{proprietaire}", name = "info")
+    */
+
+    public function info(int $id, int $proprietaire) : Response{
+
+        $repository23 = $this->getDoctrine()
+                ->getRepository(FraisForfait::class)
+                ->findBy(['id' => $id]);
+
+        $repository24 = $this->getDoctrine()
+            ->getRepository(User::class)
+            ->findAll();
+
+        $repository25 = $this->getDoctrine()
+            ->getRepository(Vehicule::class)
+            ->findBy(['proprietaire' => $proprietaire]);
+
+        // return $this->redirectToRoute('suivi_frais'); // Rediriger vers la page d'accueil
+        return $this->render('comptables\info.html.twig', [
+            "Forfait" => $repository23,
+            "user" => $repository24,
+            "vehicule" => $repository25
+        ]);
+    }
+
+    
 }

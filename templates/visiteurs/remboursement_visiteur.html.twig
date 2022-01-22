@@ -93,7 +93,8 @@
                                             <th scope="col" data-sortable="true" data-field="id">Repas midi</th>
                                             <th scope="col" data-sortable="true" data-field="mois">Nuit</th>
                                             <th scope="col" data-sortable="true" data-field="montant">Etapes</th>
-                                            <th scope="col" data-sortable="true" data-field="etat">Km</th>
+                                            <th scope="col" data-sortable="true" data-field="km">Km</th>
+                                            <th scope="col" data-sortable="true" data-field="etat">Etat</th>
                                             <th scope="col" data-sortable="true" data-field="action">Montant</th>
                                         </tr>
                                     </thead>
@@ -103,6 +104,15 @@
                                         <td>{{ auForfait.nuit }}</td>
                                         <td>{{ auForfait.etape }}</td>
                                         <td>{{ auForfait.km }}</td>
+                                       {% if auForfait.etat == "En attente" %}
+                                      <td style="background-color: orange; font-weight: bold;">{{ auForfait.etat }}</td>
+                                      {% endif %}
+                                      {% if auForfait.etat == "Validé" %}
+                                      <td style="background-color: green; font-weight: bold;">{{ auForfait.etat }}</td>
+                                      {% endif %}
+                                      {% if auForfait.etat == "Rejeté" %}
+                                      <td style="background-color: red; font-weight: bold;">{{ auForfait.etat }}</td>
+                                      {% endif %}
                                         {% for vehicule in vehicule %}
 
                                         {% if vehicule.carburant == "Diesel" %}
@@ -154,7 +164,8 @@
                         <thead class="thead">
                             <tr>
                                 <th scope="col" data-sortable="true" data-field="id">Mois</th>
-                                <th scope="col" data-sortable="true" data-field="mois">Libellé</th>
+                                <th scope="col" data-sortable="true" data-field="mois">Libellé</th>                             
+                                <th scope="col" data-sortable="true" data-field="etat">Etat</th>
                                 <th scope="col" data-sortable="true" data-field="montant">Montant</th>
                             </tr>
                         </thead>
@@ -162,11 +173,22 @@
                         {% for horsForfait in Hors_Forfait %} 
                             <td>{{ horsForfait.mois }}</td>
                             <td>{{ horsForfait.libelle }}</td>
+                            
+                            {% if horsForfait.etat == "En attente" %}
+                            <td style="background-color: orange; font-weight: bold;">{{ horsForfait.etat }}</td>
+                            {% endif %}
+                            {% if horsForfait.etat == "Validé" %}
+                            <td style="background-color: green; font-weight: bold;">{{ horsForfait.etat }}</td>
+                            {% endif %}
+                            {% if horsForfait.etat == "Rejeté" %}
+                            <td style="background-color: red; font-weight: bold;">{{ horsForfait.etat }}</td>
+                            {% endif %}
+
                             <td>{{ horsForfait.montant }}</td>
                         </tr>
                         {% endfor %}
                       {% endif %}
-
+                    </table>
                 </div>
             </div>
         </div>

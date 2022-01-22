@@ -84,7 +84,7 @@
                         <th scope="col" data-sortable="true" data-field="montant">Montant</th>
                         {# <th scope="col" data-sortable="true" data-field="mois">Date de modification</th> #}
                         <th scope="col" data-sortable="true" data-field="etat">Etat</th>
-                        <th scope="col" data-sortable="true" data-field="action">Action</th>
+                        <th scope="col" data-sortable="true" data-field="action">Actions</th>
                     </tr>
                 </thead>
                 
@@ -128,10 +128,23 @@
                       {% endfor %}
                     {% endfor %}
 
-                    <td>  {{ Forfait.etat }}  </td>
-                    <td>
-                      <a class="btn btn-outline-danger btn1" href={{ path("supprimer", {'id': Forfait.id}) }} role="button">Supprimer</a> 
+                    {% if Forfait.etat == "En attente" %}
+                    <td style="background-color: orange; font-weight: bold;">{{ Forfait.etat }}</td>
+                    {% endif %}
+                    {% if Forfait.etat == "Validé" %}
+                    <td style="background-color: green; font-weight: bold;">{{ Forfait.etat }}</td>
+                    {% endif %}
+                    {% if Forfait.etat == "Rejeté" %}
+                    <td style="background-color: red; font-weight: bold;">{{ Forfait.etat }}</td>
+                    {% endif %}
+                    <td><div class="row pb-2">
+                      <div class="col"><a class="btn btn-outline-success btn1" href={{ path("valide", {'id': Forfait.id}) }} role="button">Valider</a></div>
+                      <div class="col"><a class="btn btn-outline-warning btn1" href={{ path("attente", {'id': Forfait.id}) }} role="button">En attente</a></div>
+                      </div><div class="row">
+                      <div class="col"><a class="btn btn-outline-danger btn1" href={{ path("rejete", {'id': Forfait.id}) }} role="button">Rejeter</a></div>
+                      <div class="col"><a class="btn btn-outline-info btn1" href={{ path("info", {'id': Forfait.id, 'proprietaire': Forfait.proprietaire}) }} role="button">Détail</a></div>
                       {# <a class="btn btn-outline btn1" href={{ path("modifier", {'id': Forfait.id}) }} role="button">Modifier</a>  #}
+                      </div>
                     </td>
                     </tr>   
                   {% endfor %}
