@@ -61,8 +61,25 @@ class visiteurs extends AbstractController
     
     public function Accueil() : Response 
     {
-        return $this->render('/visiteurs/accueil_visiteur.html.twig', [
+        $user = $this->getUser();
+        $user = $user->getId();
 
+        $repository26 = $this->getDoctrine()
+            ->getRepository(FraisForfait::class)
+            ->findBy(['etat' => "En attente", 'proprietaire' => $user]);
+
+        $repository27 = $this->getDoctrine()
+        ->getRepository(FraisForfait::class)
+        ->findBy(['etat' => "Rejeté", 'proprietaire' => $user]);
+        
+        $repository28 = $this->getDoctrine()
+        ->getRepository(FraisForfait::class)
+        ->findBy(['etat' => "Validé", 'proprietaire' => $user]);
+
+        return $this->render('/visiteurs/accueil_visiteur.html.twig', [
+            "attente" => $repository26,
+            "rejete" => $repository27,
+            "valide" => $repository28
         ]); 
     }
 

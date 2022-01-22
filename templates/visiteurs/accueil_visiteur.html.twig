@@ -69,7 +69,7 @@
 
         <div class="col-10 p-0 py-5 bg-light">
           <div class="container">
-            <div class="page-header text-center"> <h1> Bienvenue <span class="id_user">{% if app.user is null %}
+            <div class="row page-header text-center justify-content-center"> <h1> Bienvenue <span class="id_user">{% if app.user is null %}
                   {% else %}
                     {{ app.user.prenom }}
                   {% endif %}</span> sur votre espace visiteur</h1> </div>
@@ -79,47 +79,49 @@
                   {{ message_vehicule }}
               </div>
               {% endfor %} 
+             
+             <div class="row mt-5 justify-content-center">
+                    <div class="card text-white bg-success mb-3 col px-0" style="max-width: 18rem;">
+                      <div class="card-header" style="font-weight: bold; font-size: large">Frais forfaitaires validés</div>
+                        <div class="card-body">
+                          {% for valide in valide %}
+                            {% if loop.last %}
+                              <p class="card-text" style="font-size: 60px;">{{loop.index}}</p>
+                            {% endif %}
+                            {% else %}
+                              <p class="card-text" style="font-size: 60px;">0</p>
+                          {% endfor %}
+                        </div>
+                      </div>
 
-              <div class="row mt-5">
-             {# <div class="mx-auto w-75 p-0 mt-5 card"> #}
-                <div class="col-6 col-md-4">
-                  <div class="jumbotron">
-                    <p> Saisir une fiche de frais </p>
+                    <div class="card text-white bg-warning mb-3 col mx-3 px-0" style="max-width: 18rem;">
+                      <div class="card-header" style="font-weight: bold; font-size: large">Frais forfaitaires en attente</div>
+                        <div class="card-body">
+                          {% for attente in attente %}
+                            {% if loop.last %}
+                              <p class="card-text" style="font-size: 60px;">{{loop.index}}</p>
+                            {% endif %}
+                            {% else %}
+                              <p class="card-text" style="font-size: 60px;">0</p>
+                          {% endfor %}
+                        </div>
+                      </div>
 
-                    <p>
-                        <a class="btn btn-primary btn-lg" href="{{ path('fiche_frais') }}">
-                            <i class="fas fa-edit" aria-hidden="true"></i> Remplir une fiche de frais
-                        </a>
-                    </p>
-
+                    <div class="card text-white bg-danger mb-3 col px-0" style="max-width: 18rem;">
+                      <div class="card-header" style="font-weight: bold; font-size: large">Frais forfaitaires rejetés</div>
+                        <div class="card-body">
+                          {% for rejete in rejete %}
+                            {% if loop.last %}
+                              <p class="card-text" style="font-size: 60px;">{{loop.index}}</p>
+                            {% endif %}
+                            {% else %}
+                              <p class="card-text" style="font-size: 60px;">0</p>
+                          {% endfor %}
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-
-                <div class="col-6 col-md-4" >
-                  <div class="jumbotron">
-                    <p> Suivit de vos remboursements </p>
-                    <p>
-                        <a class="btn btn-primary btn-lg" href="{{ path('visiteur_frais') }}">
-                            <i class="fas fa-file-alt" aria-hidden="true"></i> Suivre ses remboursements
-                        </a>
-                    </p>
-                  </div>
-                </div>
-
-                <div class="col-6 col-md-4 ">
-                  <div class="jumbotron">
-                    <p> Saisir un nouveau véhicule </p>
-
-                    <p>
-                        <a class="btn btn-primary btn-lg" href="{{ path('vehicule') }}">
-                            <i class="fas fa-car" aria-hidden="true"></i> Saisir un nouveau véhicule
-                        </a>
-                    </p>
-
-                </div>
-              </div>
-
-            </div>
+                
           </div>
         </div>
       </div>
