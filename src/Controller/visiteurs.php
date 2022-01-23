@@ -231,7 +231,7 @@ class visiteurs extends AbstractController
             ->findBy(['proprietaire' => $user]);
 
             return $this->render('visiteurs/remboursement_visiteur.html.twig', [
-                "Hors_Forfait" => $repository,
+                "horsForfait" => $repository,
                 "ÔForfait" => $repository2,
                 "vehicule" => $repository3,
                 'date' => $mois_actuel,
@@ -292,6 +292,27 @@ class visiteurs extends AbstractController
         
         $repository = $this->getDoctrine()
                 ->getRepository(FraisForfait::class)
+                ->find($id);
+
+
+        $entityManager->remove($repository);
+        $entityManager->flush();
+
+        $this->addFlash('succesSuppr', 'Suppression effectuée'); // Affiche un message de confirmation sur la page d'accueil
+        
+        return $this->redirectToRoute('visiteur_frais'); // Rediriger vers la page d'accueil
+    }
+
+    /**
+     * @Route("/supprimer2/{id}", name = "supprimer2")
+    */
+
+    public function supprimer2(int $id) : Response{ // Supprimer un métériel ciblé
+
+        $entityManager=$this->getDoctrine()->getManager();
+        
+        $repository = $this->getDoctrine()
+                ->getRepository(FraisHorsForfait::class)
                 ->find($id);
 
 

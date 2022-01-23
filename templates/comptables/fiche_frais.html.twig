@@ -138,7 +138,7 @@
                       {% endfor %}
 
                     {% if Forfait.etat == "En attente" %}
-                    <td style="background-color: orange; font-weight: bold;">{{ Forfait.etat }} <i class="far fa-pause-circle"></i></td>
+                    <td style="background-color: orange; font-weight: bold;">{{ Forfait.etat }} <i class="fas fa-sync fa-spin"></i></td>
                     {% endif %}
                     {% if Forfait.etat == "Validé" %}
                     <td style="background-color: green; font-weight: bold;">{{ Forfait.etat }} <i class="far fa-check-circle"></i></td>

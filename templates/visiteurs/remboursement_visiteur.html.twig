@@ -8,6 +8,7 @@
             {{ encore_entry_link_tags('app') }}
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
             <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.css">
+            <link rel="stylesheet" href="font-awesome-animation.min.css">
            {# <link href="/your-path-to-fontawesome/css/all.css" rel="stylesheet"> #}
     {% endblock %}
   </head>
@@ -91,14 +92,25 @@
                             Frais au forfait
                         </div>
 
+                      {% for auForfait in ÔForfait %}
+                        {% if loop.last %}
+                          {% if loop.index > 0 %}
+                          {% endif %}
+                        {% endif %}
+                        {% else %}
+                                  <div class="card-body">
+                                  <p class="card-text" style="font-size: 20px; font-weight: bold;;">Aucun frais forfaitaire saisi <i class="fas fa-info-circle"></i></span></p>
+                            </div>
+                      {% endfor %}
+                      
                         {% if ÔForfait %}
-
+                          
                                     <table class="table table-hover table-striped table-bordered" data-toggle="table" data-search="true" data-sort-name="etat" data-sort-order="asc"> 
                                     <thead class="thead">
                                         <tr>
                                             <th scope="col" data-sortable="true" data-field="id">Repas midi</th>
                                             <th scope="col" data-sortable="true" data-field="mois">Nuit</th>
-                                            <th scope="col" data-sortable="true" data-field="montant">Etapes</th>
+                                            <th scope="col" data-sortable="true" data-field="etape">Etapes</th>
                                             <th scope="col" data-sortable="true" data-field="km">Km</th>
                                             <th scope="col" data-sortable="true" data-field="etat">Etat</th>
                                             <th scope="col" data-sortable="true" data-field="montant">Montant</th>
@@ -112,7 +124,7 @@
                                         <td>{{ auForfait.etape }}</td>
                                         <td>{{ auForfait.km }}</td>
                                       {% if auForfait.etat == "En attente" %}
-                                        <td style="background-color: orange; font-weight: bold;">{{ auForfait.etat }} <i class="far fa-pause-circle"></i></td>
+                                        <td style="background-color: orange; font-weight: bold;">{{ auForfait.etat }} <i class="fas fa-sync fa-spin"></i></td>
                                       {% endif %}
                                       {% if auForfait.etat == "Validé" %}
                                         <td style="background-color: green; font-weight: bold;">{{ auForfait.etat }} <i class="far fa-check-circle"></i></td>
@@ -125,12 +137,12 @@
                                         {% if vehicule.carburant == "Diesel" %}
                                           {% if vehicule.chevaux <= 4 %}
 
-                                        <td>{{ auForfait.km * 0.52 + auForfait.nuit * 80 + auForfait.repasMidi * 29}}</td>
+                                        <td>{{ auForfait.km * 0.52 + auForfait.nuit * 80 + auForfait.repasMidi * 9.5}}</td>
 
                                           {% endif %}
                                           {% if vehicule.chevaux > 4 %}
 
-                                        <td>{{ auForfait.km * 0.58 + auForfait.nuit * 80 + auForfait.repasMidi * 29}}</td>
+                                        <td>{{ auForfait.km * 0.58 + auForfait.nuit * 80 + auForfait.repasMidi * 9.5}}</td>
 
                                           {% endif %}
                                         {% endif %}
@@ -138,12 +150,12 @@
                                         {% if vehicule.carburant == "Essence" %}
                                           {% if vehicule.chevaux <= 4 %}
 
-                                        <td>{{ auForfait.km * 0.62 + auForfait.nuit * 80 + auForfait.repasMidi * 29}}</td>
+                                        <td>{{ auForfait.km * 0.62 + auForfait.nuit * 80 + auForfait.repasMidi * 9.5}}</td>
 
                                           {% endif %}
                                           {% if vehicule.chevaux > 4 %}
 
-                                        <td>{{ auForfait.km * 0.67 + auForfait.nuit * 80 + auForfait.repasMidi * 29}}</td>
+                                        <td>{{ auForfait.km * 0.67 + auForfait.nuit * 80 + auForfait.repasMidi * 9.5}}</td>
 
                                           {% endif %}
                                         {% endif %}
@@ -171,7 +183,18 @@
                         Frais hors forfait
                     </div>
 
-                    {% if Hors_Forfait %} 
+                  {% for horsForfait in horsForfait %} 
+                        {% if loop.last %}
+                          {% if loop.index > 0 %}
+                          {% endif %}
+                        {% endif %}
+                        {% else %}
+                                  <div class="card-body">
+                                  <p class="card-text" style="font-size: 20px; font-weight: bold;;">Aucun frais hors forfait saisi <i class="fas fa-info-circle"></i></span></p>
+                            </div>
+                      {% endfor %}
+
+                    {% if horsForfait %} 
                       <table class="table table-hover table-striped table-bordered" data-toggle="table" data-search="true" data-sort-name="etat" data-sort-order="asc"> 
                         <thead class="thead">
                             <tr>
@@ -179,15 +202,16 @@
                                 <th scope="col" data-sortable="true" data-field="mois">Libellé</th>                             
                                 <th scope="col" data-sortable="true" data-field="etat">Etat</th>
                                 <th scope="col" data-sortable="true" data-field="montant">Montant</th>
+                                <th scope="col" data-sortable="true" data-field="action">Actions</th>
                             </tr>
                         </thead>
                         <tr>
-                        {% for horsForfait in Hors_Forfait %} 
+                        {% for horsForfait in horsForfait %} 
                             <td>{{ horsForfait.mois }}</td>
                             <td>{{ horsForfait.libelle }}</td>
                             
                             {% if horsForfait.etat == "En attente" %}
-                              <td style="background-color: orange; font-weight: bold;">{{ horsForfait.etat }} <i class="far fa-pause-circle"></i></td>
+                              <td style="background-color: orange; font-weight: bold;">{{ horsForfait.etat }} <i class="fas fa-sync fa-spin"></i></td>
                             {% endif %}
                             {% if horsForfait.etat == "Validé" %}
                               <td style="background-color: green; font-weight: bold;">{{ horsForfait.etat }} <i class="far fa-check-circle"></i></td>
@@ -197,6 +221,9 @@
                             {% endif %}
 
                             <td>{{ horsForfait.montant }}</td>
+                            <td>
+                                    <div class="col"><a class="btn btn-outline-danger btn1" href={{ path("supprimer2", {'id': horsForfait.id }) }} role="button">Supprimer</a></div>
+                                    </td>
                         </tr>
                         {% endfor %}
                       {% endif %}
