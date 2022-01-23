@@ -112,11 +112,8 @@
 
                     <td>{{ Forfait.mois }}</td>
                       {% for vehicule in vehicule %}
-                        {% for user in user %}  
-
-                        {% if user.id == vehicule.proprietaire %}
+                        {% if Forfait.proprietaire == vehicule.proprietaire %}
                           {% if vehicule.carburant == "Diesel" %}
-
                             {% if vehicule.chevaux <= 4 %}
                                 <td> {{ Forfait.km * 0.52 + Forfait.nuit * 80 + Forfait.repasMidi * 9.5}} </td>
                             {% endif %}
@@ -126,9 +123,8 @@
                             {% endif %}
 
                           {% endif %}
-
+                
                           {% if vehicule.carburant == "Essence" %}
-
                             {% if vehicule.chevaux <= 4 %}
                                 <td>{{ Forfait.km * 0.62 + Forfait.nuit * 80 + Forfait.repasMidi * 9.5}}</td>
                             {% endif %}
@@ -140,7 +136,6 @@
                           {% endif %}
                         {% endif %}
                       {% endfor %}
-                    {% endfor %}
 
                     {% if Forfait.etat == "En attente" %}
                     <td style="background-color: orange; font-weight: bold;">{{ Forfait.etat }} <i class="far fa-pause-circle"></i></td>
