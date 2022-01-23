@@ -291,16 +291,16 @@ class visiteurs extends AbstractController
         $entityManager=$this->getDoctrine()->getManager();
         
         $repository = $this->getDoctrine()
-                ->getRepository(Equipement::class)
+                ->getRepository(FraisForfait::class)
                 ->find($id);
 
 
         $entityManager->remove($repository);
         $entityManager->flush();
 
-        $this->addFlash('success', 'Suppression effectuée'); // Affiche un message de confirmation sur la page d'accueil
+        $this->addFlash('succesSuppr', 'Suppression effectuée'); // Affiche un message de confirmation sur la page d'accueil
         
-        return $this->redirectToRoute('accueil'); // Rediriger vers la page d'accueil
+        return $this->redirectToRoute('visiteur_frais'); // Rediriger vers la page d'accueil
     }
 
 }

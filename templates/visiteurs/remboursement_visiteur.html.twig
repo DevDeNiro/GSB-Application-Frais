@@ -78,6 +78,12 @@
               <p class="m-0">Période : {{date}}</p>
             </div>
           </div>
+        
+          {% for message in app.flashes ('succesSuppr') %}  
+              <div class="alert alert-danger mt-4" role="alert">
+                  {{ message }}
+              </div>
+              {% endfor %} 
             <div class="row mx-auto w-100 p-0 mt-5">
                 <div class="col">
                     <div class="card">
@@ -95,7 +101,8 @@
                                             <th scope="col" data-sortable="true" data-field="montant">Etapes</th>
                                             <th scope="col" data-sortable="true" data-field="km">Km</th>
                                             <th scope="col" data-sortable="true" data-field="etat">Etat</th>
-                                            <th scope="col" data-sortable="true" data-field="action">Montant</th>
+                                            <th scope="col" data-sortable="true" data-field="montant">Montant</th>
+                                            <th scope="col" data-sortable="true" data-field="action">Actions</th>
                                         </tr>
                                     </thead>
                                     <tr>
@@ -142,6 +149,11 @@
                                         {% endif %}
 
                                         {% endfor %}
+
+                                        
+                                    <td>
+                                    <div class="col"><a class="btn btn-outline-danger btn1" href={{ path("supprimer", {'id': auForfait.id}) }} role="button">Supprimer</a></div>
+                                    </td>
                                     </tr>
                                     {% endfor %}
                         {% endif %}
