@@ -118,11 +118,11 @@
                           {% if vehicule.carburant == "Diesel" %}
 
                             {% if vehicule.chevaux <= 4 %}
-                                <td> {{ Forfait.km * 0.52 + Forfait.nuit * 80 + Forfait.repasMidi * 29}} </td>
+                                <td> {{ Forfait.km * 0.52 + Forfait.nuit * 80 + Forfait.repasMidi * 9.5}} </td>
                             {% endif %}
                             
                             {% if vehicule.chevaux > 4 %}
-                                <td>{{ Forfait.km * 0.58 + Forfait.nuit * 80 + Forfait.repasMidi * 29}}</td>
+                                <td>{{ Forfait.km * 0.58 + Forfait.nuit * 80 + Forfait.repasMidi * 9.5}}</td>
                             {% endif %}
 
                           {% endif %}
@@ -130,11 +130,11 @@
                           {% if vehicule.carburant == "Essence" %}
 
                             {% if vehicule.chevaux <= 4 %}
-                                <td>{{ Forfait.km * 0.62 + Forfait.nuit * 80 + Forfait.repasMidi * 29}}</td>
+                                <td>{{ Forfait.km * 0.62 + Forfait.nuit * 80 + Forfait.repasMidi * 9.5}}</td>
                             {% endif %}
 
                             {% if vehicule.chevaux > 4 %}
-                                <td>{{ Forfait.km * 0.67 + Forfait.nuit * 80 + Forfait.repasMidi * 29}}</td>
+                                <td>{{ Forfait.km * 0.67 + Forfait.nuit * 80 + Forfait.repasMidi * 9.5}}</td>
                             {% endif %}
 
                           {% endif %}

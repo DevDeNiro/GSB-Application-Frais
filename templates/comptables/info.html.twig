@@ -110,13 +110,13 @@
                             <tr>
                                 <th scope="col" data-sortable="true" data-field="etat">Etat</th>
                                     {% if Forfait.etat == "En attente" %}
-                                        <td style="background-color: orange; font-weight: bold;">{{ Forfait.etat }}</td>
+                                        <td style="background-color: orange; font-weight: bold;">{{ Forfait.etat }} <i class="far fa-pause-circle"></i></td>
                                     {% endif %}
                                         {% if Forfait.etat == "Validé" %}
-                                        <td style="background-color: green; font-weight: bold;">{{ Forfait.etat }}</td>
+                                        <td style="background-color: green; font-weight: bold;">{{ Forfait.etat }} <i class="far fa-check-circle"></i></td>
                                     {% endif %}
                                     {% if Forfait.etat == "Rejeté" %}
-                                        <td style="background-color: red; font-weight: bold;">{{ Forfait.etat }}</td>
+                                        <td style="background-color: red; font-weight: bold;">{{ Forfait.etat }} <i class="fas fa-exclamation-triangle"></i></td>
                                     {% endif %}
                             </tr>
                         </table>
@@ -223,8 +223,8 @@
                                 </tr>
                                 <tr>
                                     <th scope="col" data-sortable="true" data-field="etat">Total</th>
-                                    <td style="background-color: grey;"></td>
-                                    <td style="background-color: grey;"></td>
+                                    <td style="background-color: #D6D4D4;"></td>
+                                    <td style="background-color: #D6D4D4;"></td>
                                     {% if vehicule.carburant == "Diesel" %}
                                         {% if vehicule.chevaux <= 4 %}
                                             <td> {{ Forfait.km * 0.52 + Forfait.nuit * 80 + Forfait.repasMidi * 9.5}} </td>

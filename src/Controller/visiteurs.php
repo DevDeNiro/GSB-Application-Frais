@@ -248,15 +248,24 @@ class visiteurs extends AbstractController
         setlocale(LC_TIME, "fr_FR");
         $mois_actuel = date("F Y");
 
+        $user = $this->getUser();
+        $user = $user->getId();
+
+        $repository30 = $this->getDoctrine()
+            ->getRepository(Vehicule::class)
+            ->findBy(['proprietaire' => $user]);
+
         $Vehicule = new Vehicule();
         $entityManager = $this->getDoctrine()->getManager();
         $form = $this->createForm(VehiculeType::class, $Vehicule); 
         $form->handleRequest($request);
+        
 
         if ($form->isSubmitted() && $form->isValid()) {
        
             $user = $this->getUser();
             $user = $user->getId();
+
             $Vehicule->setProprietaire($user);
 
             $entityManager->persist($Vehicule);
@@ -268,8 +277,30 @@ class visiteurs extends AbstractController
         }
         return $this->render('visiteurs\vehicule_visiteur.html.twig',[ // Création du formulaire par symfony
             'form' => $form->createView(),
-            'date' => $mois_actuel
+            'date' => $mois_actuel,
+            'vehicule' => $repository30
         ]); 
+    }
+
+    /**
+     * @Route("/supprimer/{id}", name = "supprimer")
+    */
+
+    public function supprimer(int $id) : Response{ // Supprimer un métériel ciblé
+
+        $entityManager=$this->getDoctrine()->getManager();
+        
+        $repository = $this->getDoctrine()
+                ->getRepository(Equipement::class)
+                ->find($id);
+
+
+        $entityManager->remove($repository);
+        $entityManager->flush();
+
+        $this->addFlash('success', 'Suppression effectuée'); // Affiche un message de confirmation sur la page d'accueil
+        
+        return $this->redirectToRoute('accueil'); // Rediriger vers la page d'accueil
     }
 
 }

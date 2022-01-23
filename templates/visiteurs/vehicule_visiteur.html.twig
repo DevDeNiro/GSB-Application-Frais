@@ -80,6 +80,22 @@
           <div class="row mx-auto w-75 p-0 mt-5">
             <div class="col">
 
+            {% for vehicule in vehicule %}
+              {% if loop.last %}
+                {% if loop.index > 0 %}
+                  <div class="row justify-content-center">
+                    <div class="card text-white bg-danger mb-3 col mx-3 px-0" style="max-width: 24rem;">
+                      <div class="card-header" style="font-weight: bold; font-size: large">Véhicule déjà existant <i class="fas fa-exclamation-triangle"></i></div>
+                        <div class="card-body">
+                        <p class="card-text" style="font-size: 20px;">Saisir un nouveau véhicule excrasera le précédent <span style="font-weight: bold">({{ vehicule.marque }} - {{ vehicule.modele }})</span></p>
+                      </div>
+                    </div>
+                  </div>
+                {% endif %}
+              {% endif %}
+              {% else %}
+            {% endfor %}
+
             {{ form_start(form) }}
             
               <div class="card">
