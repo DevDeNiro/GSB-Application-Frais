@@ -89,6 +89,25 @@
                   {{ message }}
               </div>
               {% endfor %} 
+              <div class="row">
+                <div class="col-7">
+                <div class="card">
+                    <div class="card-header bg-info title">
+                        Frais au forfait
+                    </div>
+
+                    {% for Forfait in Forfait %} 
+                        {% if loop.last %}
+                          {% if loop.index > 0 %}
+                          {% endif %}
+                        {% endif %}
+                        {% else %}
+                                  <div class="card-body">
+                                  <p class="card-text" style="font-size: 20px; font-weight: bold;;">Aucun frais forfaitaitaires saisis <i class="fas fa-info-circle"></i></span></p>
+                            </div>
+                      {% endfor %}
+
+                      {% if Forfait %} 
               <table class="table table-hover table-striped table-bordered" data-toggle="table" data-search="true" data-sort-name="etat" data-sort-order="asc"> 
                 <thead class="thead">
                     <tr>
@@ -157,11 +176,74 @@
                     </td>
                     </tr>   
                   {% endfor %}
-                  
+                  {% endif %}
               </tbody>
               </table>   
             {# {% endif %}  #}
+        </div>
+      </div>
+        <div class="col">
+                <div class="card">
+                    <div class="card-header bg-info title">
+                        Frais hors forfait
+                    </div>
 
+                  {% for horsForfait in horsForfait %} 
+                        {% if loop.last %}
+                          {% if loop.index > 0 %}
+                          {% endif %}
+                        {% endif %}
+                        {% else %}
+                          <div class="card-body">
+                            <p class="card-text" style="font-size: 20px; font-weight: bold;;">Aucun frais hors forfait saisi <i class="fas fa-info-circle"></i></span></p>
+                          </div>
+                      {% endfor %}
+
+                    {% if horsForfait %} 
+                      <table class="table table-hover table-striped table-bordered" data-toggle="table" data-search="true" data-sort-name="etat" data-sort-order="asc"> 
+                        <thead class="thead">
+                            <tr>
+                            <th scope="col" data-sortable="true" data-field="id">Visiteur</th>
+                                <th scope="col" data-sortable="true" data-field="mois">Mois</th> 
+                                <th scope="col" data-sortable="true" data-field="montant">Montant</th>                          
+                                <th scope="col" data-sortable="true" data-field="etat">Etat</th>
+                                <th scope="col" data-sortable="true" data-field="action">Actions</th>
+                            </tr>
+                        </thead>
+                        <tr>
+                        {% for horsForfait in horsForfait %} 
+                            {% for user in user %}  
+                              {% if user.id == horsForfait.proprietaire %}
+                                <td>{{ user.prenom }} {{ user.nom }}</td>
+                              {% endif %}
+                            {% endfor %}
+                            <td>{{ horsForfait.mois }}</td>
+                            <td>{{ horsForfait.montant }}</td>
+                            {% if horsForfait.etat == "En attente" %}
+                              <td style="background-color: orange; font-weight: bold;">{{ horsForfait.etat }} <i class="fas fa-sync fa-spin"></i></td>
+                            {% endif %}
+                            {% if horsForfait.etat == "Validé" %}
+                              <td style="background-color: green; font-weight: bold;">{{ horsForfait.etat }} <i class="far fa-check-circle"></i></td>
+                            {% endif %}
+                            {% if horsForfait.etat == "Rejeté" %}
+                              <td style="background-color: red; font-weight: bold;">{{ horsForfait.etat }} <i class="fas fa-exclamation-triangle"></i></td>
+                            {% endif %}
+
+                            <td>
+                              <div class="col"><a class="btn btn-outline-success btn1 mx-1" style="max-width: 7em;" href={{ path("valide2", {'id': horsForfait.id}) }} role="button">Valider</a></div>
+                              <div class="col"><a class="btn btn-outline-warning btn1 mx-1 my-2" style="max-width: 7em;" href={{ path("attente2", {'id': horsForfait.id}) }} role="button">En attente</a></div>
+                              
+                              <div class="col"><a class="btn btn-outline-danger btn1 mx-1 mb-2" style="max-width: 7em;" href={{ path("rejete2", {'id': horsForfait.id}) }} role="button">Rejeter</a></div>
+                              <div class="col"><a class="btn btn-outline-info btn1 mx-1" style="max-width: 7em;" href={{ path("info2", {'id': horsForfait.id, 'proprietaire': horsForfait.proprietaire}) }} role="button">Détail</a></div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                      {% endif %}
+                    </table>
+                </div>
+            </div>
+        </div>
+        
           </div>
         </div>
       </div>

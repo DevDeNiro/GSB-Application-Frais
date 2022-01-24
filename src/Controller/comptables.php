@@ -95,7 +95,7 @@ class comptables extends AbstractController
 
         $repository = $this->getDoctrine()
             ->getRepository(FraisHorsForfait::class)
-            ->findBy(['proprietaire' => $user]);
+            ->findAll();
 
         $repository2 = $this->getDoctrine()
             ->getRepository(FraisForfait::class)
@@ -110,7 +110,7 @@ class comptables extends AbstractController
             ->findAll();
         
         return $this->render('comptables\fiche_frais.html.twig', [
-            "Hors_Forfait" => $repository,
+            "horsForfait" => $repository,
             "Forfait" => $repository2,
             "vehicule" => $repository3,
             "user" => $repository4,
@@ -235,6 +235,107 @@ class comptables extends AbstractController
         // return $this->redirectToRoute('suivi_frais'); // Rediriger vers la page d'accueil
         return $this->render('comptables\info.html.twig', [
             "Forfait" => $repository23,
+            "user" => $repository24,
+            "vehicule" => $repository25
+        ]);
+    }
+
+
+
+
+    /**
+     * @Route("/valide2/{id}", name = "valide2")
+    */
+
+    public function valide2(int $id) : Response{
+
+        $entityManager=$this->getDoctrine()->getManager();
+        
+        $repository21 = $this->getDoctrine()
+                ->getRepository(FraisHorsForfait::class)
+                ->find($id);
+
+        $repository21->setEtat('Validé');
+        $entityManager->flush();
+
+        $this->addFlash('valide', 'Validation effectuée'); // Affiche un message de confirmation sur la page d'accueil
+        
+        // return $this->render('comptables\fiche_frais.html.twig', [
+        // ]);
+
+        return $this->redirectToRoute('suivi_frais'); // Rediriger vers la page d'accueil
+    }
+
+    /**
+     * @Route("/attente2/{id}", name = "attente2")
+    */
+
+    public function attente2(int $id) : Response{
+
+        $entityManager=$this->getDoctrine()->getManager();
+        
+        $repository21 = $this->getDoctrine()
+                ->getRepository(FraisHorsForfait::class)
+                ->find($id);
+
+        $repository21->setEtat('En attente');
+        $entityManager->flush();
+
+        $this->addFlash('attente', 'Mise en attente effectuée'); // Affiche un message de confirmation sur la page d'accueil
+        
+        // return $this->render('comptables\fiche_frais.html.twig', [
+        // ]);
+
+        return $this->redirectToRoute('suivi_frais'); // Rediriger vers la page d'accueil
+    }
+
+    /**
+     * @Route("/rejete2/{id}", name = "rejete2")
+    */
+
+    public function rejete2(int $id) : Response{
+
+        $entityManager=$this->getDoctrine()->getManager();
+        
+        $repository21 = $this->getDoctrine()
+                ->getRepository(FraisHorsForfait::class)
+                ->find($id);
+
+        $repository21->setEtat('Rejeté');
+        $entityManager->flush();
+
+        $this->addFlash('rejete', 'Rejet effectué'); // Affiche un message de confirmation sur la page d'accueil
+
+        // return $this->render('comptables\fiche_frais.html.twig', [
+        // ]);
+            
+        return $this->redirectToRoute('suivi_frais'); // Rediriger vers la page d'accueil
+    }
+
+    
+    /**
+     * @Route("/comptables/info2/{id}/{proprietaire}", name = "info2")
+    */
+
+    public function info2(int $id, int $proprietaire) : Response{
+
+        $repository23 = $this->getDoctrine()
+                ->getRepository(FraisHorsForfait::class)
+                ->findBy(['id' => $id]);
+
+        $repository24 = $this->getDoctrine()
+            ->getRepository(User::class)
+            ->findAll();
+
+        $repository25 = $this->getDoctrine()
+            ->getRepository(Vehicule::class)
+            ->findBy(['proprietaire' => $proprietaire]);
+
+        
+
+        // return $this->redirectToRoute('suivi_frais'); // Rediriger vers la page d'accueil
+        return $this->render('comptables\info2.html.twig', [
+            "hors_forfait" => $repository23,
             "user" => $repository24,
             "vehicule" => $repository25
         ]);
