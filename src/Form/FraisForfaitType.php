@@ -47,7 +47,7 @@ class FraisForfaitType extends AbstractType
                     'placeholder' => 'Nombre de repas' )
         ])  
 
-        ->add('libelle', NumberType::class,[
+        ->add('libelle', TextType::class,[
             'required' => true,
             'attr' => array ( 
                 'placeholder' => 'Nombre de repas' )
