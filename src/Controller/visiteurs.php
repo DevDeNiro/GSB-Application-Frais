@@ -84,6 +84,29 @@ class visiteurs extends AbstractController
     }
 
     /**
+     * @Route("/visiteurs/choix_fiche", name = "choix_fiche")
+     * @Method({"GET", "POST"})
+    */
+
+    public function choix_fiche() : Response           
+    {
+        setlocale(LC_TIME, "fr_FR");
+        $mois_actuel = date("F Y");
+
+        $user = $this->getUser();
+        $user = $user->getId();
+
+        $repository28 = $this->getDoctrine()
+            ->getRepository(Vehicule::class)
+            ->findBy(['proprietaire' => $user]);
+
+        return $this->render('visiteurs\choix_fiche.html.twig', [
+            'date' => $mois_actuel,
+            'vehicule' => $repository28
+        ]); 
+    }
+
+     /**
      * @Route("/visiteurs/frais_forfait", name = "frais_forfait")
      * @Method({"GET", "POST"})
     */
@@ -120,29 +143,6 @@ class visiteurs extends AbstractController
 
         return $this->render('visiteurs\frais_forfait.html.twig',[    
             'form' => $form->createView(),
-            'date' => $mois_actuel,
-            'vehicule' => $repository28
-        ]); 
-    }
-
-    /**
-     * @Route("/visiteurs/choix_fiche", name = "choix_fiche")
-     * @Method({"GET", "POST"})
-    */
-
-    public function choix_fiche() : Response           
-    {
-        setlocale(LC_TIME, "fr_FR");
-        $mois_actuel = date("F Y");
-
-        $user = $this->getUser();
-        $user = $user->getId();
-
-        $repository28 = $this->getDoctrine()
-            ->getRepository(Vehicule::class)
-            ->findBy(['proprietaire' => $user]);
-
-        return $this->render('visiteurs\choix_fiche.html.twig', [
             'date' => $mois_actuel,
             'vehicule' => $repository28
         ]); 
@@ -189,10 +189,8 @@ class visiteurs extends AbstractController
             'vehicule' => $repository28
         ]); 
     }
+    
        
-
-    
-    
     // public function Suivre_frais_forfait() : Response 
     // {
     //     $repository = $this->getDoctrine()
@@ -204,6 +202,7 @@ class visiteurs extends AbstractController
     //     ]); 
 
     // }
+
 
      /**
      * @Route("/visiteurs/suivi_frais", name = "visiteur_frais")
@@ -275,6 +274,7 @@ class visiteurs extends AbstractController
             return $this->redirectToRoute('accueil_visiteurs');  // Rediriger vers la page d'accueil
              
         }
+
         return $this->render('visiteurs\vehicule_visiteur.html.twig',[ // Création du formulaire par symfony
             'form' => $form->createView(),
             'date' => $mois_actuel,
@@ -324,4 +324,88 @@ class visiteurs extends AbstractController
         return $this->redirectToRoute('visiteur_frais'); // Rediriger vers la page d'accueil
     }
 
+
+     /**
+     * @Route("/modifier.auForfait/{id}", name = "modifier")
+    */
+
+    public function modifier_auForfait(Request $request, int $id) : Response 
+    {
+
+        setlocale(LC_TIME, "fr_FR");
+        $mois_actuel = date("F Y");
+
+        $user = $this->getUser();
+        $user = $user->getId();
+
+        $repository28 = $this->getDoctrine()
+            ->getRepository(Vehicule::class)
+            ->findBy(['proprietaire' => $user]);
+
+        $fiche = new FraisForfait ();
+
+        $form = $this->createForm(FraisForfaitType::class, $fiche); 
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $user = $this->getUser();
+            $user = $user->getId();
+            $fiche->setProprietaire($user);
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($fiche);
+            $entityManager->flush();
+
+            $this->addFlash('success18', 'Frais forfaitaire modifié avec succès !');  
+            return $this->redirectToRoute('visiteur_frais');  
+        }
+        
+         return $this->render('visiteurs\Edit_frais_forfait.html.twig',[ 
+            'form' => $form->createView(),
+            'date' => $mois_actuel,
+            'vehicule' => $repository28
+        ]); 
+    }
+
+    /**
+     * @Route("/modifier.horsForfait/{id}", name = "modifier2")
+    */
+
+    public function modifier_horsForfait(Request $request, int $id) : Response
+    { 
+        
+        setlocale(LC_TIME, "fr_FR");
+        $mois_actuel = date("F Y");
+
+        $user = $this->getUser();
+        $user = $user->getId();
+
+        $repository28 = $this->getDoctrine()
+            ->getRepository(Vehicule::class)
+            ->findBy(['proprietaire' => $user]);
+
+        $fiche2 = new FraisHorsForfait ();
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $form = $this->createForm(FraisHorsForfaitType::class, $fiche2); 
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $user = $this->getUser();
+            $user = $user->getId();
+            $fiche2->setProprietaire($user);
+
+            $entityManager->persist($fiche2);
+            $entityManager->flush();
+
+            $this->addFlash('success34', 'Frais hors forfait modifié avec succès !');   
+            return $this->redirectToRoute('visiteur_frais');  
+        }
+
+        return $this->render('visiteurs\Edit_frais_hors_forfait.html.twig',[ 
+            'form' => $form->createView(),
+            'date' => $mois_actuel,
+            'vehicule' => $repository28
+        ]); 
+    }
 }
