@@ -11,6 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
+use Symfony\Component\PropertyAccess\PropertyAccess;
 
 use App\Entity\Vehicule;
 use App\Form\VehiculeType;
@@ -42,17 +43,15 @@ class visiteurs extends AbstractController
      */
     private $security;
 
-    public function __construct(Security $security)
+    private $entityManager;
+
+
+    public function __construct(Security $security, EntityManagerInterface $entityManager)
     {
        $this->security = $security;
+       $this->entityManager = $entityManager;
+
     }
-
-    // private $entityManager;
-
-    // public function __construct(EntityManagerInterface $entityManager)
-    // {
-    //     $this->entityManager = $entityManager;
-    // }
 
     /**
      * @Route("/visiteurs/accueil_visiteur", name = "accueil_visiteurs")
@@ -288,7 +287,7 @@ class visiteurs extends AbstractController
 
     public function supprimer(int $id) : Response{ // Supprimer un métériel ciblé
 
-        $entityManager=$this->getDoctrine()->getManager();
+        $entityManager = $this->getDoctrine()->getManager();
         
         $repository = $this->getDoctrine()
                 ->getRepository(FraisForfait::class)
@@ -309,7 +308,7 @@ class visiteurs extends AbstractController
 
     public function supprimer2(int $id) : Response{ // Supprimer un métériel ciblé
 
-        $entityManager=$this->getDoctrine()->getManager();
+        $entityManager = $this->getDoctrine()->getManager();
         
         $repository = $this->getDoctrine()
                 ->getRepository(FraisHorsForfait::class)
@@ -338,23 +337,24 @@ class visiteurs extends AbstractController
         $user = $this->getUser();
         $user = $user->getId();
 
-        $repository28 = $this->getDoctrine()
-            ->getRepository(Vehicule::class)
-            ->findBy(['proprietaire' => $user]);
+        // $repository28 = $this->getDoctrine()
+        //     ->getRepository(Vehicule::class)
+        //     ->findBy(['proprietaire' => $user]);
 
-        $fiche = new FraisForfait ();
+        // $property = new FraisForfait();
 
-        $form = $this->createForm(FraisForfaitType::class, $fiche); 
+    $form = $this->createForm(FraisForfaitType::class /*, $??? */); 
 
         $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $user = $this->getUser();
-            $user = $user->getId();
-            $fiche->setProprietaire($user);
 
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($fiche);
-            $entityManager->flush();
+        if ($form->isSubmitted() && $form->isValid()) {
+            // $user = $this->getUser();
+            // $user = $user->getId();
+            // $fiche->setProprietaire($user);
+
+            // $entityManager = $this->getDoctrine()->getManager();
+            // $entityManager->persist($fiche);
+            $this->entityManager->flush();
 
             $this->addFlash('success18', 'Frais forfaitaire modifié avec succès !');  
             return $this->redirectToRoute('visiteur_frais');  
@@ -363,7 +363,7 @@ class visiteurs extends AbstractController
          return $this->render('visiteurs\Edit_frais_forfait.html.twig',[ 
             'form' => $form->createView(),
             'date' => $mois_actuel,
-            'vehicule' => $repository28
+            // 'vehicule' => $repository28
         ]); 
     }
 
