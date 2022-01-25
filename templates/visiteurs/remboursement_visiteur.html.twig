@@ -164,8 +164,10 @@
 
                                         
                                     <td>
-                                    <div class="col"><a class="btn btn-outline-danger btn1" href={{ path("supprimer", {'id': auForfait.id}) }} role="button">Supprimer</a></div>
+                                      <div class="col"><a class="btn btn-outline-danger btn1" href={{ path("supprimer", {'id': auForfait.id}) }} role="button">Supprimer</a></div>
+                                      <div class="col"><a class="btn btn-primary" href= {# {{ path("modifier", {'id': auForfait.id}) }} #}role="button">Modifier</a></div>
                                     </td>
+
                                     </tr>
                                     {% endfor %}
                         {% endif %}
