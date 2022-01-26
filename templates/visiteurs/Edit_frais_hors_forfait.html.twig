@@ -72,14 +72,54 @@
           <div class="container-fluid">
             <div class="row top">
               <div class="my-auto text_bloc_top col col-md-8 col-lg-9 p-0 bloc_top">
-                <p class="m-0 ml-2 titre_bandeau">Saisir une fiche de frais</p>
+                <p class="m-0 ml-2 titre_bandeau">Modifier une fiche hors forfait</p>
               </div>
               <div class="my-auto text_bloc_top col col-md-4 col-lg-3 p-0 bloc_top">
                 <p class="m-0">Période : {{date}}</p>
               </div>
             </div>
-            <div class="row mx-auto w-75 p-0 mt-5">
+            
+            <div class="row mx-auto w-75 p-0 mt-4">
               <div class="col">
+              <div class="card mb-3">
+                    <div class="card-header bg-info title">
+                        Valeurs actuelles de la fiche hors forfait
+                    </div>
+
+                    {% if horsForfait %} 
+                      <table class="table table-hover table-striped table-bordered mb-0" data-toggle="table" data-search="true" data-sort-name="etat" data-sort-order="asc"> 
+                        <thead class="thead">
+                            <tr>
+                                <th scope="col" data-sortable="true" data-field="id">Mois</th>
+                                <th scope="col" data-sortable="true" data-field="mois">Libellé</th>                             
+                                <th scope="col" data-sortable="true" data-field="etat">Etat</th>
+                                <th scope="col" data-sortable="true" data-field="montant">Montant</th>
+                            </tr>
+                        </thead>
+                        <tr>
+                        {% for horsForfait in horsForfait %}
+
+                            <td> {{ horsForfait.mois }} </td>
+                            <td> {{ horsForfait.libelle }} </td>
+                            
+                            {% if horsForfait.etat == "En attente" %}
+                              <td style="background-color: orange; font-weight: bold;">{{ horsForfait.etat }} <i class="fas fa-sync fa-spin"></i></td>
+                            {% endif %}
+
+                            {% if horsForfait.etat == "Validé" %}
+                              <td style="background-color: green; font-weight: bold;">{{ horsForfait.etat }} <i class="far fa-check-circle"></i></td>
+                            {% endif %}
+
+                            {% if horsForfait.etat == "Rejeté" %}
+                              <td style="background-color: red; font-weight: bold;">{{ horsForfait.etat }} <i class="fas fa-exclamation-triangle"></i></td>
+                            {% endif %}
+
+                            <td> {{ horsForfait.montant }} </td>
+                        </tr>
+                        {% endfor %}
+                      {% endif %}
+                    </table>
+                </div>
               {% for vehicule in vehicule %}
                   {% if loop.last %}
 
@@ -88,7 +128,7 @@
               
                 <div class="card">
                   <div class="card-header bg-info title">
-                      Frais hors forfait
+                      Modifications des valeurs (Chaque champ doit être rempli)
                   </div>
                   <div class="card-body">
                     <form action= {{ path('fiche_frais') }} method="POST">
@@ -101,7 +141,7 @@
                       </div> 
                       <div class="row">
                           <div class="col-8 col-sm-5 col-md-4 col-lg-3 col-xl-2">
-                            <button class="btn btn-outline-success mt-3" type="submit">Ajouter</button>
+                            <button class="btn btn-outline-success mt-3" type="submit">Modifier</button>
                           </div>
                       </div>
                         {{ form_end(form) }}
