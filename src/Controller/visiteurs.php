@@ -270,7 +270,7 @@ class visiteurs extends AbstractController
             $entityManager->flush();
 
             $this->addFlash('success1', 'Véhicule ajouté avec succès !'); // Affiche un message de confirmation sur la page d'accueil   
-            return $this->redirectToRoute('accueil_visiteurs');  // Rediriger vers la page d'accueil
+            return $this->redirectToRoute('supprimer5', array('id' => $user));
              
         }
 
@@ -363,6 +363,26 @@ class visiteurs extends AbstractController
         $this->addFlash('modif', 'Modification effectuée'); // Affiche un message de confirmation sur la page d'accueil
         
         return $this->redirectToRoute('visiteur_frais'); // Rediriger vers la page d'accueil
+    }
+
+    /**
+     * @Route("/supprimer5/{id}", name = "supprimer5")
+    */
+
+    public function supprimer5(int $id) : Response{ // Supprimer un métériel ciblé
+
+        $entityManager = $this->getDoctrine()->getManager();
+        
+        $repository = $this->getDoctrine()
+                ->getRepository(Vehicule::class)
+                ->findOneBy(['proprietaire' => $id]);
+
+        $entityManager->remove($repository);
+        $entityManager->flush();
+
+        $this->addFlash('modif2', 'Modification effectuée'); // Affiche un message de confirmation sur la page d'accueil
+        
+        return $this->redirectToRoute('vehicule'); // Rediriger vers la page d'accueil
     }
 
      /**
