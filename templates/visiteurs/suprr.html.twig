@@ -61,14 +61,23 @@
           <div class="row top">
             <div class="row mx-auto w-75 p-0 mt-5">
                 <div class="col">
-                {% for vehicule in vehicule %}
+                {% for repo in repo %}
                     {% if loop.last %}
-                        {% if loop.index > 1 %}
-                            {# {% do redirect('') %} #}
+                        {% if loop.index == 1 %}
+                            <div class="col"><a class="btn btn-outline-primary" href={{ path("vehicule") }} role="button">Ajouter</a></div>
+                            <div class="col"><a class="btn btn-outline-primary" href={{ path("supprimer5", {'id': repo.proprietaire }) }} role="button">Annuler</a></div>
                         {% endif %}
+                        {% else %}
+
+                {{loop.index}}
+                {# {% do redirect('http://www.google.com') %} #}
+                {# {{ render(controller('accueil_visiteurs')) }} #}
+                <div class="col"><a class="btn btn-outline-primary" href={{ path("supprimer5", {'id': repo.proprietaire }) }} role="button">Modifier</a></div>
+                <div class="col"><a class="btn btn-outline-primary" href={{ path("supprimer6", {'id': repo.proprietaire }) }} role="button">Annuler</a></div>
                     {% endif %}
-                {% else %}
-                {% do redirect('vehicule') %}
+                
+
+                {% endfor %}
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
   {% endblock %}
 </html>

@@ -389,8 +389,32 @@ class visiteurs extends AbstractController
                 //     'repo' => $repository
                 // ]); 
 
-        // $entityManager->remove($repository);
-        // $entityManager->flush();
+        $entityManager->remove($repository);
+        $entityManager->flush();
+
+        // $this->addFlash('modif2', 'Modification effectuée'); // Affiche un message de confirmation sur la page d'accueil
+        
+        return $this->redirectToRoute('vehicule'); // Rediriger vers la page d'accueil
+    }
+
+    /**
+     * @Route("/supprimer6/{id}", name = "supprimer6")
+    */
+
+    public function supprimer6(int $id) : Response{ // Supprimer un métériel ciblé
+        
+        $entityManager = $this->getDoctrine()->getManager();
+        
+        $repository = $this->getDoctrine()
+                ->getRepository(Vehicule::class)
+                ->findOneBy(['proprietaire' => $id], ['proprietaire' => 'DESC']);
+
+                // return $this->render('visiteurs\vechicule.html.twig',[ 
+                //     'repo' => $repository
+                // ]); 
+
+        $entityManager->remove($repository);
+        $entityManager->flush();
 
         // $this->addFlash('modif2', 'Modification effectuée'); // Affiche un message de confirmation sur la page d'accueil
         
@@ -404,13 +428,13 @@ class visiteurs extends AbstractController
     public function suprr(int $id) : Response{ // Supprimer un métériel ciblé
         
 
-        $entityManager = $this->getDoctrine()->getManager();
+        //$entityManager = $this->getDoctrine()->getManager();
         
         $repository = $this->getDoctrine()
                 ->getRepository(Vehicule::class)
-                ->findOneBy(['proprietaire' => $id]);
+                ->findBy(['proprietaire' => $id]);
 
-        return $this->render('visiteurs\suppr.html.twig',[ 
+        return $this->render('visiteurs\suprr.html.twig',[ 
             'repo' => $repository
         ]); 
 
