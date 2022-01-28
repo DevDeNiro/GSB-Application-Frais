@@ -75,10 +75,25 @@ class visiteurs extends AbstractController
         ->getRepository(FraisForfait::class)
         ->findBy(['etat' => "Validé", 'proprietaire' => $user]);
 
+        $repository26BIS = $this->getDoctrine()
+            ->getRepository(FraisHorsForfait::class)
+            ->findBy(['etat' => "En attente", 'proprietaire' => $user]);
+
+        $repository27BIS = $this->getDoctrine()
+        ->getRepository(FraisHorsForfait::class)
+        ->findBy(['etat' => "Rejeté", 'proprietaire' => $user]);
+        
+        $repository28BIS = $this->getDoctrine()
+        ->getRepository(FraisHorsForfait::class)
+        ->findBy(['etat' => "Validé", 'proprietaire' => $user]);
+
         return $this->render('/visiteurs/accueil_visiteur.html.twig', [
             "attente" => $repository26,
             "rejete" => $repository27,
-            "valide" => $repository28
+            "valide" => $repository28,
+            "attenteBIS" => $repository26BIS,
+            "rejeteBIS" => $repository27BIS,
+            "valideBIS" => $repository28BIS
         ]); 
     }
 

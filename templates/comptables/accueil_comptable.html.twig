@@ -107,6 +107,47 @@
                         </div>
                       </div>
                     </div>
+                    <div class="row mt-5 justify-content-center">
+                    <div class="card text-white bg-success mb-3 col px-0" style="max-width: 19rem;">
+                      <div class="card-header" style="font-weight: bold; font-size: large">Frais hors forfait validés <i class="far fa-check-circle"></i></div>
+                        <div class="card-body">
+                          {% for valideBIS in valideBIS %}
+                            {% if loop.last %}
+                              <p class="card-text" style="font-size: 60px;">{{loop.index}}</p>
+                            {% endif %}
+                            {% else %}
+                              <p class="card-text" style="font-size: 60px;">0</p>
+                          {% endfor %}
+                        </div>
+                      </div>
+
+                    <div class="card text-white bg-warning mb-3 col mx-3 px-0" style="max-width: 19rem;">
+                      <div class="card-header" style="font-weight: bold; font-size: large">Frais hors forfait en attente <i class="far fa-pause-circle"></i></div>
+                        <div class="card-body">
+                          {% for attenteBIS in attenteBIS %}
+                            {% if loop.last %}
+                              <p class="card-text" style="font-size: 60px;">{{loop.index}}</p>
+                            {% endif %}
+                            {% else %}
+                              <p class="card-text" style="font-size: 60px;">0</p>
+                          {% endfor %}
+                        </div>
+                      </div>
+
+                    <div class="card text-white bg-danger mb-3 col px-0" style="max-width: 19rem;">
+                      <div class="card-header" style="font-weight: bold; font-size: large">Frais hors forfait rejetés <i class="fas fa-exclamation-triangle"></i></div>
+                        <div class="card-body">
+                          {% for rejeteBIS in rejeteBIS %}
+                            {% if loop.last %}
+                              <p class="card-text" style="font-size: 60px;">{{loop.index}}</p>
+                            {% endif %}
+                            {% else %}
+                              <p class="card-text" style="font-size: 60px;">0</p>
+                          {% endfor %}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                   </div>
       </div>
     </div>

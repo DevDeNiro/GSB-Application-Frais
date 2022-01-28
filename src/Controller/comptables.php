@@ -47,10 +47,25 @@ class comptables extends AbstractController
             ->getRepository(FraisForfait::class)
             ->findBy(['etat' => "Validé"]);
 
+        $repository26BIS = $this->getDoctrine()
+        ->getRepository(FraisHorsForfait::class)
+        ->findBy(['etat' => "En attente"]);
+
+        $repository27BIS = $this->getDoctrine()
+            ->getRepository(FraisHorsForfait::class)
+            ->findBy(['etat' => "Rejeté"]);
+        
+        $repository28BIS = $this->getDoctrine()
+            ->getRepository(FraisHorsForfait::class)
+            ->findBy(['etat' => "Validé"]);
+
         return $this->render('/comptables/accueil_comptable.html.twig', [
             "attente" => $repository26,
             "rejete" => $repository27,
-            "valide" => $repository28
+            "valide" => $repository28,
+            "attenteBIS" => $repository26BIS,
+            "rejeteBIS" => $repository27BIS,
+            "valideBIS" => $repository28BIS
         ]); 
     }
 
