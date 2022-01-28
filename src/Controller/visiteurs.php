@@ -407,7 +407,7 @@ class visiteurs extends AbstractController
         
         $repository = $this->getDoctrine()
                 ->getRepository(Vehicule::class)
-                ->findOneBy(['proprietaire' => $id], ['proprietaire' => 'DESC']);
+                ->findOneBy(['proprietaire' => $id], array('id' => 'DESC'));
 
                 // return $this->render('visiteurs\vechicule.html.twig',[ 
                 //     'repo' => $repository
