@@ -163,7 +163,7 @@ class visiteurs extends AbstractController
     }
 
     /**
-     * @Route("/visiteurs/frais_hors_forfais", name = "fiche_frais")
+     * @Route("/visiteurs/frais_hors_forfais", name = "frais_hors_forfait")
      * @Method({"GET", "POST"})
     */
 
