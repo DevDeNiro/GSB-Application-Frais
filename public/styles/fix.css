@@ -21,3 +21,11 @@
     margin-top: 10em;
     max-width: 1024px;
 }
+
+.margin-left {
+    /* margin-left: 320px;
+    position: absolute; */
+    margin: auto;
+    display: block;
+    max-width: none;
+}
