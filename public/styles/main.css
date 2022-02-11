@@ -85,17 +85,17 @@ body {
 .top {
     background-color: black;
     /* width: auto; */
-    height: 3.25em;
+    height: 5vh;
 }
 
 /* Sidebar Styles */
 
 .sidebar {
     /* z-index: 1000; */
-    position: fixed;
+    /* position: fixed; */
     /* left: 250px; */
     width: 100%;
-    height: 100vh;
+    height: 177vh;
     /* margin-left: -250px; */
     /* overflow-y: auto; */
     background: #37474F;
@@ -151,5 +151,9 @@ body {
 }
 
 .margin-left {
-    margin-left: 320px;
+    /* margin-left: 320px;
+    position: absolute; */
+    margin: auto;
+    display: block;
+    max-width: none;
 }
