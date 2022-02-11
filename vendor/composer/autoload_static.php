@@ -39,7 +39,6 @@ class ComposerStaticInitd751a2f89fe68074100844d876959822
         ),
         'S' => 
         array (
-            'Symfony\\WebpackEncoreBundle\\' => 28,
             'Symfony\\Polyfill\\Php81\\' => 23,
             'Symfony\\Polyfill\\Php80\\' => 23,
             'Symfony\\Polyfill\\Php73\\' => 23,
@@ -181,10 +180,6 @@ class ComposerStaticInitd751a2f89fe68074100844d876959822
         'Twig\\' => 
         array (
             0 => __DIR__ . '/..' . '/twig/twig/src',
-        ),
-        'Symfony\\WebpackEncoreBundle\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/webpack-encore-bundle/src',
         ),
         'Symfony\\Polyfill\\Php81\\' => 
         array (
