@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Cours Complet Bootstrap 4</title>
+    <title>GSB | Galaxy Swiss Bourdin</title>
     <meta charset='utf-8'>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     {% block stylesheets %} {# Importation de la feuille de style, et de bootstrap #}
-            {{ encore_entry_link_tags('app') }}
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
             <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.css">
-           {# <link href="/your-path-to-fontawesome/css/all.css" rel="stylesheet"> #}
     {% endblock %}
   </head>
 
@@ -110,13 +108,13 @@
                             <tr>
                                 <th scope="col" data-sortable="true" data-field="etat">Etat</th>
                                     {% if hors_forfait.etat == "En attente" %}
-                                        <td style="background-color: orange; font-weight: bold;">{{ hors_forfait.etat }} <i class="fas fa-sync fa-spin"></i></td>
+                                        <td style="background-color: orange; font-weight: 550;">{{ hors_forfait.etat }} <i class="fas fa-sync fa-spin"></i></td>
                                     {% endif %}
                                         {% if hors_forfait.etat == "Validé" %}
-                                        <td style="background-color: green; font-weight: bold;">{{ hors_forfait.etat }} <i class="far fa-check-circle"></i></td>
+                                        <td style="background-color: green; font-weight: 550;">{{ hors_forfait.etat }} <i class="far fa-check-circle"></i></td>
                                     {% endif %}
                                     {% if hors_forfait.etat == "Rejeté" %}
-                                        <td style="background-color: red; font-weight: bold;">{{ hors_forfait.etat }} <i class="fas fa-exclamation-triangle"></i></td>
+                                        <td style="background-color: red; font-weight: 550;">{{ hors_forfait.etat }} <i class="fas fa-exclamation-triangle"></i></td>
                                     {% endif %}
                             </tr>
                         </table>
