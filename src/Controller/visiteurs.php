@@ -105,7 +105,7 @@ class visiteurs extends AbstractController
     public function choix_fiche() : Response           
     {
         setlocale(LC_TIME, "fr_FR");
-        $mois_actuel = date("F Y");
+        $mois_actuel = date("m Y");
 
         $user = $this->getUser();
         $user = $user->getId();
@@ -128,7 +128,7 @@ class visiteurs extends AbstractController
     public function Saisir_frais(Request $request) : Response           
     {
         setlocale(LC_TIME, "fr_FR");
-        $mois_actuel = date("F Y");
+        $mois_actuel = date("m Y");
 
         $user = $this->getUser();
         $user = $user->getId();
@@ -170,7 +170,7 @@ class visiteurs extends AbstractController
     public function Saisir_frais_2(Request $request) : Response    
     {
         setlocale(LC_TIME, "fr_FR");
-        $mois_actuel = date("F Y");
+        $mois_actuel = date("m Y");
 
         $user = $this->getUser();
         $user = $user->getId();
@@ -226,7 +226,7 @@ class visiteurs extends AbstractController
     public function Suivre_frais_hors_forfait() : Response 
         {
             setlocale(LC_TIME, "fr_FR");
-            $mois_actuel = date("F Y");
+            $mois_actuel = date("m Y");
 
             $user = $this->getUser();
             $user = $user->getId();
@@ -259,7 +259,7 @@ class visiteurs extends AbstractController
     public function Saisi_vehicule(Request $request) 
     {
         setlocale(LC_TIME, "fr_FR");
-        $mois_actuel = date("F Y");
+        $mois_actuel = date("m Y");
 
         $user = $this->getUser();
         $user = $user->getId();
@@ -469,7 +469,7 @@ class visiteurs extends AbstractController
     {
 
         setlocale(LC_TIME, "fr_FR");
-        $mois_actuel = date("F Y");
+        $mois_actuel = date("m Y");
 
         $user = $this->getUser();
         $user = $user->getId();
@@ -520,7 +520,7 @@ class visiteurs extends AbstractController
     { 
         
         setlocale(LC_TIME, "fr_FR");
-        $mois_actuel = date("F Y");
+        $mois_actuel = date("m Y");
 
         $user = $this->getUser();
         $user = $user->getId();

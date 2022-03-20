@@ -77,7 +77,7 @@ class comptables extends AbstractController
     public function Afficher_liste_visiteur() : Response
     {
         setlocale(LC_TIME, "fr_FR");
-        $mois_actuel = date("F Y");
+        $mois_actuel = date("m Y");
 
         $repository = $this->getDoctrine()
             ->getRepository(User::class)
@@ -103,7 +103,7 @@ class comptables extends AbstractController
     public function suivi_fiche_frais() : Response
     {
         setlocale(LC_TIME, "fr_FR");
-        $mois_actuel = date("F Y");
+        $mois_actuel = date("m Y");
         
         $user = $this->getUser();
         $user = $user->getId();

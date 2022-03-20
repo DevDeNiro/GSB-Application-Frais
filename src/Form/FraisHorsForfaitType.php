@@ -20,7 +20,7 @@ class FraisHorsForfaitType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         setlocale(LC_TIME, "fr_FR");
-        $mois_actuel = date("F Y");
+        $mois_actuel = date("m Y");
 
         $builder
 
