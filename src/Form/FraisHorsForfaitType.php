@@ -27,15 +27,15 @@ class FraisHorsForfaitType extends AbstractType
         ->add('montant',  NumberType::class, [
                     'required' => true,
                     'attr' => array ( 
-                        'placeholder' => 'montant'),
-                    'label' => 'Montant en €'
+                        'placeholder' => 'Montant'),
+                    'label' => 'Montant en Euro'
         ])  
 
         ->add('libelle', TextType::class, [
             'required' => true,
             'attr' => array ( 
-                'placeholder' => 'libelle' ),
-            'label' => 'Libellé (ex: Exemple)'
+                'placeholder' => 'Libellé' ),
+            'label' => 'Libellé'
             
         ])
 

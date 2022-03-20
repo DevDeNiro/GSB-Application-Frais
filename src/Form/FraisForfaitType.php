@@ -44,19 +44,19 @@ class FraisForfaitType extends AbstractType
         ->add('km', NumberType::class,[
                 'required' => true,
                 'attr' => array ( 
-                    'placeholder' => 'Nombre de repas' )
+                    'placeholder' => 'Nombre de km' )
         ])  
 
         ->add('libelle', TextType::class,[
             'required' => true,
             'attr' => array ( 
-                'placeholder' => 'Nombre de repas' )
+                'placeholder' => 'Libellé' )
         ])
 
         ->add('montant', TextType::class,[
             'required' => false,
             'attr' => array ( 
-                'placeholder' => 'Nombre de repas'),
+                'placeholder' => 'Montant'),
                 'label' => 'calcul',
                 'empty_data' => ''
         ])
