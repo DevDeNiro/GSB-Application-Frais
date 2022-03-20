@@ -476,7 +476,7 @@ class visiteurs extends AbstractController
 
         $repository28 = $this->getDoctrine()
             ->getRepository(FraisForfait::class)
-            ->findBy(['proprietaire' => $user]);
+            ->findBy(['proprietaire' => $user, 'id' => $id]);
 
         $repository29 = $this->getDoctrine()
         ->getRepository(Vehicule::class)
@@ -527,7 +527,7 @@ class visiteurs extends AbstractController
 
         $repository28 = $this->getDoctrine()
             ->getRepository(FraisHorsForfait::class)
-            ->findBy(['proprietaire' => $user]);
+            ->findBy(['proprietaire' => $user, 'id' => $id]);
 
         $repository29 = $this->getDoctrine()
         ->getRepository(Vehicule::class)
