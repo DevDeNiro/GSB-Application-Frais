@@ -163,7 +163,7 @@
                                         {% for vehicule in vehicule %}
 
                                           {% if vehicule.carburant == "Diesel" %}
-
+                                            {# Frais kilométrique + prix d'une nuit + prix d'un repas #}
                                             {% if vehicule.chevaux <= 4 %}
                                               <td>{{ auForfait.km * 0.52 + auForfait.nuit * 80 + auForfait.repasMidi * 9.5}}</td>
                                             {% endif %}
