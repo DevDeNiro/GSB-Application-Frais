@@ -6,22 +6,18 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use App\Entity\Vehicule;
-use App\Form\VehiculeType;
 
 use App\Entity\FraisHorsForfait;
 use App\Entity\User;
-use App\Form\FraisHorsForfaitType;
 
 use App\Entity\FraisForfait;
-use App\Form\FraisForfaitType;
 
 class comptables extends AbstractController
 {
 
-    private $em;
+    // Ajout du gestionnaire d'entité
 
     public function __construct (EntityManagerInterface $em)
     {
@@ -76,6 +72,7 @@ class comptables extends AbstractController
     
     public function Afficher_liste_visiteur() : Response
     {
+
         setlocale(LC_TIME, "fr_FR");
         $mois_actuel = date("m Y");
 
@@ -100,7 +97,7 @@ class comptables extends AbstractController
      * @Method({"GET", "POST"})
     */
     
-    public function suivi_fiche_frais() : Response
+    public function suivi_fiches_frais() : Response
     {
         setlocale(LC_TIME, "fr_FR");
         $mois_actuel = date("m Y");
@@ -137,7 +134,7 @@ class comptables extends AbstractController
      * @Route("/supprimer/{id}", name = "supprimer")
     */
 
-    public function supprimer(int $id) : Response{
+    public function supprimer_frais_forfait(int $id) : Response{
 
         $entityManager=$this->getDoctrine()->getManager();
         
@@ -145,23 +142,19 @@ class comptables extends AbstractController
                 ->getRepository(FraisForfait::class)
                 ->find($id);
 
-
         $entityManager->remove($repository20);
         $entityManager->flush();
 
-        $this->addFlash('success', 'Suppression effectuée'); // Affiche un message de confirmation sur la page d'accueil
+        $this->addFlash('success', 'Suppression effectuée'); 
         
-        // return $this->render('comptables\fiche_frais.html.twig', [
-        // ]);
-
-        return $this->redirectToRoute('suivi_frais'); // Rediriger vers la page d'accueil
+        return $this->redirectToRoute('suivi_frais'); 
     }
 
     /**
      * @Route("/valide/{id}", name = "valide")
     */
 
-    public function valide(int $id) : Response{
+    public function valider_frais_forfait(int $id) : Response{
 
         $entityManager=$this->getDoctrine()->getManager();
         
@@ -172,19 +165,16 @@ class comptables extends AbstractController
         $repository21->setEtat('Validé');
         $entityManager->flush();
 
-        $this->addFlash('valide', 'Validation effectuée'); // Affiche un message de confirmation sur la page d'accueil
+        $this->addFlash('valide', 'Validation effectuée'); 
         
-        // return $this->render('comptables\fiche_frais.html.twig', [
-        // ]);
-
-        return $this->redirectToRoute('suivi_frais'); // Rediriger vers la page d'accueil
+        return $this->redirectToRoute('suivi_frais'); 
     }
 
     /**
      * @Route("/attente/{id}", name = "attente")
     */
 
-    public function attente(int $id) : Response{
+    public function attente_frais_forfait(int $id) : Response{
 
         $entityManager=$this->getDoctrine()->getManager();
         
@@ -195,19 +185,16 @@ class comptables extends AbstractController
         $repository21->setEtat('En attente');
         $entityManager->flush();
 
-        $this->addFlash('attente', 'Mise en attente effectuée'); // Affiche un message de confirmation sur la page d'accueil
+        $this->addFlash('attente', 'Mise en attente effectuée'); 
         
-        // return $this->render('comptables\fiche_frais.html.twig', [
-        // ]);
-
-        return $this->redirectToRoute('suivi_frais'); // Rediriger vers la page d'accueil
+        return $this->redirectToRoute('suivi_frais'); 
     }
 
     /**
      * @Route("/rejete/{id}", name = "rejete")
     */
 
-    public function rejete(int $id) : Response{
+    public function rejeter_frais_forfait(int $id) : Response{
 
         $entityManager=$this->getDoctrine()->getManager();
         
@@ -218,12 +205,9 @@ class comptables extends AbstractController
         $repository21->setEtat('Rejeté');
         $entityManager->flush();
 
-        $this->addFlash('rejete', 'Rejet effectué'); // Affiche un message de confirmation sur la page d'accueil
+        $this->addFlash('rejete', 'Rejet effectué'); 
 
-        // return $this->render('comptables\fiche_frais.html.twig', [
-        // ]);
-            
-        return $this->redirectToRoute('suivi_frais'); // Rediriger vers la page d'accueil
+        return $this->redirectToRoute('suivi_frais'); 
     }
 
     
@@ -231,7 +215,7 @@ class comptables extends AbstractController
      * @Route("/comptables/info/{id}/{proprietaire}", name = "info")
     */
 
-    public function info(int $id, int $proprietaire) : Response{
+    public function info_frais_forfait(int $id, int $proprietaire) : Response{
 
         $repository23 = $this->getDoctrine()
                 ->getRepository(FraisForfait::class)
@@ -245,9 +229,7 @@ class comptables extends AbstractController
             ->getRepository(Vehicule::class)
             ->findBy(['proprietaire' => $proprietaire]);
 
-        
 
-        // return $this->redirectToRoute('suivi_frais'); // Rediriger vers la page d'accueil
         return $this->render('comptables\info.html.twig', [
             "Forfait" => $repository23,
             "user" => $repository24,
@@ -256,13 +238,11 @@ class comptables extends AbstractController
     }
 
 
-
-
     /**
      * @Route("/valide2/{id}", name = "valide2")
     */
 
-    public function valide2(int $id) : Response{
+    public function valider_frais_horfait(int $id) : Response{
 
         $entityManager=$this->getDoctrine()->getManager();
         
@@ -273,19 +253,16 @@ class comptables extends AbstractController
         $repository21->setEtat('Validé');
         $entityManager->flush();
 
-        $this->addFlash('valide', 'Validation effectuée'); // Affiche un message de confirmation sur la page d'accueil
+        $this->addFlash('valide', 'Validation effectuée'); 
         
-        // return $this->render('comptables\fiche_frais.html.twig', [
-        // ]);
-
-        return $this->redirectToRoute('suivi_frais'); // Rediriger vers la page d'accueil
+        return $this->redirectToRoute('suivi_frais'); 
     }
 
     /**
      * @Route("/attente2/{id}", name = "attente2")
     */
 
-    public function attente2(int $id) : Response{
+    public function attente_frais_horfait(int $id) : Response{
 
         $entityManager=$this->getDoctrine()->getManager();
         
@@ -296,19 +273,16 @@ class comptables extends AbstractController
         $repository21->setEtat('En attente');
         $entityManager->flush();
 
-        $this->addFlash('attente', 'Mise en attente effectuée'); // Affiche un message de confirmation sur la page d'accueil
-        
-        // return $this->render('comptables\fiche_frais.html.twig', [
-        // ]);
+        $this->addFlash('attente', 'Mise en attente effectuée'); 
 
-        return $this->redirectToRoute('suivi_frais'); // Rediriger vers la page d'accueil
+        return $this->redirectToRoute('suivi_frais'); 
     }
 
     /**
      * @Route("/rejete2/{id}", name = "rejete2")
     */
 
-    public function rejete2(int $id) : Response{
+    public function rejeter_frais_horfait(int $id) : Response{
 
         $entityManager=$this->getDoctrine()->getManager();
         
@@ -319,12 +293,9 @@ class comptables extends AbstractController
         $repository21->setEtat('Rejeté');
         $entityManager->flush();
 
-        $this->addFlash('rejete', 'Rejet effectué'); // Affiche un message de confirmation sur la page d'accueil
-
-        // return $this->render('comptables\fiche_frais.html.twig', [
-        // ]);
-            
-        return $this->redirectToRoute('suivi_frais'); // Rediriger vers la page d'accueil
+        $this->addFlash('rejete', 'Rejet effectué'); 
+       
+        return $this->redirectToRoute('suivi_frais'); 
     }
 
     
@@ -332,7 +303,7 @@ class comptables extends AbstractController
      * @Route("/comptables/info2/{id}/{proprietaire}", name = "info2")
     */
 
-    public function info2(int $id, int $proprietaire) : Response{
+    public function info_frais_horfait(int $id, int $proprietaire) : Response{
 
         $repository23 = $this->getDoctrine()
                 ->getRepository(FraisHorsForfait::class)
@@ -346,15 +317,11 @@ class comptables extends AbstractController
             ->getRepository(Vehicule::class)
             ->findBy(['proprietaire' => $proprietaire]);
 
-        
 
-        // return $this->redirectToRoute('suivi_frais'); // Rediriger vers la page d'accueil
         return $this->render('comptables\info2.html.twig', [
             "hors_forfait" => $repository23,
             "user" => $repository24,
             "vehicule" => $repository25
         ]);
-    }
-
-    
+    }    
 }

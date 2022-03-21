@@ -115,7 +115,6 @@
                     <tr>
                         <th scope="col" data-sortable="true" data-field="id">Visiteur</th>
                         <th scope="col" data-sortable="true" data-field="mois">Mois</th>
-                        {# <th scope="col" data-sortable="true" data-field="mois">Nombre de Justificatif</th> #}
                         <th scope="col" data-sortable="true" data-field="montant">Montant</th>
                         {# <th scope="col" data-sortable="true" data-field="mois">Date de modification</th> #}
                         <th scope="col" data-sortable="true" data-field="etat">Etat</th>
@@ -168,12 +167,11 @@
                     <td style="background-color: red; font-weight: bold;">{{ Forfait.etat }} <i class="fas fa-exclamation-triangle"></i></td>
                     {% endif %}
                     <td><div class="row pb-2">
-                      <div class="col"><a class="btn btn-outline-success btn1" href={{ path("valide", {'id': Forfait.id}) }} role="button">Valider</a></div>
-                      <div class="col"><a class="btn btn-outline-warning btn1" href={{ path("attente", {'id': Forfait.id}) }} role="button">En attente</a></div>
-                      </div><div class="row">
-                      <div class="col"><a class="btn btn-outline-danger btn1" href={{ path("rejete", {'id': Forfait.id}) }} role="button">Rejeter</a></div>
-                      <div class="col"><a class="btn btn-outline-info btn1" href={{ path("info", {'id': Forfait.id, 'proprietaire': Forfait.proprietaire}) }} role="button">Détail</a></div>
-                      {# <a class="btn btn-outline btn1" href={{ path("modifier", {'id': Forfait.id}) }} role="button">Modifier</a>  #}
+                        <div class="col"><a class="btn btn-outline-success btn1" href={{ path("valide", {'id': Forfait.id}) }} role="button">Valider</a></div>
+                        <div class="col"><a class="btn btn-outline-warning btn1" href={{ path("attente", {'id': Forfait.id}) }} role="button">En attente</a></div>
+                        </div><div class="row">
+                        <div class="col"><a class="btn btn-outline-danger btn1" href={{ path("rejete", {'id': Forfait.id}) }} role="button">Rejeter</a></div>
+                        <div class="col"><a class="btn btn-outline-info btn1" href={{ path("info", {'id': Forfait.id, 'proprietaire': Forfait.proprietaire}) }} role="button">Détail</a></div>
                       </div>
                     </td>
                     </tr>   

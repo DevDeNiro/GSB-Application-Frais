@@ -17,16 +17,10 @@ class User implements UserInterface
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @ORM\OneToMany(targetEntity="App\Entity\Vehicules", mappedBy="id")
-     * @ORM\OneToMany(targetEntity="App\Entity\FicheFrais", mappedBy="id")
      */
     private $id;
 
-    /*
-    public function __construct() {
-        $this->addresses = new ArrayCollection();
-    }
-*/
+
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      */
@@ -55,7 +49,6 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="smallint")
-     * Assert\Regex("/^[0-9]{5}$/")
      */
     private $cp;
 

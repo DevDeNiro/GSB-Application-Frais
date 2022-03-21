@@ -4,35 +4,22 @@ namespace App\Controller;
 // include 
 
 use Doctrine\ORM\EntityManagerInterface;
-use App\Repository\EquipementRepository;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Validator\Validator\ValidatorInterface;
-use Symfony\Component\PropertyAccess\PropertyAccess;
 
 use App\Entity\Vehicule;
 use App\Form\VehiculeType;
 
 use App\Entity\FraisHorsForfait;
-use App\Entity\User;
 use App\Form\FraisHorsForfaitType;
 
 use App\Entity\FraisForfait;
 use App\Form\FraisForfaitType;
 
-use Twig\Extra\Intl\IntlExtension;
 use Symfony\Component\Security\Core\Security;
-use Symfony\Component\Security\Core\SecurityContextInterface;
-
-use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
-use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
-use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
-use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Security\Core\User\UserProviderInterface;
-
 
 
 class visiteurs extends AbstractController
@@ -41,8 +28,8 @@ class visiteurs extends AbstractController
     /**
      * @var Security
      */
-    private $security;
 
+    private $security;
     private $entityManager;
 
 
@@ -50,7 +37,6 @@ class visiteurs extends AbstractController
     {
        $this->security = $security;
        $this->entityManager = $entityManager;
-
     }
 
     /**
@@ -151,7 +137,7 @@ class visiteurs extends AbstractController
             $entityManager->persist($fiche);
             $entityManager->flush();
 
-            $this->addFlash('success1', 'Frais forfaitaire ajouté avec succès !'); // Affiche un message de confirmation sur la page d'accueil   
+            $this->addFlash('success1', 'Frais forfaitaire ajouté avec succès !');    
             return $this->redirectToRoute('accueil_visiteurs');  // Rediriger vers la page d'accueil
         }
 
@@ -193,31 +179,17 @@ class visiteurs extends AbstractController
             $entityManager->persist($fiche2);
             $entityManager->flush();
 
-            $this->addFlash('success1', 'Frais hors forfait ajouté avec succès !'); // Affiche un message de confirmation sur la page d'accueil   
+            $this->addFlash('success1', 'Frais hors forfait ajouté avec succès !');    
             return $this->redirectToRoute('accueil_visiteurs');  // Rediriger vers la page d'accueil
         }
 
-        return $this->render('visiteurs\frais_hors_forfait.html.twig',[ // Création du formulaire par symfony
+        return $this->render('visiteurs\frais_hors_forfait.html.twig',[ 
             'form' => $form->createView(),
             'date' => $mois_actuel,
             'vehicule' => $repository28
         ]); 
     }
     
-       
-    // public function Suivre_frais_forfait() : Response 
-    // {
-    //     $repository = $this->getDoctrine()
-    //     ->getRepository(FraisForfait::class)
-    //     ->findAll();
-
-    //     return $this->render('visiteurs/remboursement_visiteur.html.twig', [
-    //         "ÔForfait" => $repository
-    //     ]); 
-
-    // }
-
-
      /**
      * @Route("/visiteurs/suivi_frais", name = "visiteur_frais")
      * @Method({"GET", "POST"})
@@ -268,9 +240,6 @@ class visiteurs extends AbstractController
             ->getRepository(Vehicule::class)
             ->findBy(['proprietaire' => $user]);
         
-        // echo $repository30;
-        // $repository30BIS = $repository30['1'];
-
         $Vehicule = new Vehicule();
         $entityManager = $this->getDoctrine()->getManager();
         $form = $this->createForm(VehiculeType::class, $Vehicule); 
@@ -282,7 +251,6 @@ class visiteurs extends AbstractController
             
             $test = $Vehicule->getProprietaire();
 
-
             $user = $this->getUser();
             $user = $user->getId();
 
@@ -291,13 +259,11 @@ class visiteurs extends AbstractController
             $entityManager->persist($Vehicule);
             $entityManager->flush();
 
-            $this->addFlash('success1', 'Véhicule ajouté avec succès !'); // Affiche un message de confirmation sur la page d'accueil   
-            return $this->redirectToRoute('remplacement_vehicule', array('id' => $user));
-
-             
+            $this->addFlash('success1', 'Véhicule ajouté avec succès !');    
+            return $this->redirectToRoute('remplacement_vehicule', array('id' => $user));   
         }
 
-        return $this->render('visiteurs\vehicule_visiteur.html.twig',[ // Création du formulaire par symfony
+        return $this->render('visiteurs\vehicule_visiteur.html.twig',[ 
             'form' => $form->createView(),
             'date' => $mois_actuel,
             'vehicule' => $repository30
@@ -320,7 +286,7 @@ class visiteurs extends AbstractController
         $entityManager->remove($repository);
         $entityManager->flush();
 
-        $this->addFlash('succesSuppr', 'Suppression effectuée'); // Affiche un message de confirmation sur la page d'accueil
+        $this->addFlash('succesSuppr', 'Suppression effectuée'); 
         
         return $this->redirectToRoute('visiteur_frais'); // Rediriger vers la page d'accueil
     }
@@ -341,7 +307,7 @@ class visiteurs extends AbstractController
         $entityManager->remove($repository);
         $entityManager->flush();
 
-        $this->addFlash('succesSuppr', 'Suppression effectuée'); // Affiche un message de confirmation sur la page d'accueil
+        $this->addFlash('succesSuppr', 'Suppression effectuée'); 
         
         return $this->redirectToRoute('visiteur_frais'); // Rediriger vers la page d'accueil
     }
@@ -350,7 +316,7 @@ class visiteurs extends AbstractController
      * @Route("/supprimer3/{id}", name = "supprimer3")
     */
 
-    public function supprimer3(int $id) : Response{ // Supprimer un métériel ciblé
+    public function supprimer_frais_forfait(int $id) : Response{ // Supprimer un métériel ciblé
 
         $entityManager = $this->getDoctrine()->getManager();
         
@@ -362,7 +328,7 @@ class visiteurs extends AbstractController
         $entityManager->remove($repository);
         $entityManager->flush();
 
-        $this->addFlash('modif', 'Modification effectuée'); // Affiche un message de confirmation sur la page d'accueil
+        $this->addFlash('modif', 'Modification effectuée'); 
         
         return $this->redirectToRoute('visiteur_frais'); // Rediriger vers la page d'accueil
     }
@@ -371,7 +337,7 @@ class visiteurs extends AbstractController
      * @Route("/supprimer4/{id}", name = "supprimer4")
     */
 
-    public function supprimer4(int $id) : Response{ // Supprimer un métériel ciblé
+    public function supprimer_frais_hors_forfait(int $id) : Response{ // Supprimer un métériel ciblé
 
         $entityManager = $this->getDoctrine()->getManager();
         
@@ -379,11 +345,10 @@ class visiteurs extends AbstractController
                 ->getRepository(FraisHorsForfait::class)
                 ->find($id);
 
-
         $entityManager->remove($repository);
         $entityManager->flush();
 
-        $this->addFlash('modif', 'Modification effectuée'); // Affiche un message de confirmation sur la page d'accueil
+        $this->addFlash('modif', 'Modification effectuée'); 
         
         return $this->redirectToRoute('visiteur_frais'); // Rediriger vers la page d'accueil
     }
@@ -392,7 +357,7 @@ class visiteurs extends AbstractController
      * @Route("/supprimer5/{id}", name = "supprimer5")
     */
 
-    public function supprimer5(int $id) : Response{ // Supprimer un métériel ciblé
+    public function supprimer_vehicule(int $id) : Response{ // Supprimer un métériel ciblé
         
         $entityManager = $this->getDoctrine()->getManager();
         
@@ -400,14 +365,10 @@ class visiteurs extends AbstractController
                 ->getRepository(Vehicule::class)
                 ->findOneBy(['proprietaire' => $id]);
 
-                // return $this->render('visiteurs\vechicule.html.twig',[ 
-                //     'repo' => $repository
-                // ]); 
-
         $entityManager->remove($repository);
         $entityManager->flush();
 
-        // $this->addFlash('modif2', 'Modification effectuée'); // Affiche un message de confirmation sur la page d'accueil
+        // $this->addFlash('modif2', 'Modification effectuée'); 
         
         return $this->redirectToRoute('vehicule'); // Rediriger vers la page d'accueil
     }
@@ -424,14 +385,10 @@ class visiteurs extends AbstractController
                 ->getRepository(Vehicule::class)
                 ->findOneBy(['proprietaire' => $id], array('id' => 'DESC'));
 
-                // return $this->render('visiteurs\vechicule.html.twig',[ 
-                //     'repo' => $repository
-                // ]); 
-
         $entityManager->remove($repository);
         $entityManager->flush();
 
-        // $this->addFlash('modif2', 'Modification effectuée'); // Affiche un message de confirmation sur la page d'accueil
+        // $this->addFlash('modif2', 'Modification effectuée'); 
         
         return $this->redirectToRoute('vehicule'); // Rediriger vers la page d'accueil
     }
@@ -441,10 +398,7 @@ class visiteurs extends AbstractController
     */
 
     public function remplacement_vehicule(int $id) : Response{ // Supprimer un métériel ciblé
-        
-
-        //$entityManager = $this->getDoctrine()->getManager();
-        
+                
         $repository = $this->getDoctrine()
                 ->getRepository(Vehicule::class)
                 ->findBy(['proprietaire' => $id]);
@@ -452,13 +406,6 @@ class visiteurs extends AbstractController
         return $this->render('visiteurs\remplacement_vehicule.html.twig',[ 
             'repo' => $repository
         ]); 
-
-        // $entityManager->remove($repository);
-        // $entityManager->flush();
-
-        // $this->addFlash('modif2', 'Modification effectuée'); // Affiche un message de confirmation sur la page d'accueil
-        
-        // return $this->redirectToRoute('vehicule'); // Rediriger vers la page d'accueil
     }
 
      /**
@@ -467,7 +414,6 @@ class visiteurs extends AbstractController
 
     public function modifier_auForfait(Request $request, int $id) : Response 
     {
-
         setlocale(LC_TIME, "fr_FR");
         $mois_actuel = date("m Y");
 
@@ -482,8 +428,6 @@ class visiteurs extends AbstractController
         ->getRepository(Vehicule::class)
         ->findBy(['proprietaire' => $user]);
 
-        // $property = new FraisForfait();
-
         $fiche = new FraisForfait ();
 
         $form = $this->createForm(FraisForfaitType::class, $fiche); 
@@ -496,11 +440,10 @@ class visiteurs extends AbstractController
             $user = $user->getId();
             $fiche->setProprietaire($user);
 
-            
             $entityManager->persist($fiche);
             $this->entityManager->flush();
 
-            // $this->addFlash('success18', 'Frais forfaitaire modifié avec succès !');  
+            $this->addFlash('success18', 'Frais forfaitaire modifié avec succès !');  
             return $this->redirectToRoute('supprimer3', array('id' => $id));  
         }
         
