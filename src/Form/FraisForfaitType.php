@@ -10,9 +10,6 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Validator\Constraints\Length;
-
-// use App\Entity\User;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use App\Entity\FraisForfait;
 
 class FraisForfaitType extends AbstractType
@@ -53,7 +50,7 @@ class FraisForfaitType extends AbstractType
                 'placeholder' => 'Libellé' )
         ])
 
-        ->add('montant', TextType::class,[
+        ->add('montant', NumberType::class,[
             'required' => false,
             'attr' => array ( 
                 'placeholder' => 'Montant'),

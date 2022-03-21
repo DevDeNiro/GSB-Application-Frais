@@ -26,7 +26,7 @@ class FraisForfait
     private $libelle;
 
     /**
-     * @ORM\Column(type="string", length=6)
+     * @ORM\Column(type="integer")
      */
     private $montant;
 
