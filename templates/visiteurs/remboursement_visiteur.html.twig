@@ -15,23 +15,7 @@
 
  {% block body %}
    <div class="container-fluid px-0 hauteur2">
-      <div class="row">
-        <div class="col">
-          <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
-            <div class="container-fluid px-0">
-              <a class="navbar-brand" href="#">GSB | Galaxy Swiss Bourdin</a>
-              <div class="navbar-brand" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/logout">Déconnexion <i class="fas fa-sign-in-alt"></i></a>   
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </nav> 
-        </div>
-      </div>
-      <div class="row">
+      <div class="row hauteur2">
         <div class="col-2 menu_latéral p-0">
             <header>
               
@@ -72,6 +56,22 @@
           </div>
 
     <div class="col-10 p-0 margin-left">
+    <div class="row">
+        <div class="col">
+          <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+            <div class="container-fluid px-0">
+              <a class="navbar-brand" href="#">GSB | Galaxy Swiss Bourdin</a>
+              <div class="navbar-brand" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/logout">Déconnexion <i class="fas fa-sign-in-alt"></i></a>   
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav> 
+        </div>
+      </div>
           <div class="container-fluid">
           <div class="row top">
             <div class="my-auto text_bloc_top col col-md-8 col-lg-9 p-0 bloc_top">
@@ -107,7 +107,7 @@
               {% endfor %}
 
             <div class="row mx-auto w-100 p-0 mt-5">
-                <div class="col-6">
+                <div class="col-6 mb-4">
                     <div class="card">
                         <div class="card-header bg-info title">
                             Frais au forfait
@@ -189,7 +189,7 @@
                                              
                                     <td>
                                       {% if auForfait.etat == "En attente" %}
-                                          <div class="col"><a class="btn btn-outline-primary" href={{ path("modifier", {'id': auForfait.id }) }} role="button">Modifier</a></div>
+                                          <div class="col mb-4"><a class="btn btn-outline-primary" href={{ path("modifier", {'id': auForfait.id }) }} role="button">Modifier</a></div>
                                         {% endif %}
                                       <div class="col"><a class="btn btn-outline-danger btn1 mt-2" href={{ path("supprimer", {'id': auForfait.id}) }} role="button">Supprimer</a></div>
                                     </td>

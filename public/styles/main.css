@@ -156,6 +156,6 @@ body {
 
 .menu_latéral {
     background-color: #455A64;
-    height: 100vh;
+    height: auto;
     text-decoration: none;
 }
