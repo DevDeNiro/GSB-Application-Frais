@@ -292,7 +292,7 @@ class visiteurs extends AbstractController
             $entityManager->flush();
 
             $this->addFlash('success1', 'Véhicule ajouté avec succès !'); // Affiche un message de confirmation sur la page d'accueil   
-            return $this->redirectToRoute('suprr', array('id' => $user));
+            return $this->redirectToRoute('remplacement_vehicule', array('id' => $user));
 
              
         }
@@ -437,10 +437,10 @@ class visiteurs extends AbstractController
     }
 
     /**
-     * @Route("/visiteurs/suprr/{id}", name = "suprr")
+     * @Route("/visiteurs/remplacement_vehicule/{id}", name = "remplacement_vehicule")
     */
 
-    public function suprr(int $id) : Response{ // Supprimer un métériel ciblé
+    public function remplacement_vehicule(int $id) : Response{ // Supprimer un métériel ciblé
         
 
         //$entityManager = $this->getDoctrine()->getManager();
@@ -449,7 +449,7 @@ class visiteurs extends AbstractController
                 ->getRepository(Vehicule::class)
                 ->findBy(['proprietaire' => $id]);
 
-        return $this->render('visiteurs\suprr.html.twig',[ 
+        return $this->render('visiteurs\remplacement_vehicule.html.twig',[ 
             'repo' => $repository
         ]); 
 
