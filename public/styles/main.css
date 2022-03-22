@@ -154,7 +154,7 @@ body {
 }
 
 .menu_latéral {
-    background-color: #343a40;
+    background-color: #654639;
     height: auto;
     text-decoration: none;
 }
@@ -177,4 +177,8 @@ a:hover {
 
 .text_justify {
     text-align: left;
+}
+
+.couleur_top {
+    background-color: #654639;
 }
