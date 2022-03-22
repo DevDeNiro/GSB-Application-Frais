@@ -128,11 +128,12 @@
                                     <table class="table table-hover table-striped table-bordered" data-toggle="table" data-search="true" data-sort-name="etat" data-sort-order="asc"> 
                                     <thead class="thead">
                                         <tr>
-                                            <th scope="col" data-sortable="true" data-field="id">Repas midi</th>
-                                            <th scope="col" data-sortable="true" data-field="mois">Nuit</th>
+                                            <th scope="col" data-sortable="true" data-field="mois">Mois</th>
+                                            <th scope="col" data-sortable="true" data-field="repasMidi">Repas midi</th>
+                                            <th scope="col" data-sortable="true" data-field="nuit">Nuit</th>
                                             <th scope="col" data-sortable="true" data-field="etape">Etapes</th>
                                             <th scope="col" data-sortable="true" data-field="km">Km</th>
-                                            <th scope="col" data-sortable="true" data-field="km">Libellé</th>
+                                            <th scope="col" data-sortable="true" data-field="libelle">Libellé</th>
                                             <th scope="col" data-sortable="true" data-field="etat">Etat</th>
                                             <th scope="col" data-sortable="true" data-field="montant">Montant</th>
                                             <th scope="col" data-sortable="true" data-field="action">Actions</th>
@@ -140,6 +141,7 @@
                                     </thead>
                                     <tr>
                                     {% for auForfait in ÔForfait %}
+                                        <td>{{ auForfait.mois }}</td>
                                         <td>{{ auForfait.repasMidi }}</td>
                                         <td>{{ auForfait.nuit }}</td>
                                         <td>{{ auForfait.etape }}</td>
