@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'a4fd89f7853f359de426ed4a3dce7f2747d5b770',
+        'reference' => '5e084fcbf35afbd001e27d1b84a0988d147a496f',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'a4fd89f7853f359de426ed4a3dce7f2747d5b770',
+            'reference' => '5e084fcbf35afbd001e27d1b84a0988d147a496f',
             'dev_requirement' => false,
         ),
         'composer/package-versions-deprecated' => array(
@@ -1270,6 +1270,15 @@
             'aliases' => array(),
             'reference' => '24227617a4ddbdf78f8ab12ce2b76dfb54a7d851',
             'dev_requirement' => true,
+        ),
+        'symfony/web-server-bundle' => array(
+            'pretty_version' => 'v4.4.0',
+            'version' => '4.4.0.0',
+            'type' => 'symfony-bundle',
+            'install_path' => __DIR__ . '/../symfony/web-server-bundle',
+            'aliases' => array(),
+            'reference' => '83202a9dae60b29eb55ae1a0c6696c586de3ce0b',
+            'dev_requirement' => false,
         ),
         'symfony/yaml' => array(
             'pretty_version' => 'v4.4.29',
