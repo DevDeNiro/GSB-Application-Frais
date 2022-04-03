@@ -2,7 +2,7 @@
 
 :root {
     --sidebar-bg-color: rgb(80, 100, 109);
-    --navbar-bg-color: rgb(231, 46, 117);
+    --navbar-bg-color: rgb(23, 162, 184);
     --header-bg-color: rgb(80, 113, 161);
 }
 
@@ -154,7 +154,7 @@ body {
 }
 
 .menu_latéral {
-    background-color: #654639;
+    background-color: #0a1a2c;
     height: auto;
     text-decoration: none;
 }
@@ -180,5 +180,5 @@ a:hover {
 }
 
 .couleur_top {
-    background-color: #654639;
+    background-color: #0a1a2c;
 }
