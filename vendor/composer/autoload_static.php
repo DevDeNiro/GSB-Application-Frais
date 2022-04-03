@@ -18,6 +18,8 @@ class ComposerStaticInitd751a2f89fe68074100844d876959822
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
         '6a47392539ca2329373e0d33e1dba053' => __DIR__ . '/..' . '/symfony/polyfill-intl-icu/bootstrap.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
+        'eee1afd8f38c52a8d46f7c5bbb92afdd' => __DIR__ . '/..' . '/deployer/deployer/src/Support/helpers.php',
+        '135133ad0ca20ef21cc262b30da9a000' => __DIR__ . '/..' . '/deployer/deployer/src/functions.php',
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
         '92c8763cd6170fce6fcfe7e26b4e8c10' => __DIR__ . '/..' . '/symfony/phpunit-bridge/bootstrap.php',
     );
@@ -39,6 +41,7 @@ class ComposerStaticInitd751a2f89fe68074100844d876959822
         ),
         'S' => 
         array (
+            'Symfony\\Requirements\\' => 21,
             'Symfony\\Polyfill\\Php81\\' => 23,
             'Symfony\\Polyfill\\Php80\\' => 23,
             'Symfony\\Polyfill\\Php73\\' => 23,
@@ -107,6 +110,7 @@ class ComposerStaticInitd751a2f89fe68074100844d876959822
             'Symfony\\Bridge\\Monolog\\' => 23,
             'Symfony\\Bridge\\Doctrine\\' => 24,
             'Sensio\\Bundle\\FrameworkExtraBundle\\' => 35,
+            'SensioLabs\\Security\\' => 20,
         ),
         'P' => 
         array (
@@ -150,6 +154,10 @@ class ComposerStaticInitd751a2f89fe68074100844d876959822
             'Doctrine\\Bundle\\MigrationsBundle\\' => 33,
             'Doctrine\\Bundle\\FixturesBundle\\' => 31,
             'Doctrine\\Bundle\\DoctrineBundle\\' => 31,
+            'Deployer\\Component\\Version\\' => 27,
+            'Deployer\\Component\\PharUpdate\\' => 30,
+            'Deployer\\Component\\PHPUnit\\' => 27,
+            'Deployer\\' => 9,
             'DeepCopy\\' => 9,
         ),
         'A' => 
@@ -181,6 +189,10 @@ class ComposerStaticInitd751a2f89fe68074100844d876959822
         'Twig\\' => 
         array (
             0 => __DIR__ . '/..' . '/twig/twig/src',
+        ),
+        'Symfony\\Requirements\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/requirements-checker/src',
         ),
         'Symfony\\Polyfill\\Php81\\' => 
         array (
@@ -454,6 +466,10 @@ class ComposerStaticInitd751a2f89fe68074100844d876959822
         array (
             0 => __DIR__ . '/..' . '/sensio/framework-extra-bundle/src',
         ),
+        'SensioLabs\\Security\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sensiolabs/security-checker/SensioLabs/Security',
+        ),
         'Psr\\Log\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
@@ -568,6 +584,22 @@ class ComposerStaticInitd751a2f89fe68074100844d876959822
         array (
             0 => __DIR__ . '/..' . '/doctrine/doctrine-bundle',
         ),
+        'Deployer\\Component\\Version\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/deployer/phar-update/src/Version',
+        ),
+        'Deployer\\Component\\PharUpdate\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/deployer/phar-update/src',
+        ),
+        'Deployer\\Component\\PHPUnit\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/deployer/phar-update/src/PHPUnit',
+        ),
+        'Deployer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/deployer/deployer/src',
+        ),
         'DeepCopy\\' => 
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
@@ -579,6 +611,16 @@ class ComposerStaticInitd751a2f89fe68074100844d876959822
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
+        ),
+    );
+
+    public static $prefixesPsr0 = array (
+        'P' => 
+        array (
+            'Pimple' => 
+            array (
+                0 => __DIR__ . '/..' . '/pimple/pimple/src',
+            ),
         ),
     );
 
@@ -1227,6 +1269,7 @@ class ComposerStaticInitd751a2f89fe68074100844d876959822
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInitd751a2f89fe68074100844d876959822::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitd751a2f89fe68074100844d876959822::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitd751a2f89fe68074100844d876959822::$prefixesPsr0;
             $loader->classMap = ComposerStaticInitd751a2f89fe68074100844d876959822::$classMap;
 
         }, null, ClassLoader::class);
