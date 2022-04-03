@@ -1,27 +1,63 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Cours Complet Bootstrap 4</title>
+    <title>GSB | Galaxy Swiss Bourdin</title>
     <meta charset='utf-8'>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     {% block stylesheets %} {# Importation de la feuille de style, et de bootstrap #}
-            {{ encore_entry_link_tags('app') }}
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-            {# <link href="/your-path-to-fontawesome/css/all.css" rel="stylesheet"> #}
+            <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.css">
+
+            <link href="{{asset ('styles/main.css') }}"   rel="stylesheet"/>
+            <link href="{{asset ('styles/all.css') }}" rel="stylesheet"/>
+
     {% endblock %}
   </head>
 
-  <body>
-    <div class="container-fluid px-0">
-      <div class="row">
+  {% block body %}
+    <div class="container-fluid px-0 hauteur2">
+      <div class="row hauteur2">
+        <div class="col-2 menu_latéral p-0">
+          <header>
+            <a href={{path ('accueil_comptables')}}>
+                {% if app.user is null %}
+                  <h3 class="my-3">Aucun utilisateur connexté</h3>
+                {% else %}
+                  <h3 class="hauteur bienvenue">Bienvenue {{ app.user.prenom }}</h3>
+                {% endif %}<span class="id_user">
+              </a>
+          </header>
+          <div class="ml-3 nav w-auto pl-3 mt-4">
+            <div class="p-0 pb-2 col-12 liste">
+              <a href="/comptables/accueil_comptable" class="p-0" >
+                <i class="fas fa-home"></i>  Accueil
+              </a>
+            </div>
+
+            <div class="p-0 pb-2 col-12 liste">
+              <a href="/comptables/fiche_comptable" class="p-0" >
+                <i class="fas fa-users"></i>  Visiteurs
+              </a>
+            </div>
+
+            <div class="p-0 pb-2 col-12 liste">
+              <a href="/comptables/fiche_frais" class="p-0 " >
+                <i class="fas fa-file-alt"></i>  Fiche de frais
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-10 p-0 margin-left">
+        <div class="row">
         <div class="col">
-          <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+          <nav class="navbar navbar-expand-lg navbar-dark couleur_top ">
             <div class="container-fluid px-0">
-              <a class="navbar-brand" href="#">GSB | Galaxy Swiss Bourdin</a>
+              <a class="navbar-brand" href={{path ('accueil_comptables')}}>GSB | Galaxy Swiss Bourdin</a>
               <div class="navbar-brand" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Déconnexion <i class="fas fa-sign-in-alt"></i></a>   
+                    <a class="nav-link active" aria-current="page" href="/logout">Déconnexion <i class="fas fa-sign-in-alt"></i></a>   
                   </li>
                 </ul>
               </div>
@@ -29,39 +65,196 @@
           </nav> 
         </div>
       </div>
-      <div class="row">
-        <div class="col-2 sidebar p-0">
-              <header>
-                
-                <a href="#"> <i class="fas fa-user-circle"></i> John Doe <span class="id_user">#0000 </a></a>
-                
-              </header>
-              <div class="ml-3 nav w-auto pl-3 mt-4">
-                <div class="p-0 pb-2 col-12 liste">
-                  <a href="/accueil_comptables" class="p-0" >
-                    <i class="fas fa-home"></i>Accueil
-                  </a>
-                </div>
+          <div class="container-fluid">
+            <div class="row top">
+              <div class="my-auto text_bloc_top col col-md-8 col-lg-9 p-0 bloc_top">
+                <p class="m-0 ml-2 titre_bandeau">Fiche de frais</p>
+              </div>
+              <div class="my-auto text_bloc_top col col-md-4 col-lg-3 p-0 bloc_top">
+                <p class="m-0">Période : {{ date }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-11 mt-4 mx-auto">
+          {% for message in app.flashes ('rejete') %}  
+              <div class="alert alert-danger" role="alert">
+                  {{ message }}
+              </div>
+              {% endfor %} 
+              {% for message in app.flashes ('attente') %}  
+              <div class="alert alert-warning" role="alert">
+                  {{ message }}
+              </div>
+              {% endfor %} 
+              {% for message in app.flashes ('valide') %}  
+              <div class="alert alert-success" role="alert">
+                  {{ message }}
+              </div>
+              {% endfor %} 
+              <div class="row mb-3">
+                <div class="col">
+                <div class="card">
+                    <div class="card-header bg-info title">
+                        Frais au forfait
+                    </div>
 
-                <div class="p-0 pb-2 col-12 liste">
-                  <a href="/fiche_comptable" class="p-0" >
-                    <i class="fas fa-users"></i>Visiteurs
-                  </a>
-                </div>
+                    {% for Forfait in Forfait %} 
+                        {% if loop.last %}
+                          {% if loop.index > 0 %}
+                          {% endif %}
+                        {% endif %}
+                        {% else %}
+                                  <div class="card-body">
+                                  <p class="card-text" style="font-size: 20px; font-weight: bold;;">Aucun frais forfaitaitaires saisis <i class="fas fa-info-circle"></i></span></p>
+                            </div>
+                      {% endfor %}
 
-                <div class="p-0 pb-2 col-12 liste">
-                  <a href="/fiche_frais" class="p-0 " >
-                    <i class="fas fa-file-alt"></i> Fiche de frais
-                  </a>
+                      {% if Forfait %} 
+              <table class="table table-hover table-striped table-bordered" data-toggle="table" data-search="true" data-sort-name="etat" data-sort-order="asc"> 
+                <thead class="thead">
+                    <tr>
+                        <th scope="col" data-sortable="true" data-field="id">Visiteur</th>
+                        <th scope="col" data-sortable="true" data-field="mois">Mois</th>
+                        <th scope="col" data-sortable="true" data-field="montant">Montant</th>
+                        {# <th scope="col" data-sortable="true" data-field="mois">Date de modification</th> #}
+                        <th scope="col" data-sortable="true" data-field="etat">Etat</th>
+                        <th scope="col" data-sortable="true" data-field="action">Actions</th>
+                    </tr>
+                </thead>
+                
+                  {% for Forfait in Forfait %}
+                  <tr>            
+                    {% for user in user %}  
+                      {% if user.id == Forfait.proprietaire %}
+                        <td>{{ user.prenom }} {{ user.nom }}</td>
+                      {% endif %}
+                    {% endfor %}
+
+                    <td>{{ Forfait.mois }}</td>
+                      {% for vehicule in vehicule %}
+                        {% if Forfait.proprietaire == vehicule.proprietaire %}
+                          {% if vehicule.carburant == "Diesel" %}
+                            {% if vehicule.chevaux <= 4 %}
+                                <td> {{ Forfait.km * 0.52 + Forfait.nuit * 80 + Forfait.repasMidi * 9.5}} </td>
+                            {% endif %}
+                            
+                            {% if vehicule.chevaux > 4 %}
+                                <td>{{ Forfait.km * 0.58 + Forfait.nuit * 80 + Forfait.repasMidi * 9.5}}</td>
+                            {% endif %}
+
+                          {% endif %}
+                
+                          {% if vehicule.carburant == "Essence" %}
+                            {% if vehicule.chevaux <= 4 %}
+                                <td>{{ Forfait.km * 0.62 + Forfait.nuit * 80 + Forfait.repasMidi * 9.5}}</td>
+                            {% endif %}
+
+                            {% if vehicule.chevaux > 4 %}
+                                <td>{{ Forfait.km * 0.67 + Forfait.nuit * 80 + Forfait.repasMidi * 9.5}}</td>
+                            {% endif %}
+
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+
+                    {% if Forfait.etat == "En attente" %}
+                    <td style="background-color: orange; font-weight: bold;">{{ Forfait.etat }} <i class="fas fa-sync fa-spin"></i></td>
+                    {% endif %}
+                    {% if Forfait.etat == "Validé" %}
+                    <td style="background-color: green; font-weight: bold;">{{ Forfait.etat }} <i class="far fa-check-circle"></i></td>
+                    {% endif %}
+                    {% if Forfait.etat == "Rejeté" %}
+                    <td style="background-color: red; font-weight: bold;">{{ Forfait.etat }} <i class="fas fa-exclamation-triangle"></i></td>
+                    {% endif %}
+                    <td><div class="row pb-2">
+                        <div class="col"><a class="btn btn-outline-success btn1" href={{ path("valide", {'id': Forfait.id}) }} role="button">Valider</a></div>
+                        <div class="col"><a class="btn btn-outline-warning btn1" href={{ path("attente", {'id': Forfait.id}) }} role="button">En attente</a></div>
+                        </div><div class="row">
+                        <div class="col"><a class="btn btn-outline-danger btn1" href={{ path("rejete", {'id': Forfait.id}) }} role="button">Rejeter</a></div>
+                        <div class="col"><a class="btn btn-outline-info btn1" href={{ path("info", {'id': Forfait.id, 'proprietaire': Forfait.proprietaire}) }} role="button">Détail</a></div>
+                      </div>
+                    </td>
+                    </tr>   
+                  {% endfor %}
+                  {% endif %}
+              </tbody>
+              </table>   
+            {# {% endif %}  #}
+        </div>
+      </div>
+        <div class="col">
+                <div class="card">
+                    <div class="card-header bg-info title">
+                        Frais hors forfait
+                    </div>
+
+                  {% for horsForfait in horsForfait %} 
+                        {% if loop.last %}
+                          {% if loop.index > 0 %}
+                          {% endif %}
+                        {% endif %}
+                        {% else %}
+                          <div class="card-body">
+                            <p class="card-text" style="font-size: 20px; font-weight: bold;;">Aucun frais hors forfait saisi <i class="fas fa-info-circle"></i></span></p>
+                          </div>
+                      {% endfor %}
+
+                    {% if horsForfait %} 
+                      <table class="table table-hover table-striped table-bordered" data-toggle="table" data-search="true" data-sort-name="etat" data-sort-order="asc"> 
+                        <thead class="thead">
+                            <tr>
+                            <th scope="col" data-sortable="true" data-field="id">Visiteur</th>
+                                <th scope="col" data-sortable="true" data-field="mois">Mois</th> 
+                                <th scope="col" data-sortable="true" data-field="montant">Montant</th>                          
+                                <th scope="col" data-sortable="true" data-field="etat">Etat</th>
+                                <th scope="col" data-sortable="true" data-field="action">Actions</th>
+                            </tr>
+                        </thead>
+                        <tr>
+                        {% for horsForfait in horsForfait %} 
+                            {% for user in user %}  
+                              {% if user.id == horsForfait.proprietaire %}
+                                <td>{{ user.prenom }} {{ user.nom }}</td>
+                              {% endif %}
+                            {% endfor %}
+                            <td>{{ horsForfait.mois }}</td>
+                            <td>{{ horsForfait.montant }}</td>
+                            {% if horsForfait.etat == "En attente" %}
+                              <td style="background-color: orange; font-weight: bold;">{{ horsForfait.etat }} <i class="fas fa-sync fa-spin"></i></td>
+                            {% endif %}
+                            {% if horsForfait.etat == "Validé" %}
+                              <td style="background-color: green; font-weight: bold;">{{ horsForfait.etat }} <i class="far fa-check-circle"></i></td>
+                            {% endif %}
+                            {% if horsForfait.etat == "Rejeté" %}
+                              <td style="background-color: red; font-weight: bold;">{{ horsForfait.etat }} <i class="fas fa-exclamation-triangle"></i></td>
+                            {% endif %}
+
+                            <td>
+                              <div class="col"><a class="btn btn-outline-success btn1 mx-1" style="max-width: 7em;" href={{ path("valide2", {'id': horsForfait.id}) }} role="button">Valider</a></div>
+                              <div class="col"><a class="btn btn-outline-warning btn1 mx-1 my-2" style="max-width: 7em;" href={{ path("attente2", {'id': horsForfait.id}) }} role="button">En attente</a></div>
+                              
+                              <div class="col"><a class="btn btn-outline-danger btn1 mx-1 mb-2" style="max-width: 7em;" href={{ path("rejete2", {'id': horsForfait.id}) }} role="button">Rejeter</a></div>
+                              <div class="col"><a class="btn btn-outline-info btn1 mx-1" style="max-width: 7em;" href={{ path("info2", {'id': horsForfait.id, 'proprietaire': horsForfait.proprietaire}) }} role="button">Détail</a></div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                      {% endif %}
+                    </table>
                 </div>
-    
+            </div>
         </div>
+        
+          </div>
         </div>
-      
       </div>
     </div>
+  </div>
 
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-  </body>
+  <script src="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.js"></script>  
+{% endblock %}
 </html>
