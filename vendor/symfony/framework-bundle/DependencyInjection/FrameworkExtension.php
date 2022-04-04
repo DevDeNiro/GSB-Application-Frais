@@ -1463,9 +1463,10 @@ class FrameworkExtension extends Extension
 
             $container
                 ->getDefinition('annotations.cached_reader')
+                ->setPublic(true) // set to false in AddAnnotationsCachedReaderPass
                 ->replaceArgument(2, $config['debug'])
-                // temporary property to lazy-reference the cache provider without using it until AddAnnotationsCachedReaderPass runs
-                ->setProperty('cacheProviderBackup', new ServiceClosureArgument(new Reference($cacheService)))
+                // reference the cache provider without using it until AddAnnotationsCachedReaderPass runs
+                ->addArgument(new ServiceClosureArgument(new Reference($cacheService)))
                 ->addTag('annotations.cached_reader')
             ;
 
@@ -1962,7 +1963,8 @@ class FrameworkExtension extends Extension
                 if (method_exists(TagAwareAdapter::class, 'setLogger')) {
                     $container
                         ->getDefinition($name)
-                        ->addMethodCall('setLogger', [new Reference('logger', ContainerInterface::IGNORE_ON_INVALID_REFERENCE)]);
+                        ->addMethodCall('setLogger', [new Reference('logger', ContainerInterface::IGNORE_ON_INVALID_REFERENCE)])
+                        ->addTag('monolog.logger', ['channel' => 'cache']);
                 }
 
                 $pool['name'] = $name;
