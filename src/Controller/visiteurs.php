@@ -91,7 +91,7 @@ class visiteurs extends AbstractController
     public function choix_fiche() : Response           
     {
         setlocale(LC_TIME, "fr_FR");
-        $mois_actuel = date("m Y");
+        $mois_actuel = date("m / Y");
 
         $user = $this->getUser();
         $user = $user->getId();
