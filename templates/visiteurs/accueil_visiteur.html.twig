@@ -1,72 +1,78 @@
 {% extends 'base.html.twig' %}
+
   {% block body %}
-    {# <div class="container-fluid px-0 hauteur2">
-      <div class="row hauteur2"> #}
-       
-
-      
-    
-
           <div class="col p-0 py-5">
             <div class="container">
-            <div class="row page-header text-center justify-content-center"> <h1> Bienvenue <span class="id_user">{% if app.user is null %}
-                  {% else %}
-                    {{ app.user.prenom }}
-                  {% endif %}</span> sur votre espace visiteur</h1> </div>
-            {# Message envoyé en session et supprimé au prochain affichage #}
-              {% for message_vehicule in app.flashes ('success1') %}  
-              <div class="alert alert-primary" role="alert">
-                  {{ message_vehicule }}
-              </div>
-              {% endfor %} 
-             
-             <div class="row mt-5 justify-content-center">
-                    <div class="card text-white bg-success mb-3 col px-0" style="max-width: 19rem;">
-                      <div class="card-header" style="font-weight: bold; font-size: large">Frais forfaitaires validés <i class="far fa-check-circle"></i></div>
-                        <div class="card-body">
-                          {% for valide in valide %}
-                            {% if loop.last %}
-                              <p class="card-text" style="font-size: 60px;">{{loop.index}}</p>
-                            {% endif %}
-                            {% else %}
-                              <p class="card-text" style="font-size: 60px;">0</p>
-                          {% endfor %}
-                        </div>
+              <div class="row page-header text-center justify-content-center"> <h1> Bienvenue <span class="id_user">{% if app.user is null %}
+                {% else %}
+                  {{ app.user.prenom }}
+                {% endif %}</span> sur votre espace visiteur</h1> </div>
+                {# Message envoyé en session et supprimé au prochain affichage #}
+                {% for message_vehicule in app.flashes ('success1') %}  
+                  <div class="alert alert-primary" role="alert">
+                      {{ message_vehicule }}
+                  </div>
+                {% endfor %} 
+            
+                <div class="row mt-5 justify-content-center">
+                  <div class="card text-white bg-success mb-3 col px-0" style="max-width: 19rem;">
+                    <div class="card-header" style="font-weight: bold; font-size: large">Frais forfaitaires validés <i class="far fa-check-circle"></i></div>
+                      <div class="card-body">
+                        {% for valide in valide %}
+                          {% if loop.last %}
+                            <p class="card-text" style="font-size: 60px;">{{loop.index}}</p>
+                          {% endif %}
+                          {% else %}
+                            <p class="card-text" style="font-size: 60px;">0</p>
+                        {% endfor %}
                       </div>
+                    </div>
 
-                    <div class="card text-white bg-warning mb-3 col mx-3 px-0" style="max-width: 19rem;">
-                      <div class="card-header" style="font-weight: bold; font-size: large">Frais forfaitaires en attente <i class="far fa-pause-circle"></i></div>
-                        <div class="card-body">
-                          {% for attente in attente %}
-                            {% if loop.last %}
-                              <p class="card-text" style="font-size: 60px;">{{loop.index}}</p>
-                            {% endif %}
-                            {% else %}
-                              <p class="card-text" style="font-size: 60px;">0</p>
-                          {% endfor %}
-                        </div>
+                  <div class="card text-white bg-warning mb-3 col mx-3 px-0" style="max-width: 19rem;">
+                    <div class="card-header" style="font-weight: bold; font-size: large">Frais forfaitaires en attente <i class="far fa-pause-circle"></i></div>
+                      <div class="card-body">
+                        {% for attente in attente %}
+                          {% if loop.last %}
+                            <p class="card-text" style="font-size: 60px;">{{loop.index}}</p>
+                          {% endif %}
+                          {% else %}
+                            <p class="card-text" style="font-size: 60px;">0</p>
+                        {% endfor %}
                       </div>
+                    </div>
 
-                    <div class="card text-white bg-danger mb-3 col px-0" style="max-width: 19rem;">
-                      <div class="card-header" style="font-weight: bold; font-size: large">Frais forfaitaires rejetés <i class="fas fa-exclamation-triangle"></i></div>
-                        <div class="card-body">
-                          {% for rejete in rejete %}
-                            {% if loop.last %}
-                              <p class="card-text" style="font-size: 60px;">{{loop.index}}</p>
-                            {% endif %}
-                            {% else %}
-                              <p class="card-text" style="font-size: 60px;">0</p>
-                          {% endfor %}
-                        </div>
+                  <div class="card text-white bg-danger mb-3 col px-0" style="max-width: 19rem;">
+                    <div class="card-header" style="font-weight: bold; font-size: large">Frais forfaitaires rejetés <i class="fas fa-exclamation-triangle"></i></div>
+                      <div class="card-body">
+                        {% for rejete in rejete %}
+                          {% if loop.last %}
+                            <p class="card-text" style="font-size: 60px;">{{loop.index}}</p>
+                          {% endif %}
+                          {% else %}
+                            <p class="card-text" style="font-size: 60px;">0</p>
+                        {% endfor %}
                       </div>
                     </div>
                   </div>
+                </div>
 
-                  <div class="row mt-5 justify-content-center">
-                    <div class="card text-white bg-success mb-3 col px-0" style="max-width: 19rem;">
-                      <div class="card-header" style="font-weight: bold; font-size: large">Frais hors forfait validés <i class="far fa-check-circle"></i></div>
+                <div class="row mt-5 justify-content-center">
+                  <div class="card text-white bg-success mb-3 col px-0" style="max-width: 19rem;">
+                    <div class="card-header" style="font-weight: bold; font-size: large">Frais hors forfait validés <i class="far fa-check-circle"></i></div>
+                      <div class="card-body">
+                        {% for valideBIS in valideBIS %}
+                          {% if loop.last %}
+                            <p class="card-text" style="font-size: 60px;">{{loop.index}}</p>
+                          {% endif %}
+                          {% else %}
+                            <p class="card-text" style="font-size: 60px;">0</p>
+                        {% endfor %}
+                      </div>
+                    </div>
+                    <div class="card text-white bg-warning mb-3 col mx-3 px-0" style="max-width: 19rem;">
+                      <div class="card-header" style="font-weight: bold; font-size: large">Frais hors forfait en attente <i class="far fa-pause-circle"></i></div>
                         <div class="card-body">
-                          {% for valideBIS in valideBIS %}
+                          {% for attenteBIS in attenteBIS %}
                             {% if loop.last %}
                               <p class="card-text" style="font-size: 60px;">{{loop.index}}</p>
                             {% endif %}
@@ -75,10 +81,11 @@
                           {% endfor %}
                         </div>
                       </div>
-                      <div class="card text-white bg-warning mb-3 col mx-3 px-0" style="max-width: 19rem;">
-                        <div class="card-header" style="font-weight: bold; font-size: large">Frais hors forfait en attente <i class="far fa-pause-circle"></i></div>
+
+                      <div class="card text-white bg-danger mb-3 col px-0" style="max-width: 19rem;">
+                        <div class="card-header" style="font-weight: bold; font-size: large">Frais hors forfait rejetés <i class="fas fa-exclamation-triangle"></i></div>
                           <div class="card-body">
-                            {% for attenteBIS in attenteBIS %}
+                            {% for rejeteBIS in rejeteBIS %}
                               {% if loop.last %}
                                 <p class="card-text" style="font-size: 60px;">{{loop.index}}</p>
                               {% endif %}
@@ -87,26 +94,15 @@
                             {% endfor %}
                           </div>
                         </div>
-
-                        <div class="card text-white bg-danger mb-3 col px-0" style="max-width: 19rem;">
-                          <div class="card-header" style="font-weight: bold; font-size: large">Frais hors forfait rejetés <i class="fas fa-exclamation-triangle"></i></div>
-                            <div class="card-body">
-                              {% for rejeteBIS in rejeteBIS %}
-                                {% if loop.last %}
-                                  <p class="card-text" style="font-size: 60px;">{{loop.index}}</p>
-                                {% endif %}
-                                {% else %}
-                                  <p class="card-text" style="font-size: 60px;">0</p>
-                              {% endfor %}
-                            </div>
-                          </div>
-                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+            </div>
           </div>
+        </div>
+      </div>
+    </div>
 
-
-   {% endblock %}
+  {% endblock %}
