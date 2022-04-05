@@ -115,7 +115,6 @@
                               <td style="background-color: red; font-weight: bold;">{{ horsForfait.etat }} <i class="fas fa-exclamation-triangle"></i></td>
                             {% endif %}
 
-<<<<<<< HEAD
                   {% for vehicule in vehicule %}
                     {% if loop.last %}
                       {% if loop.index > 0 %}
@@ -141,45 +140,18 @@
                             </div>
                           </div>
                         {{ form_end(form) }}
-=======
-                            <td> {{ horsForfait.montant }} </td>
-                        </tr>
-                        {% endfor %}
->>>>>>> parent of 1d7a1fd5 (...)
                       {% endif %}
                     </table>
                 </div>
               {% for vehicule in vehicule %}
                   {% if loop.last %}
 
-<<<<<<< HEAD
                     {% else %}
                     <div class="row justify-content-center">
                       <div class="card text-white bg-warning mb-3 col mx-3 px-0" style="max-width: 27rem;">
                         <div class="card-header" style="font-weight: bold; font-size: 20px;">Aucun véhicule associé à votre compte</div>
                           <div class="card-body">
                             <a href= {{path ('vehicule')}} style="text-decoration: none; color: white; font-size: 18px;">Saisir un nouveau véhicule</a>
-=======
-                  {% if loop.index > 0 %}
-              {{ form_start(form) }}
-              
-                <div class="card">
-                  <div class="card-header bg-info title">
-                      Modifications des valeurs (Chaque champ doit être rempli)
-                  </div>
-                  <div class="card-body">
-                    <form action= {{ path('frais_hors_forfait') }} method="POST">
-                      <div class="row">
-                          <div class="col m-1"> {{ form_row (form.libelle)}} </div>
-                          <div class="col m-1"> {{ form_row (form.montant)}} </div>
-                           {% do form.mois.setRendered() %}
-                           {% do form.proprietaire.setRendered() %}
-                           {% do form.etat.setRendered() %}
-                      </div> 
-                      <div class="row">
-                          <div class="col-8 col-sm-5 col-md-4 col-lg-3 col-xl-2">
-                            <button class="btn btn-outline-success mt-3" type="submit">Modifier</button>
->>>>>>> parent of 1d7a1fd5 (...)
                           </div>
                       </div>
                         {{ form_end(form) }}
