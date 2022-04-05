@@ -54,24 +54,24 @@ class visiteurs extends AbstractController
             ->findBy(['etat' => "En attente", 'proprietaire' => $user]);
 
         $repository27 = $this->getDoctrine()
-        ->getRepository(FraisForfait::class)
-        ->findBy(['etat' => "Rejeté", 'proprietaire' => $user]);
+            ->getRepository(FraisForfait::class)
+            ->findBy(['etat' => "Rejeté", 'proprietaire' => $user]);
         
         $repository28 = $this->getDoctrine()
-        ->getRepository(FraisForfait::class)
-        ->findBy(['etat' => "Validé", 'proprietaire' => $user]);
+            ->getRepository(FraisForfait::class)
+            ->findBy(['etat' => "Validé", 'proprietaire' => $user]);
 
         $repository26BIS = $this->getDoctrine()
             ->getRepository(FraisHorsForfait::class)
             ->findBy(['etat' => "En attente", 'proprietaire' => $user]);
 
         $repository27BIS = $this->getDoctrine()
-        ->getRepository(FraisHorsForfait::class)
-        ->findBy(['etat' => "Rejeté", 'proprietaire' => $user]);
+            ->getRepository(FraisHorsForfait::class)
+            ->findBy(['etat' => "Rejeté", 'proprietaire' => $user]);
         
         $repository28BIS = $this->getDoctrine()
-        ->getRepository(FraisHorsForfait::class)
-        ->findBy(['etat' => "Validé", 'proprietaire' => $user]);
+            ->getRepository(FraisHorsForfait::class)
+            ->findBy(['etat' => "Validé", 'proprietaire' => $user]);
 
         return $this->render('/visiteurs/accueil_visiteur.html.twig', [
             "attente" => $repository26,
@@ -180,7 +180,7 @@ class visiteurs extends AbstractController
             $entityManager->flush();
 
             $this->addFlash('success1', 'Frais hors forfait ajouté avec succès !');    
-            return $this->redirectToRoute('accueil_visiteurs');  // Rediriger vers la page d'accueil
+            return $this->redirectToRoute('accueil_visiteurs');  
         }
 
         return $this->render('visiteurs\frais_hors_forfait.html.twig',[ 
@@ -279,8 +279,8 @@ class visiteurs extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
         
         $repository = $this->getDoctrine()
-                ->getRepository(FraisForfait::class)
-                ->find($id);
+            ->getRepository(FraisForfait::class)
+            ->find($id);
 
 
         $entityManager->remove($repository);
@@ -382,13 +382,11 @@ class visiteurs extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
         
         $repository = $this->getDoctrine()
-                ->getRepository(Vehicule::class)
-                ->findOneBy(['proprietaire' => $id], array('id' => 'DESC'));
+            ->getRepository(Vehicule::class)
+            ->findOneBy(['proprietaire' => $id], array('id' => 'DESC'));
 
         $entityManager->remove($repository);
         $entityManager->flush();
-
-        // $this->addFlash('modif2', 'Modification effectuée'); 
         
         return $this->redirectToRoute('vehicule'); // Rediriger vers la page d'accueil
     }
@@ -400,8 +398,8 @@ class visiteurs extends AbstractController
     public function remplacement_vehicule(int $id) : Response{ // Supprimer un métériel ciblé
                 
         $repository = $this->getDoctrine()
-                ->getRepository(Vehicule::class)
-                ->findBy(['proprietaire' => $id]);
+            ->getRepository(Vehicule::class)
+            ->findBy(['proprietaire' => $id]);
 
         return $this->render('visiteurs\remplacement_vehicule.html.twig',[ 
             'repo' => $repository
@@ -473,8 +471,8 @@ class visiteurs extends AbstractController
             ->findBy(['proprietaire' => $user, 'id' => $id]);
 
         $repository29 = $this->getDoctrine()
-        ->getRepository(Vehicule::class)
-        ->findBy(['proprietaire' => $user]);
+            ->getRepository(Vehicule::class)
+            ->findBy(['proprietaire' => $user]);
 
         $fiche2 = new FraisHorsForfait ();
         $entityManager = $this->getDoctrine()->getManager();

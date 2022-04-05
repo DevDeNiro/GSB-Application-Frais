@@ -19,100 +19,97 @@
                   <div class="col">
                     <div class="card mb-3">
                       <div class="card-header bg-info title"> Valeurs actuelles de la fiche de frais </div>
-                        <div class="card-body"> </div>
-                          <table class="table table-hover table-striped table-bordered" data-toggle="table" data-search="true" data-sort-name="etat" data-sort-order="asc"> 
-                            <thead class="thead">
-                              <tr>
-                                <th scope="col" data-sortable="true" data-field="id">Repas midi</th>
-                                <th scope="col" data-sortable="true" data-field="mois">Nuit</th>
-                                <th scope="col" data-sortable="true" data-field="etape">Etapes</th>
-                                <th scope="col" data-sortable="true" data-field="km">Km</th>
-                                <th scope="col" data-sortable="true" data-field="km">Libellé</th>
-                                <th scope="col" data-sortable="true" data-field="etat">Etat</th>
-                                <th scope="col" data-sortable="true" data-field="montant">Montant</th>
-                              </tr>
-                            </thead>
+                        <table class="table table-hover table-striped table-bordered" data-toggle="table" data-search="true" data-sort-name="etat" data-sort-order="asc"> 
+                          <thead class="thead">
+                            <tr>
+                              <th scope="col" data-sortable="true" data-field="id">Repas midi</th>
+                              <th scope="col" data-sortable="true" data-field="mois">Nuit</th>
+                              <th scope="col" data-sortable="true" data-field="etape">Etapes</th>
+                              <th scope="col" data-sortable="true" data-field="km">Km</th>
+                              <th scope="col" data-sortable="true" data-field="km">Libellé</th>
+                              <th scope="col" data-sortable="true" data-field="etat">Etat</th>
+                              <th scope="col" data-sortable="true" data-field="montant">Montant</th>
+                            </tr>
+                          </thead>
 
-                              <tr>
-                                <td>{{ Forfait.repasMidi }}</td>
-                                <td>{{ Forfait.nuit }}</td>
-                                <td>{{ Forfait.etape }}</td>
-                                <td>{{ Forfait.km }}</td>
-                                <td>{{ Forfait.libelle }}</td>
+                          <tr>
+                            <td>{{ Forfait.repasMidi }}</td>
+                            <td>{{ Forfait.nuit }}</td>
+                            <td>{{ Forfait.etape }}</td>
+                            <td>{{ Forfait.km }}</td>
+                            <td>{{ Forfait.libelle }}</td>
 
-                                  {% if Forfait.etat == "En attente" %}
-                                    <td style="background-color: orange; font-weight: bold;">{{ Forfait.etat }} <i class="fas fa-sync fa-spin"></i></td>
+                              {% if Forfait.etat == "En attente" %}
+                                <td style="background-color: orange; font-weight: bold;">{{ Forfait.etat }} <i class="fas fa-sync fa-spin"></i></td>
+                              {% endif %}
+
+                              {% if Forfait.etat == "Validé" %}
+                                <td style="background-color: green; font-weight: bold;">{{ Forfait.etat }} <i class="far fa-check-circle"></i></td>
+                              {% endif %}
+
+                              {% if Forfait.etat == "Rejeté" %}
+                                <td style="background-color: red; font-weight: bold;">{{ Forfait.etat }} <i class="fas fa-exclamation-triangle"></i></td>
+                              {% endif %}
+
+                              {% for vehicule in vehicule %}
+                                {% if vehicule.carburant == "Diesel" %}
+                                  {% if vehicule.chevaux <= 4 %}
+                                    <td>{{ Forfait.km * 0.52 + Forfait.nuit * 80 + Forfait.repasMidi * 9.5}}</td>
                                   {% endif %}
 
-                                  {% if Forfait.etat == "Validé" %}
-                                    <td style="background-color: green; font-weight: bold;">{{ Forfait.etat }} <i class="far fa-check-circle"></i></td>
+                                  {% if vehicule.chevaux > 4 %}
+                                    <td>{{ Forfait.km * 0.58 + Forfait.nuit * 80 + Forfait.repasMidi * 9.5}}</td>
+                                  {% endif %}
+                                {% endif %}
+
+                                {% if vehicule.carburant == "Essence" %}
+                                  {% if vehicule.chevaux <= 4 %}
+                                    <td>{{ Forfait.km * 0.62 + Forfait.nuit * 80 + Forfait.repasMidi * 9.5}}</td>
                                   {% endif %}
 
-                                  {% if Forfait.etat == "Rejeté" %}
-                                    <td style="background-color: red; font-weight: bold;">{{ Forfait.etat }} <i class="fas fa-exclamation-triangle"></i></td>
+                                  {% if vehicule.chevaux > 4 %}
+                                    <td>{{ Forfait.km * 0.67 + Forfait.nuit * 80 + Forfait.repasMidi * 9.5}}</td>
                                   {% endif %}
-
-                                  {% for vehicule in vehicule %}
-                                    {% if vehicule.carburant == "Diesel" %}
-                                      {% if vehicule.chevaux <= 4 %}
-                                        <td>{{ Forfait.km * 0.52 + Forfait.nuit * 80 + Forfait.repasMidi * 9.5}}</td>
-                                      {% endif %}
-
-                                      {% if vehicule.chevaux > 4 %}
-                                        <td>{{ Forfait.km * 0.58 + Forfait.nuit * 80 + Forfait.repasMidi * 9.5}}</td>
-                                      {% endif %}
-                                    {% endif %}
-
-                                    {% if vehicule.carburant == "Essence" %}
-                                      {% if vehicule.chevaux <= 4 %}
-                                        <td>{{ Forfait.km * 0.62 + Forfait.nuit * 80 + Forfait.repasMidi * 9.5}}</td>
-                                      {% endif %}
-
-                                      {% if vehicule.chevaux > 4 %}
-                                        <td>{{ Forfait.km * 0.67 + Forfait.nuit * 80 + Forfait.repasMidi * 9.5}}</td>
-                                      {% endif %}
-                                    {% endif %}
-                                  {% endfor %}
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-
-                        {{ form_start(form) }}
-                        <div class="card">
-                          <div class="card-header bg-info title"> Modifications des valeurs (Chaque champ doit être rempli) </div>
-                            <div class="card-body">
-                              <form action= {{ path('frais_forfait') }} method="POST">
-                                <div class="row">
-                                  <div class="col m-1"> {{ form_row (form.repasMidi)}} </div>
-                                  <div class="col m-1"> {{ form_row (form.nuit)}}      </div>
-                                  <div class="col m-1"> {{ form_row (form.etape)}}     </div>
-                                  <div class="col m-1"> {{ form_row (form.km)}}        </div>
-                                  <div class="col m-1"> {{ form_row (form.libelle)}}   </div>
-                                  {% do form.montant.setRendered() %}
-                                  {% do form.proprietaire.setRendered() %}
-                                  {% do form.mois.setRendered() %}
-                                  {% do form.etat.setRendered() %}
-                                </div>
-
-                                <div class="row">
-                                  <div class="col-8 col-sm-5 col-md-4 col-lg-3 col-xl-2">
-                                    <button class="btn btn-outline-success mt-3" type="submit"> Modifier </button>
-                                  </div>
-                                  <div class="col"></div>
-                                </div>
-                              </div>
-                            </div> 
-                          </div>
-                        </div>
-                        {{ form_end(form) }}    
+                                {% endif %}
+                              {% endfor %}
+                          </tr>
+                        </table>
                       </div>
+
+                      {{ form_start(form) }}
+                      <div class="card">
+                        <div class="card-header bg-info title"> Modifications des valeurs (Chaque champ doit être rempli) </div>
+                          <div class="card-body">
+                            <form action= {{ path('frais_forfait') }} method="POST">
+                              <div class="row">
+                                <div class="col m-1"> {{ form_row (form.repasMidi)}} </div>
+                                <div class="col m-1"> {{ form_row (form.nuit)}}      </div>
+                                <div class="col m-1"> {{ form_row (form.etape)}}     </div>
+                                <div class="col m-1"> {{ form_row (form.km)}}        </div>
+                                <div class="col m-1"> {{ form_row (form.libelle)}}   </div>
+                                {% do form.montant.setRendered() %}
+                                {% do form.proprietaire.setRendered() %}
+                                {% do form.mois.setRendered() %}
+                                {% do form.etat.setRendered() %}
+                              </div>
+
+                              <div class="row">
+                                <div class="col-8 col-sm-5 col-md-4 col-lg-3 col-xl-2">
+                                  <button class="btn btn-outline-success mt-3" type="submit"> Modifier </button>
+                                </div>
+                                <div class="col"></div>
+                              </div>
+                            </form>
+                          </div> 
+                        </div>
+                      </div>
+                      {{ form_end(form) }}    
                     </div>
                   </div>
                 </div>
-              {% endif %}
-            {% endfor %}
-          </div>
+              </div>
+            {% endif %}
+          {% endfor %}
         </div>
       </div>
     </div>
