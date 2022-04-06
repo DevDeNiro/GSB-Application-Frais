@@ -3,187 +3,185 @@
 
  {% block body %}
  
-          <div class="container-fluid">
-            <div class="row top">
-              <div class="my-auto text_bloc_top col col-md-8 col-lg-9 p-0 bloc_top">
-                <p class="m-0 ml-2 titre_bandeau">Suivre ses remboursements</p>
-              </div>
-              <div class="my-auto text_bloc_top col col-md-4 col-lg-3 p-0 bloc_top">
-                <p class="m-0 titre_bandeau">Période : {{date}}</p>
-              </div>
-            </div>
-        
-              {% for message in app.flashes ('succesSuppr') %}  
-                <div class="alert alert-danger mt-4" role="alert">
-                  {{ message }}
-                </div>
-              {% endfor %} 
+    <div class="container-fluid">
+      <div class="row top">
+        <div class="my-auto text_bloc_top col col-md-8 col-lg-9 p-0 bloc_top">
+          <p class="m-0 ml-2 titre_bandeau">Suivre ses remboursements</p>
+        </div>
+        <div class="my-auto text_bloc_top col col-md-4 col-lg-3 p-0 bloc_top">
+          <p class="m-0 titre_bandeau">Période : {{date}}</p>
+        </div>
+      </div>
+  
+        {% for message in app.flashes ('succesSuppr') %}  
+          <div class="alert alert-danger mt-4" role="alert">
+            {{ message }}
+          </div>
+        {% endfor %} 
 
-              {% for message in app.flashes ('modif') %}  
-                <div class="alert alert-info mt-4" role="alert">
-                  {{ message }}
-                </div>
-              {% endfor %} 
+        {% for message in app.flashes ('modif') %}  
+          <div class="alert alert-info mt-4" role="alert">
+            {{ message }}
+          </div>
+        {% endfor %} 
 
-               {% for tata in app.flashes ('success18') %}  
-                <div class="alert alert-primary" role="alert">
-                  {{ tata }}
-                </div>
-              {% endfor %}
+          {% for tata in app.flashes ('success18') %}  
+          <div class="alert alert-primary" role="alert">
+            {{ tata }}
+          </div>
+        {% endfor %}
 
-              {% for toto in app.flashes ('success34') %}  
-                <div class="alert alert-primary" role="alert">
-                  {{ toto }}
-                </div>
-              {% endfor %}
+        {% for toto in app.flashes ('success34') %}  
+          <div class="alert alert-primary" role="alert">
+            {{ toto }}
+          </div>
+        {% endfor %}
 
-            <div class="row mx-auto w-100 p-0 mt-5">
-              <div class="col mb-4">
-                <div class="card">
-                  <div class="card-header bg-info title"> Frais au forfait </div>
-                    {% for auForfait in ÔForfait %}
-                      {% if loop.last %}
-                        {% if loop.index > 0 %}
-                        {% endif %}
-                      {% endif %}
-                      {% else %}
-                        <div class="card-body">
-                          <p class="card-text" style="font-size: 20px; font-weight: bold;;">Aucun frais forfaitaire saisi <i class="fas fa-info-circle"></i></span></p>
-                        </div>
-                    {% endfor %}
-                      
-                    {% if ÔForfait %}      
-                      <table class="table table-hover table-striped table-bordered" data-toggle="table" data-search="true" data-sort-name="etat" data-sort-order="asc"> 
-                        <thead class="thead">
-                          <tr>
-                            <th scope="col" data-sortable="true" data-field="mois">Mois</th>
-                            <th scope="col" data-sortable="true" data-field="repasMidi">Repas midi</th>
-                            <th scope="col" data-sortable="true" data-field="nuit">Nuit</th>
-                            <th scope="col" data-sortable="true" data-field="etape">Etapes</th>
-                            <th scope="col" data-sortable="true" data-field="km">Km</th>
-                            <th scope="col" data-sortable="true" data-field="libelle">Libellé</th>
-                            <th scope="col" data-sortable="true" data-field="etat">Etat</th>
-                            <th scope="col" data-sortable="true" data-field="montant">Montant</th>
-                            <th scope="col" data-sortable="true" data-field="action">Actions</th>
-                          </tr>
-                        </thead>
-                        <tr>
-                          {% for auForfait in ÔForfait %}
-                            <td>{{ auForfait.mois }}</td>
-                            <td>{{ auForfait.repasMidi }}</td>
-                            <td>{{ auForfait.nuit }}</td>
-                            <td>{{ auForfait.etape }}</td>
-                            <td>{{ auForfait.km }}</td>
-                            <td>{{ auForfait.libelle }}</td>
-
-                            {% if auForfait.etat == "En attente" %}
-                              <td style="background-color: orange; font-weight: bold;">{{ auForfait.etat }} <i class="fas fa-sync fa-spin"></i></td>
-                            {% endif %}
-
-                            {% if auForfait.etat == "Validé" %}
-                              <td style="background-color: green; font-weight: bold;">{{ auForfait.etat }} <i class="far fa-check-circle"></i></td>
-                            {% endif %}
-
-                            {% if auForfait.etat == "Rejeté" %}
-                              <td style="background-color: red; font-weight: bold;">{{ auForfait.etat }} <i class="fas fa-exclamation-triangle"></i></td>
-                            {% endif %}
-
-                            {% for vehicule in vehicule %}
-                              {% if vehicule.carburant == "Diesel" %}
-                                {# Frais kilométrique + prix d'une nuit + prix d'un repas #}
-                                {% if vehicule.chevaux <= 4 %}
-                                  <td>{{ auForfait.km * 0.52 + auForfait.nuit * 80 + auForfait.repasMidi * 9.5}}</td>
-                                {% endif %}
-
-                                {% if vehicule.chevaux > 4 %}
-                                  <td>{{ auForfait.km * 0.58 + auForfait.nuit * 80 + auForfait.repasMidi * 9.5}}</td>
-                                {% endif %}
-                              {% endif %}
-
-                              {% if vehicule.carburant == "Essence" %}
-                                {% if vehicule.chevaux <= 4 %}
-                                  <td>{{ auForfait.km * 0.62 + auForfait.nuit * 80 + auForfait.repasMidi * 9.5}}</td>
-                                {% endif %}
-
-                                {% if vehicule.chevaux > 4 %}
-                                  <td>{{ auForfait.km * 0.67 + auForfait.nuit * 80 + auForfait.repasMidi * 9.5}}</td>
-                                {% endif %}
-                              {% endif %}
-                            {% endfor %}
-                            
-                            <td>
-                              {% if auForfait.etat == "En attente" %}
-                                <div class="col mb-4"><a class="btn btn-outline-primary" href={{ path("modifier", {'id': auForfait.id }) }} role="button">Modifier</a></div>
-                              {% endif %}
-                              <div class="col"><a class="btn btn-outline-danger btn1 mt-2" href={{ path("supprimer", {'id': auForfait.id}) }} role="button">Supprimer</a></div>
-                            </td>
-                          </tr>
-                        {% endfor %}
-                      </table>
-                    {% endif %}
-                  </div>
-                </div>
-              </div>
-
-            <div class="col mb-4">
-              <div class="card">
-                <div class="card-header bg-info title"> Frais hors forfait </div>
-                  {% for horsForfait in horsForfait %} 
-                    {% if loop.last %}
-                      {% if loop.index > 0 %}
-                      {% endif %}
-                    {% endif %}
-                    {% else %}
-                      <div class="card-body">
-                        <p class="card-text" style="font-size: 20px; font-weight: bold;;">Aucun frais hors forfait saisi <i class="fas fa-info-circle"></i></span></p>
-                      </div>
-                  {% endfor %}
-
-                  {% if horsForfait %} 
-                    <table class="table table-hover table-striped table-bordered" data-toggle="table" data-search="true" data-sort-name="etat" data-sort-order="asc"> 
-                      <thead class="thead">
-                        <tr>
-                          <th scope="col" data-sortable="true" data-field="id">Mois</th>
-                          <th scope="col" data-sortable="true" data-field="mois">Libellé</th>                             
-                          <th scope="col" data-sortable="true" data-field="etat">Etat</th>
-                          <th scope="col" data-sortable="true" data-field="montant">Montant</th>
-                          <th scope="col" data-sortable="true" data-field="action">Actions</th>
-                        </tr>
-                      </thead>
-
-                      <tr>
-                        {% for horsForfait in horsForfait %}
-                          <td> {{ horsForfait.mois }} </td>
-                          <td> {{ horsForfait.libelle }} </td>
-                          
-                          {% if horsForfait.etat == "En attente" %}
-                            <td style="background-color: orange; font-weight: bold;">{{ horsForfait.etat }} <i class="fas fa-sync fa-spin"></i></td>
-                          {% endif %}
-
-                          {% if horsForfait.etat == "Validé" %}
-                            <td style="background-color: green; font-weight: bold;">{{ horsForfait.etat }} <i class="far fa-check-circle"></i></td>
-                          {% endif %}
-
-                          {% if horsForfait.etat == "Rejeté" %}
-                            <td style="background-color: red; font-weight: bold;">{{ horsForfait.etat }} <i class="fas fa-exclamation-triangle"></i></td>
-                          {% endif %}
-
-                          <td> {{ horsForfait.montant }} </td>
-                          <td> 
-                            {% if horsForfait.etat == "En attente" %}
-                              <div class="col"><a class="btn btn-outline-primary" href={{ path("modifier2", {'id': horsForfait.id }) }} role="button">Modifier</a></div>
-                            {% endif %}
-                            <div class="col"><a class="btn btn-outline-danger btn1 mt-2" href={{ path("supprimer2", {'id': horsForfait.id }) }} role="button">Supprimer</a></div>
-                          </td>
-                        </tr>
-                      {% endfor %}
-                    </table>
+      <div class="row mx-auto w-100 p-0 mt-5">
+        <div class="col mb-4">
+          <div class="card">
+            <div class="card-header bg-info title"> Frais au forfait </div>
+              {% for auForfait in ÔForfait %}
+                {% if loop.last %}
+                  {% if loop.index > 0 %}
                   {% endif %}
-                </div>
+                {% endif %}
+                {% else %}
+                  <div class="card-body">
+                    <p class="card-text" style="font-size: 20px; font-weight: bold;;">Aucun frais forfaitaire saisi <i class="fas fa-info-circle"></i></span></p>
+                  </div>
+              {% endfor %}
+                
+              {% if ÔForfait %}      
+                <table class="table table-hover table-striped table-bordered" data-toggle="table" data-search="true" data-sort-name="etat" data-sort-order="asc"> 
+                  <thead class="thead">
+                    <tr>
+                      <th scope="col" data-sortable="true" data-field="mois">Mois</th>
+                      <th scope="col" data-sortable="true" data-field="repasMidi">Repas midi</th>
+                      <th scope="col" data-sortable="true" data-field="nuit">Nuit</th>
+                      <th scope="col" data-sortable="true" data-field="etape">Etapes</th>
+                      <th scope="col" data-sortable="true" data-field="km">Km</th>
+                      <th scope="col" data-sortable="true" data-field="libelle">Libellé</th>
+                      <th scope="col" data-sortable="true" data-field="etat">Etat</th>
+                      <th scope="col" data-sortable="true" data-field="montant">Montant</th>
+                      <th scope="col" data-sortable="true" data-field="action">Actions</th>
+                    </tr>
+                  </thead>
+                  <tr>
+                    {% for auForfait in ÔForfait %}
+                      <td>{{ auForfait.mois }}</td>
+                      <td>{{ auForfait.repasMidi }}</td>
+                      <td>{{ auForfait.nuit }}</td>
+                      <td>{{ auForfait.etape }}</td>
+                      <td>{{ auForfait.km }}</td>
+                      <td>{{ auForfait.libelle }}</td>
+
+                      {% if auForfait.etat == "En attente" %}
+                        <td style="background-color: orange; font-weight: bold;">{{ auForfait.etat }} <i class="fas fa-sync fa-spin"></i></td>
+                      {% endif %}
+
+                      {% if auForfait.etat == "Validé" %}
+                        <td style="background-color: green; font-weight: bold;">{{ auForfait.etat }} <i class="far fa-check-circle"></i></td>
+                      {% endif %}
+
+                      {% if auForfait.etat == "Rejeté" %}
+                        <td style="background-color: red; font-weight: bold;">{{ auForfait.etat }} <i class="fas fa-exclamation-triangle"></i></td>
+                      {% endif %}
+
+                      {% for vehicule in vehicule %}
+                        {% if vehicule.carburant == "Diesel" %}
+                          {# Frais kilométrique + prix d'une nuit + prix d'un repas #}
+                          {% if vehicule.chevaux <= 4 %}
+                            <td>{{ auForfait.km * 0.52 + auForfait.nuit * 80 + auForfait.repasMidi * 9.5}}</td>
+                          {% endif %}
+
+                          {% if vehicule.chevaux > 4 %}
+                            <td>{{ auForfait.km * 0.58 + auForfait.nuit * 80 + auForfait.repasMidi * 9.5}}</td>
+                          {% endif %}
+                        {% endif %}
+
+                        {% if vehicule.carburant == "Essence" %}
+                          {% if vehicule.chevaux <= 4 %}
+                            <td>{{ auForfait.km * 0.62 + auForfait.nuit * 80 + auForfait.repasMidi * 9.5}}</td>
+                          {% endif %}
+
+                          {% if vehicule.chevaux > 4 %}
+                            <td>{{ auForfait.km * 0.67 + auForfait.nuit * 80 + auForfait.repasMidi * 9.5}}</td>
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                      
+                      <td>
+                        {% if auForfait.etat == "En attente" %}
+                          <div class="col mb-4"><a class="btn btn-outline-primary" href={{ path("modifier", {'id': auForfait.id }) }} role="button">Modifier</a></div>
+                        {% endif %}
+                        <div class="col"><a class="btn btn-outline-danger btn1 mt-2" href={{ path("supprimer", {'id': auForfait.id}) }} role="button">Supprimer</a></div>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                </table>
+              {% endif %}
+            </div>
+          </div>
+          <div class="col mb-4">
+            <div class="card">
+              <div class="card-header bg-info title"> Frais hors forfait </div>
+                {% for horsForfait in horsForfait %} 
+                  {% if loop.last %}
+                    {% if loop.index > 0 %}
+                    {% endif %}
+                  {% endif %}
+                  {% else %}
+                    <div class="card-body">
+                      <p class="card-text" style="font-size: 20px; font-weight: bold;;">Aucun frais hors forfait saisi <i class="fas fa-info-circle"></i></span></p>
+                    </div>
+                {% endfor %}
+
+                {% if horsForfait %} 
+                  <table class="table table-hover table-striped table-bordered" data-toggle="table" data-search="true" data-sort-name="etat" data-sort-order="asc"> 
+                    <thead class="thead">
+                      <tr>
+                        <th scope="col" data-sortable="true" data-field="id">Mois</th>
+                        <th scope="col" data-sortable="true" data-field="mois">Libellé</th>                             
+                        <th scope="col" data-sortable="true" data-field="etat">Etat</th>
+                        <th scope="col" data-sortable="true" data-field="montant">Montant</th>
+                        <th scope="col" data-sortable="true" data-field="action">Actions</th>
+                      </tr>
+                    </thead>
+
+                    <tr>
+                      {% for horsForfait in horsForfait %}
+                        <td> {{ horsForfait.mois }} </td>
+                        <td> {{ horsForfait.libelle }} </td>
+                        
+                        {% if horsForfait.etat == "En attente" %}
+                          <td style="background-color: orange; font-weight: bold;">{{ horsForfait.etat }} <i class="fas fa-sync fa-spin"></i></td>
+                        {% endif %}
+
+                        {% if horsForfait.etat == "Validé" %}
+                          <td style="background-color: green; font-weight: bold;">{{ horsForfait.etat }} <i class="far fa-check-circle"></i></td>
+                        {% endif %}
+
+                        {% if horsForfait.etat == "Rejeté" %}
+                          <td style="background-color: red; font-weight: bold;">{{ horsForfait.etat }} <i class="fas fa-exclamation-triangle"></i></td>
+                        {% endif %}
+
+                        <td> {{ horsForfait.montant }} </td>
+                        <td> 
+                          {% if horsForfait.etat == "En attente" %}
+                            <div class="col"><a class="btn btn-outline-primary" href={{ path("modifier2", {'id': horsForfait.id }) }} role="button">Modifier</a></div>
+                          {% endif %}
+                          <div class="col"><a class="btn btn-outline-danger btn1 mt-2" href={{ path("supprimer2", {'id': horsForfait.id }) }} role="button">Supprimer</a></div>
+                        </td>
+                      </tr>
+                    {% endfor %}
+                  </table>
+                {% endif %}
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
   {% endblock %}
