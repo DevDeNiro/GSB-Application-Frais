@@ -34,6 +34,7 @@ body {
     margin: 7.5em;
     display: flex;
     text-align: center;
+    justify-content: center;
 }
 
 .color {
@@ -84,7 +85,7 @@ body {
 
 a {
     color: white;
-    text-decoration: none!important;
+    text-decoration: none !important;
     font-weight: 550;
 }
 
