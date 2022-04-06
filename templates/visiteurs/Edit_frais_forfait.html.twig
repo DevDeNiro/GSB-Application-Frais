@@ -1,21 +1,17 @@
-{% extends 'base_visiteur.html.twig' %}
- 
-  {% block body %}
-   
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
         <div class="col p-0">
           <div class="container-fluid">
-          <div class="row top">
-            <div class="my-auto text_bloc_top col col-md-8 col-lg-9 p-0 bloc_top">
-              <p class="m-0 ml-2 titre_bandeau">Modifier une fiche de frais</p>
+            <div class="row top">
+              <div class="my-auto text_bloc_top col col-md-8 col-lg-9 p-0 bloc_top">
+                <p class="m-0 ml-2 titre_bandeau">Modifier une fiche de frais</p>
+              </div>
+              <div class="my-auto text_bloc_top col col-md-4 col-lg-3 p-0 bloc_top">
+                <p class="m-0 titre_bandeau">Période : {{date}}</p>
+              </div>
             </div>
-            <div class="my-auto text_bloc_top col col-md-4 col-lg-3 p-0 bloc_top">
-              <p class="m-0 titre_bandeau">Période : {{date}}</p>
-            </div>
-          </div>
-          {% for Forfait in Forfait %}
-          {% if Forfait.etat == "En attente" %}
-            <div class="row mx-auto w-75 p-0 mt-4">
-                <div class="col">
 
             {% for Forfait in Forfait %}
               {% if Forfait.etat == "En attente" %}
@@ -108,14 +104,13 @@
                       </div>
                       {{ form_end(form) }}    
                     </div>
+                  </div>
                 </div>
               </div>
             {% endif %}
           {% endfor %}
         </div>
-        
-        {{ form_end(form) }}    
-        {% endif %}
-        {% endfor %}
-
-  {% endblock %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

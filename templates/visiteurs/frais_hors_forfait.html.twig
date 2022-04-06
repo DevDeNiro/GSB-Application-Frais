@@ -1,4 +1,4 @@
-{% extends 'base_visiteur.html.twig' %}
+{% extends 'base.html.twig' %}
 
   {% block body %}
 
@@ -11,9 +11,10 @@
                 <p class="m-0 titre_bandeau">Période : {{date}}</p>
               </div>
             </div>
+
             <div class="row mx-auto w-75 p-0 mt-5">
               <div class="col">
-              {% for vehicule in vehicule %}
+                {% for vehicule in vehicule %}
                   {% if loop.last %}
                     {% if loop.index > 0 %}
                       {{ form_start(form) }}
@@ -47,28 +48,14 @@
                           <div class="card-body">
                             <a href= {{path ('vehicule')}} style="text-decoration: none; color: white; font-size: 18px;">Saisir un nouveau véhicule</a>
                           </div>
+                        </div>
                       </div>
-                        {{ form_end(form) }}
                     </div>
-                  </div>
-                </div>
+                {% endfor %}
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-              {% endif %}
-              {% endif %}
-                {% else %}
-                <div class="row justify-content-center">
-                  <div class="card text-white bg-warning mb-3 col mx-3 px-0" style="max-width: 27rem;">
-                      <div class="card-header" style="font-weight: bold; font-size: 20px;">Aucun véhicule associé à votre compte</div>
-                        <div class="card-body">
-                              <a href="/visiteurs/vehicule" style="text-decoration: none; color: white; font-size: 18px;">Saisir un nouveau véhicule</a>
-                        </div>
-                      </div>
-                      </div>
-              {% endfor %}
-
   {% endblock %}

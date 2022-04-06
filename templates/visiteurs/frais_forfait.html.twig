@@ -1,8 +1,8 @@
-{% extends 'base_visiteur.html.twig' %}
+{% extends 'base.html.twig' %}
 
   {% block body %}
 
-          <div class="container-fluid">
+        <div class="container-fluid">
           <div class="row top">
             <div class="my-auto text_bloc_top col col-md-8 col-lg-9 p-0 bloc_top">
               <p class="m-0 ml-2 titre_bandeau">Saisir une fiche de frais</p>
@@ -11,79 +11,56 @@
               <p class="m-0 titre_bandeau">Période : {{date}}</p>
             </div>
           </div>
-            <div class="row mx-auto w-75 p-0 mt-5">
-                <div class="col">
-                {% for vehicule in vehicule %}
-                  {% if loop.last %}
-                    <div class="row mx-auto w-75 p-0 mt-5">
-                      <div class="col">
-                        {% for vehicule in vehicule %}
-                          {% if loop.last %}
-                            {% if loop.index > 0 %}      
-                              {{ form_start(form) }}
-                                <div class="card">
-                                  <div class="card-header bg-info title"> Frais au forfait </div>
-                                    <div class="card-body">
-                                      <form action= {{ path('frais_forfait') }} method="POST">
-                                        <div class="row">
-                                          <div class="col m-1"> {{ form_row (form.repasMidi)}} </div>
-                                          <div class="col m-1"> {{ form_row (form.nuit)}}      </div>
-                                          <div class="col m-1"> {{ form_row (form.etape)}}     </div>
-                                          <div class="col m-1"> {{ form_row (form.km)}}        </div>
-                                          <div class="col m-1"> {{ form_row (form.libelle)}}   </div>
-                                          {% do form.montant.setRendered() %}
-                                          {% do form.proprietaire.setRendered() %}
-                                          {% do form.mois.setRendered() %}
-                                          {% do form.etat.setRendered() %}
-                                        </div>
-                                        <div class="row">
-                                          <div class="col-8 col-sm-5 col-md-4 col-lg-3 col-xl-2">
-                                            <button class="btn btn-outline-success mt-3" type="submit"> Ajouter </button>
-                                          </div>
-                                          <div class="col"></div>
-                                        </div>
-                                    </div> 
-                                  </div>
-                                  <div class="card-body">
 
-                                    <form action= {{ path('frais_forfait') }} method="POST">
-
-                                    <div class="row">
-                                      <div class="col m-1"> {{ form_row (form.repasMidi)}} </div>
-                                      <div class="col m-1"> {{ form_row (form.nuit)}}      </div>
-                                      <div class="col m-1"> {{ form_row (form.etape)}}     </div>
-                                      <div class="col m-1"> {{ form_row (form.km)}}        </div>
-                                      <div class="col m-1"> {{ form_row (form.libelle)}}   </div>
-                                      {% do form.montant.setRendered() %}
-                                      {% do form.proprietaire.setRendered() %}
-                                      {% do form.mois.setRendered() %}
-                                      {% do form.etat.setRendered() %}
-                                    </div>
-
-                                    <div class="row">
-                                      <div class="col-8 col-sm-5 col-md-4 col-lg-3 col-xl-2">
-                                        <button class="btn btn-outline-success mt-3" type="submit"> Ajouter </button>
-
-                                      </div>
-                                        <div class="col">
-                                      </div>
-                                    </div>
-                                  </div>
+          <div class="row mx-auto w-75 p-0 mt-5">
+            <div class="col">
+              {% for vehicule in vehicule %}
+                {% if loop.last %}
+                  {% if loop.index > 0 %}      
+                    {{ form_start(form) }}
+                      <div class="card">
+                        <div class="card-header bg-info title"> Frais au forfait </div>
+                          <div class="card-body">
+                            <form action= {{ path('frais_forfait') }} method="POST">
+                              <div class="row">
+                                <div class="col m-1"> {{ form_row (form.repasMidi)}} </div>
+                                <div class="col m-1"> {{ form_row (form.nuit)}}      </div>
+                                <div class="col m-1"> {{ form_row (form.etape)}}     </div>
+                                <div class="col m-1"> {{ form_row (form.km)}}        </div>
+                                <div class="col m-1"> {{ form_row (form.libelle)}}   </div>
+                                {% do form.montant.setRendered() %}
+                                {% do form.proprietaire.setRendered() %}
+                                {% do form.mois.setRendered() %}
+                                {% do form.etat.setRendered() %}
                               </div>
-                          </div>
-                      </div>
-        
-                    {{ form_end(form) }}    
-                    {% endif %}
-                            {% endif %}
-                            {% else %}
-                            <div class="row justify-content-center">
-                              <div class="card text-white bg-warning mb-3 col mx-3 px-0" style="max-width: 27rem;">
-                                  <div class="card-header" style="font-weight: bold; font-size: 20px;">Aucun véhicule associé à votre compte</div>
-                                    <div class="card-body">
-                                          <a href="/visiteurs/vehicule" style="text-decoration: none; color: white; font-size: 18px;">Saisir un nouveau véhicule</a>
-                                    </div>
-                                  </div>
+                              <div class="row">
+                                <div class="col-8 col-sm-5 col-md-4 col-lg-3 col-xl-2">
+                                  <button class="btn btn-outline-success mt-3" type="submit"> Ajouter </button>
                                 </div>
-                          {% endfor %}     
-              {% endblock %}
+                                <div class="col"></div>
+                              </div>
+                          </div> 
+                        </div>
+                      </div>
+                    {{ form_end(form) }}    
+                  {% endif %}
+                {% endif %}
+
+                {% else %}
+                  <div class="row justify-content-center">
+                    <div class="card text-white bg-warning mb-3 col mx-3 px-0" style="max-width: 27rem;">
+                      <div class="card-header" style="font-weight: bold; font-size: 20px;">Aucun véhicule associé à votre compte</div>
+                        <div class="card-body">
+                          <a href= {{path ('vehicule')}} style="text-decoration: none; color: white; font-size: 18px;">Saisir un nouveau véhicule</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
