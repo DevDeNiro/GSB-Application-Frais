@@ -2,7 +2,7 @@
 
 :root {
     --sidebar-bg-color: rgb(80, 100, 109);
-    --navbar-bg-color: rgb(23, 162, 184);
+    --navbar-bg-color: rgb(102, 163, 211);
     --header-bg-color: rgb(80, 113, 161);
 }
 
@@ -96,7 +96,7 @@ a:hover {
 
 .bienvenue {
     text-align: center;
-    background-color: rgb(23, 162, 184);
+    background-color: rgb(102, 163, 211);
     height: 2.55em;
     padding-top: 0.6em;
 }
@@ -113,6 +113,6 @@ a:hover {
 /* *************/
 
 .sidebar_color {
-    background-color: #0a1a2c;
+    background-color: rgb(18, 62, 106);
 
 }
