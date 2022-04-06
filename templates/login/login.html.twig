@@ -8,7 +8,7 @@
   
     <link href="{{asset ('styles/login.css') }}" rel="stylesheet"/>
     
-    <title> Formulaire de connexion : GSB </title>
+    <title> GSB | Galaxy Swiss Bourdin </title>
 </head>
 
 {% block body %}
@@ -22,9 +22,8 @@
             <input type="text" value="{{ last_username }}" name="username" placeholder="Identifiant" id="inputUsername" class="field" autocomplete="username" required autofocus>
             <input type="password" name="password" placeholder="Mot de passe" id="inputPassword" class="field" autocomplete="current-password" required>
 
-            <input class="btn" type="hidden" name="_csrf_token"
-                value="{{ csrf_token('authenticate') }}">
-                <button class="btn btn-success" type="submit">Se connecter</button>
+            <input class="btn" type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+            <button class="btn btn-success" type="submit">Se connecter</button>
 
             {% if error %}
                 <div class="mt-3">
