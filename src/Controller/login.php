@@ -23,25 +23,34 @@ class login extends AbstractController
      * @Method({"GET"})
     */
 
+    // public function test(Request $request, ManagerRegistry $doctrine) : Response // Fonction qui permet d'ajouter un nouveau matériel dans la base de données via un formulaire
+    // {      
+    
+    //     return $this->render('login/login.html.twig',[ // Création du formulaire par symfony   
+        
+    //     ]);
+    // }
+
     public function test(Request $request, ManagerRegistry $doctrine) : Response // Fonction qui permet d'ajouter un nouveau matériel dans la base de données via un formulaire
     {      
-     
-        $setUser = new User();
-        $setUser->setUsername('dandre');
-        $setUser->setRoles('["ROLE_VISITEUR"]');
-        $setUser->setPassword('$argon2id$v=19$m=65536,t=4,p=1$cDBFcTB0RVViMVNxTGFFQQ$51JuUEGxfdnoKkEPaHcs01EBsUNxxdGVAgaaq/7+22k');
-        $setUser->setNom('Andre');
-        $setUser->setPrenom('David');
-        $setUser->setCp(46200);
-        $setUser->setVille('Lalbenque');
-        $setUser->setDateEmbauche('1998-11-23');
-        $setUser->setAdresse('1 rue Petit');
- 
-        $entityManager = $doctrine->getManager();
-        $entityManager->persist($setUser);
-        $entityManager->flush();
 
-        return $this->render('login/login.html.twig',[ // Création du formulaire par symfony   
+        user = new User();
+        $form = $this->createForm(UserType::class, $user);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted()&& $form->isValid()){
+            $password = $passwordEncoder->encorePassword($user, $user->getPlainPassword());
+            $user->setPassword($password);
+
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($user);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('register');
+        }
+    
+        return $this->render('login/form.html.twig',[ // Création du formulaire par symfony   
         
         ]);
     }
