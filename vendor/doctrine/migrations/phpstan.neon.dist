@@ -29,15 +29,14 @@ parameters:
             message: '~^Cannot call method getWrappedConnection\(\) on class-string\|object\.~'
             path: lib/Doctrine/Migrations/Tools/TransactionHelper.php
 
-        # Requires PHPUnit 9
+        # TODO: Be more precise about class-strings
         -
-            message: '~assert.*Reg~'
+            message: '~^Method Doctrine\\Migrations\\Version\\DbalMigrationFactory::createVersion\(\) should return Doctrine\\Migrations\\AbstractMigration but returns object\.$~'
             paths:
-                - tests/Doctrine/Migrations/Tests/Generator/ClassNameGeneratorTest.php
-
+                - lib/Doctrine/Migrations/Version/DbalMigrationFactory.php
 
     symfony:
-            console_application_loader: %currentWorkingDirectory%/tests/Doctrine/Migrations/Tests/doctrine-migrations-phpstan-app.php
+            console_application_loader: tests/Doctrine/Migrations/Tests/doctrine-migrations-phpstan-app.php
 includes:
     - vendor/phpstan/phpstan-deprecation-rules/rules.neon
     - vendor/phpstan/phpstan-phpunit/extension.neon
