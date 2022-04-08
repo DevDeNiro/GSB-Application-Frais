@@ -2,7 +2,10 @@
 
 namespace Doctrine\Bundle\DoctrineBundle\DependencyInjection;
 
+use Doctrine\Common\Proxy\AbstractProxyFactory;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\Mapping\ClassMetadataFactory;
 use ReflectionClass;
 use Symfony\Component\Config\Definition\BaseNode;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
@@ -19,6 +22,7 @@ use function assert;
 use function class_exists;
 use function constant;
 use function count;
+use function defined;
 use function implode;
 use function in_array;
 use function is_array;
@@ -140,6 +144,10 @@ class Configuration implements ConfigurationInterface
 
         $this->configureDbalDriverNode($connectionNode);
 
+        $collationKey = defined('Doctrine\DBAL\Connection::PARAM_ASCII_STR_ARRAY')
+            ? 'collate'
+            : 'collation';
+
         $connectionNode
             ->fixXmlConfig('option')
             ->fixXmlConfig('mapping_type')
@@ -183,7 +191,10 @@ class Configuration implements ConfigurationInterface
                     ->prototype('scalar')->end()
                 ->end()
                 ->arrayNode('default_table_options')
-                    ->info("This option is used by the schema-tool and affects generated SQL. Possible keys include 'charset','collate', and 'engine'.")
+                ->info(sprintf(
+                    "This option is used by the schema-tool and affects generated SQL. Possible keys include 'charset','%s', and 'engine'.",
+                    $collationKey
+                ))
                     ->useAttributeAsKey('name')
                     ->prototype('scalar')->end()
                 ->end()
@@ -408,7 +419,7 @@ class Configuration implements ConfigurationInterface
                     ->children()
                         ->scalarNode('default_entity_manager')->end()
                         ->scalarNode('auto_generate_proxy_classes')->defaultValue(false)
-                            ->info('Auto generate mode possible values are: "NEVER", "ALWAYS", "FILE_NOT_EXISTS", "EVAL"')
+                            ->info('Auto generate mode possible values are: "NEVER", "ALWAYS", "FILE_NOT_EXISTS", "EVAL", "FILE_NOT_EXISTS_OR_CHANGED"')
                             ->validate()
                                 ->ifTrue(function ($v) {
                                     $generationModes = $this->getAutoGenerateModes();
@@ -422,7 +433,7 @@ class Configuration implements ConfigurationInterface
                                     }
 
                                     if (is_string($v)) {
-                                        if (in_array(strtoupper($v), $generationModes['names']/*array('NEVER', 'ALWAYS', 'FILE_NOT_EXISTS', 'EVAL')*/)) {
+                                        if (in_array(strtoupper($v), $generationModes['names']/*array('NEVER', 'ALWAYS', 'FILE_NOT_EXISTS', 'EVAL', 'FILE_NOT_EXISTS_OR_CHANGED')*/)) {
                                             return false;
                                         }
                                     }
@@ -569,8 +580,8 @@ class Configuration implements ConfigurationInterface
                 ->append($this->getOrmEntityListenersNode())
                 ->children()
                     ->scalarNode('connection')->end()
-                    ->scalarNode('class_metadata_factory_name')->defaultValue('Doctrine\ORM\Mapping\ClassMetadataFactory')->end()
-                    ->scalarNode('default_repository_class')->defaultValue('Doctrine\ORM\EntityRepository')->end()
+                    ->scalarNode('class_metadata_factory_name')->defaultValue(ClassMetadataFactory::class)->end()
+                    ->scalarNode('default_repository_class')->defaultValue(EntityRepository::class)->end()
                     ->scalarNode('auto_mapping')->defaultFalse()->end()
                     ->scalarNode('naming_strategy')->defaultValue('doctrine.orm.naming_strategy.default')->end()
                     ->scalarNode('quote_strategy')->defaultValue('doctrine.orm.quote_strategy.default')->end()
@@ -731,12 +742,7 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('pool')->end()
             ->end();
 
-        if ($name === 'metadata_cache_driver') {
-            $node->setDeprecated(...$this->getDeprecationMsg(
-                'The "metadata_cache_driver" configuration key is deprecated. Remove the configuration to have the cache created automatically.',
-                '2.3'
-            ));
-        } else {
+        if ($name !== 'metadata_cache_driver') {
             $node->addDefaultsIfNotSet();
         }
 
@@ -752,7 +758,7 @@ class Configuration implements ConfigurationInterface
     {
         $constPrefix = 'AUTOGENERATE_';
         $prefixLen   = strlen($constPrefix);
-        $refClass    = new ReflectionClass('Doctrine\Common\Proxy\AbstractProxyFactory');
+        $refClass    = new ReflectionClass(AbstractProxyFactory::class);
         $constsArray = $refClass->getConstants();
         $namesArray  = [];
         $valuesArray = [];
