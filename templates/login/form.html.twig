@@ -20,20 +20,7 @@
             <h2>Connexion</h2>
             <form method="post">
 
-            <input type="text" value="{{ last_username }}" name="username" placeholder="Identifiant" id="inputUsername" class="field" autocomplete="username" required autofocus>
-            <input type="password" name="password" placeholder="Mot de passe" id="inputPassword" class="field" autocomplete="current-password" required>
-
-            <input class="btn" type="hidden" name="_csrf_token"
-                value="{{ csrf_token('authenticate') }}">
-                <button class="btn btn-success" type="submit">Se connecter</button>
-
-            {% if error %}
-                <div class="mt-3">
-                    <div class="alert alert-danger p-3 mb-2 bg-danger text-white" role="alert">
-                        {{ error.messageKey|trans(error.messageData, 'security') }}
-                    </div>
-                </div>
-            {% endif %}
+            
 			</div>
 		</div>
 	</div>
