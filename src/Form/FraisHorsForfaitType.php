@@ -7,12 +7,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Validator\Constraints\Length;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 
 class FraisHorsForfaitType extends AbstractType
@@ -20,10 +16,9 @@ class FraisHorsForfaitType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         setlocale(LC_TIME, "fr_FR");
-        $mois_actuel = date("m Y");
+        $mois_actuel = date("m / Y");
 
         $builder
-
         ->add('montant',  NumberType::class, [
                     'required' => true,
                     'attr' => array ( 
