@@ -1,2 +1,3 @@
 # GSB-Application-Frais
-BTS SIO option SLAM : Application de gestion des frais
+Ce projet à été réalisé dans le cadre du BTS SIO option SLAM.
+https://application-frais-gsb.fr/
