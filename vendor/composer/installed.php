@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'e5ed2978a9dadb4b49fdf41dced5dc3284ac5867',
+        'reference' => '0b4b3672c34baa6dcc59f9ef80b6be66e434f11d',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'e5ed2978a9dadb4b49fdf41dced5dc3284ac5867',
+            'reference' => '0b4b3672c34baa6dcc59f9ef80b6be66e434f11d',
             'dev_requirement' => false,
         ),
         'composer/package-versions-deprecated' => array(
@@ -164,12 +164,12 @@
             'dev_requirement' => false,
         ),
         'doctrine/orm' => array(
-            'pretty_version' => '2.12.0',
-            'version' => '2.12.0.0',
+            'pretty_version' => '2.12.1',
+            'version' => '2.12.1.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../doctrine/orm',
             'aliases' => array(),
-            'reference' => 'd5503644314ed825fe4b276a588458a033fa3e7c',
+            'reference' => '2e4a8722721b934149ff53b191522a6829b6d73b',
             'dev_requirement' => false,
         ),
         'doctrine/persistence' => array(

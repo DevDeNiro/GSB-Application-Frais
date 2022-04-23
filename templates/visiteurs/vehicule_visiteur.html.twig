@@ -15,11 +15,11 @@
           <div class="row mx-auto w-75 p-0 mt-5">
             <div class="col">
 
-            {% for message in app.flashes ('modif2') %}  
-                <div class="alert alert-info mt-0" role="alert">
-                    {{ message }}
-                </div>
-              {% endfor %} 
+            {% for message in app.flashes ('dropCar') %}  
+              <div class="alert alert-info" role="alert">
+                {{ message }}
+              </div>
+            {% endfor %} 
 
             {% for vehicule in vehicule %}
               {% if loop.last %}

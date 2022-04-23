@@ -13,32 +13,26 @@
         </div>
       </div>
   
-        {% for message in app.flashes ('succesSuppr') %}  
-          <div class="alert alert-danger mt-4" role="alert">
-            {{ message }}
-          </div>
-        {% endfor %} 
+      {% for message in app.flashes ('succesSuppr') %}  
+        <div class="alert alert-danger m-3 w-25" role="alert">
+          {{ message }}
+        </div>
+      {% endfor %} 
 
-        {% for message in app.flashes ('modif') %}  
-          <div class="alert alert-info mt-4" role="alert">
-            {{ message }}
-          </div>
-        {% endfor %} 
+      {% for message in app.flashes ('updateHorsForfait') %}  
+        <div  class="alert alert-info m-3 w-25" role="alert">
+          {{ message }}
+        </div>
+      {% endfor %}  
 
-          {% for tata in app.flashes ('success18') %}  
-          <div class="alert alert-primary" role="alert">
-            {{ tata }}
-          </div>
-        {% endfor %}
-
-        {% for toto in app.flashes ('success34') %}  
-          <div class="alert alert-primary" role="alert">
-            {{ toto }}
-          </div>
-        {% endfor %}
+      {% for message in app.flashes ('updateAuForfait') %}  
+        <div  class="alert alert-info m-3 w-25" role="alert">
+          {{ message }}
+        </div>
+      {% endfor %}
 
       <div class="row mx-auto w-100 p-0 mt-5">
-        <div class="col mb-4">
+        <div class="col mb-4">  
           <div class="card">
             <div class="card-header bg-info title"> Frais au forfait </div>
               {% for auForfait in ÔForfait %}
@@ -113,7 +107,7 @@
                       
                       <td>
                         {% if auForfait.etat == "En attente" %}
-                          <div class="col mb-4"><a class="btn btn-outline-primary" href={{ path("modifier", {'id': auForfait.id }) }} role="button">Modifier</a></div>
+                          <div class="col"><a class="btn btn-outline-primary" href={{ path("modifier", {'id': auForfait.id }) }} role="button">Modifier</a></div>
                         {% endif %}
                         <div class="col"><a class="btn btn-outline-danger btn1 mt-2" href={{ path("supprimer", {'id': auForfait.id}) }} role="button">Supprimer</a></div>
                       </td>
@@ -171,7 +165,7 @@
                           {% if horsForfait.etat == "En attente" %}
                             <div class="col"><a class="btn btn-outline-primary" href={{ path("modifier2", {'id': horsForfait.id }) }} role="button">Modifier</a></div>
                           {% endif %}
-                          <div class="col"><a class="btn btn-outline-danger btn1 mt-2" href={{ path("supprimer2", {'id': horsForfait.id }) }} role="button">Supprimer</a></div>
+                          <div class="col"><a class="btn btn-outline-danger btn1 mt-2" href={{ path("delHorsForfait", {'id': horsForfait.id }) }} role="button">Supprimer</a></div>
                         </td>
                       </tr>
                     {% endfor %}

@@ -15,7 +15,7 @@
                             <div class="card-header" style="font-weight: bold; font-size: large">Etes-vous sûr de vouloir ajouter un véhicule ?</div>
                               <div class="card-body">
                                 <div class="col"><a class="btn btn-success" href={{ path("accueil_visiteurs") }} role="button">Ajouter</a></div>
-                                <div class="col mt-2"><a class="btn btn-danger" href={{ path("supprimer5", {'id': repo.proprietaire }) }} role="button">Annuler</a></div>
+                                <div class="col mt-2"><a class="btn btn-danger" href={{ path("cancelNewCar", {'id': repo.proprietaire }) }} role="button">Annuler</a></div>
                             </div>
                           </div>
                         </div>
@@ -26,8 +26,8 @@
                             <div class="card text-white bg-info mb-3 col mx-3 px-0" style="max-width: 24rem;">
                               <div class="card-header" style="font-weight: bold; font-size: large">Etes-vous sur de vouloir remplacer votre précédent véhicule?</div>
                                 <div class="card-body">
-                                  <div class="col"><a class="btn btn-success" href={{ path("supprimer5", {'id': repo.proprietaire }) }} role="button">Remplacer</a></div>
-                                  <div class="col mt-2"><a class="btn btn-danger" href={{ path("supprimer6", {'id': repo.proprietaire }) }} role="button">Annuler</a></div>
+                                  <div class="col"><a class="btn btn-success" href={{ path("dropCar", {'id': repo.proprietaire }) }} role="button">Remplacer</a></div>
+                                  <div class="col mt-2"><a class="btn btn-danger" href={{ path("annulerRemplacement", {'id': repo.proprietaire }) }} role="button">Annuler</a></div>
                               </div>
                             </div>
                           </div>
