@@ -130,4 +130,3 @@ class Vehicule
         return $this;
     }
 }
-
