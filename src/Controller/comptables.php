@@ -2,6 +2,8 @@
 namespace App\Controller;
 
 // include 
+
+use App\Entity\Carburant;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -323,5 +325,22 @@ class comptables extends AbstractController
             "user" => $repository24,
             "vehicule" => $repository25
         ]);
-    }    
+    }  
+    
+     /**
+     * @Route("/comptables/test", name = "test")
+     * @Method({"GET", "POST"})
+    */
+    
+    public function getCarburant() : Response
+    {        
+        $rep = $this->getDoctrine()
+            ->getRepository(Carburant::class)
+            ->findAll();
+        
+        return $this->render('comptables\test.html.twig', [
+            "test" => $rep
+        ]);
+    }
+
 }
