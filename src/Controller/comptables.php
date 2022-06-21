@@ -332,13 +332,29 @@ class comptables extends AbstractController
      * @Method({"GET", "POST"})
     */
     
-    public function getCarburant() : Response
+    public function getCarburanttest() : Response
     {        
         $rep = $this->getDoctrine()
             ->getRepository(Carburant::class)
             ->findAll();
         
         return $this->render('comptables\test.html.twig', [
+            "test" => $rep
+        ]);
+    }
+
+    /**
+     * @Route("/comptables/carburant", name = "carburant")
+     * @Method({"GET", "POST"})
+    */
+    
+    public function getCarburant() : Response
+    {        
+        $rep = $this->getDoctrine()
+            ->getRepository(Carburant::class)
+            ->findAll();
+        
+        return $this->render('comptables\carburant.html.twig', [
             "test" => $rep
         ]);
     }
