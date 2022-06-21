@@ -10,11 +10,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use App\Entity\Vehicule;
+use Symfony\Component\HttpFoundation\Request;
 
 use App\Entity\FraisHorsForfait;
 use App\Entity\User;
 
 use App\Entity\FraisForfait;
+use App\Form\CarburantFormType;
 
 class comptables extends AbstractController
 {
@@ -348,14 +350,25 @@ class comptables extends AbstractController
      * @Method({"GET", "POST"})
     */
     
-    public function getCarburant() : Response
-    {        
-        $rep = $this->getDoctrine()
-            ->getRepository(Carburant::class)
-            ->findAll();
-        
+    public function setCarburant(Request $request)
+    {  
+        $carbu = new Carburant();
+
+        $form = $this->createForm(CarburantFormType::class, $carbu);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($carbu);
+            $entityManager->flush();
+
+            $this->addFlash('ajoutFrais', 'Carburant ajouté avec succès!');
+            return $this->redirectToRoute('accueil_comptables');
+        }
+
         return $this->render('comptables\carburant.html.twig', [
-            "test" => $rep
+            'form' => $form->createView()
         ]);
     }
 

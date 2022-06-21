@@ -5841,17 +5841,17 @@
         },
         {
             "name": "symfony/form",
-            "version": "v4.4.40",
-            "version_normalized": "4.4.40.0",
+            "version": "v4.4.42",
+            "version_normalized": "4.4.42.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/form.git",
-                "reference": "227322acf68600d4cb80257075414249c6ddb0c5"
+                "reference": "b19668b10c18deb56ff8068070afa5300f01f500"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/form/zipball/227322acf68600d4cb80257075414249c6ddb0c5",
-                "reference": "227322acf68600d4cb80257075414249c6ddb0c5",
+                "url": "https://api.github.com/repos/symfony/form/zipball/b19668b10c18deb56ff8068070afa5300f01f500",
+                "reference": "b19668b10c18deb56ff8068070afa5300f01f500",
                 "shasum": ""
             },
             "require": {
@@ -5894,7 +5894,7 @@
                 "symfony/twig-bridge": "For templating with Twig.",
                 "symfony/validator": "For form validation."
             },
-            "time": "2022-04-01T13:16:16+00:00",
+            "time": "2022-05-21T14:03:14+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -5922,7 +5922,7 @@
             "description": "Allows to easily create, process and reuse HTML forms",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/form/tree/v4.4.40"
+                "source": "https://github.com/symfony/form/tree/v4.4.42"
             },
             "funding": [
                 {
@@ -9308,17 +9308,17 @@
         },
         {
             "name": "symfony/validator",
-            "version": "v4.4.40",
-            "version_normalized": "4.4.40.0",
+            "version": "v4.4.41",
+            "version_normalized": "4.4.41.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/validator.git",
-                "reference": "86464b6f16c888514b32ffd64fb9a2ad64dc3965"
+                "reference": "b79a7830b8ead3fb0a2a0080ba6f5b2a0861c28c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/validator/zipball/86464b6f16c888514b32ffd64fb9a2ad64dc3965",
-                "reference": "86464b6f16c888514b32ffd64fb9a2ad64dc3965",
+                "url": "https://api.github.com/repos/symfony/validator/zipball/b79a7830b8ead3fb0a2a0080ba6f5b2a0861c28c",
+                "reference": "b79a7830b8ead3fb0a2a0080ba6f5b2a0861c28c",
                 "shasum": ""
             },
             "require": {
@@ -9369,7 +9369,7 @@
                 "symfony/translation": "For translating validation errors.",
                 "symfony/yaml": ""
             },
-            "time": "2022-03-28T08:53:28+00:00",
+            "time": "2022-04-14T15:50:15+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -9397,7 +9397,7 @@
             "description": "Provides tools to validate values",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/validator/tree/v4.4.40"
+                "source": "https://github.com/symfony/validator/tree/v4.4.41"
             },
             "funding": [
                 {

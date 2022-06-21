@@ -6,7 +6,13 @@
             <div class="row page-header text-center pt-5 justify-content-center"> <h1> Bienvenue <span class="id_user">{% if app.user is null %}
                   {% else %}
                     {{ app.user.prenom }}
-                  {% endif %}</span> sur votre espace comptable</h1> </div>        
+                  {% endif %}</span> sur votre espace comptable</h1> </div> 
+
+                  {% for message_vehicule in app.flashes ('ajoutFrais') %}  
+                  <div class="alert alert-success" role="alert">
+                      {{ message_vehicule }}
+                  </div>
+                {% endfor %}        
                   <div class="row mt-5 justify-content-center">
                     <div class="card text-white bg-success mb-3 col px-0" style="max-width: 19rem;">
                       <div class="card-header" style="font-weight: bold; font-size: large">Frais forfaitaires validés <i class="far fa-check-circle"></i></div>
