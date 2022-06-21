@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20220119053250 extends AbstractMigration
+final class Version20220621104521 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,16 +20,12 @@ final class Version20220119053250 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE frais_forfait ADD etat VARCHAR(20) DEFAULT NULL');
-        $this->addSql('ALTER TABLE frais_hors_forfait ADD etat VARCHAR(20) DEFAULT NULL');
-        $this->addSql('ALTER TABLE user CHANGE cp cp SMALLINT NOT NULL');
+        $this->addSql('CREATE TABLE carburant (id INT AUTO_INCREMENT NOT NULL, nom VARCHAR(100) NOT NULL, prix SMALLINT NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE frais_forfait DROP etat');
-        $this->addSql('ALTER TABLE frais_hors_forfait DROP etat');
-        $this->addSql('ALTER TABLE user CHANGE cp cp INT NOT NULL');
+        $this->addSql('DROP TABLE carburant');
     }
 }
